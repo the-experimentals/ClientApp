@@ -46,3 +46,17 @@ $warn: mat-palette($mat-red);
     margin-right: 0.5rem;
   }
 }
+
+.mat-checkbox-inner-container{
+  height: 21px !important;
+  width: 21px !important;
+}
+
+.mat-checkbox{
+  & .mat-checkbox-ripple{
+    left: calc(50% - 25px) !important;
+    top: calc(50% - 25px) !important;
+    height: 50px !important;
+    width: 50px !important;
+  }
+}
