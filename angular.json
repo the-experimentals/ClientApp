@@ -31,8 +31,14 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom_theme.scss",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
