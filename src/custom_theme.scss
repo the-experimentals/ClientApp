@@ -2,20 +2,39 @@
 
 @include mat-core();
 
-$ClientApp-primary: mat-palette($mat-indigo);
-$ClientApp-accent: mat-palette($mat-pink, A200, A100, A400);
-
 $warn: mat-palette($mat-red);
 
-$ClientApp-theme: mat-light-theme((
-  color: (
-    primary: $ClientApp-primary,
-    accent: $ClientApp-accent,
-    warn: $warn,
-  )
-));
+.light-theme{
 
-@include angular-material-theme($ClientApp-theme);
+  $light-primary: mat-palette($mat-blue);
+  $light-accent: mat-palette($mat-blue, A600);
+
+  $light-theme: mat-light-theme((
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+      warn: $warn
+    )
+  ));
+
+  @include angular-material-theme($light-theme);
+}
+
+.dark-theme{
+  background-color: #1B1C1E;
+  $dark-primary: mat-palette($mat-gray, A100);
+  $dark-accent: mat-palette($mat-gray, A50);
+
+  $dark-theme: mat-dark-theme((
+    color:(
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn:$warn
+    )
+  ));
+
+  @include angular-material-theme($dark-theme);
+}
 
 .mat-card{
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;
