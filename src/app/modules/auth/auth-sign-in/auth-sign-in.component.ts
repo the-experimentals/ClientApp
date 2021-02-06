@@ -68,4 +68,12 @@ export class AuthSignInComponent implements OnInit {
     alert("test")
   }
 
+  signIn(){
+    this.isSignInAttempt = true;
+    if(this.signInForm.valid){
+      
+    }
+    
+  }
+
 }
