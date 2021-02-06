@@ -5,14 +5,21 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthHomeComponent } from './auth-home/auth-home.component';
 import { AuthSignInComponent } from './auth-sign-in/auth-sign-in.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatCardModule} from '@angular/material/card'
+import {MatInputModule} from '@angular/material/input'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AuthHomeComponent, AuthSignInComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FontAwesomeModule
   ]
 })
 export class AuthModule { }

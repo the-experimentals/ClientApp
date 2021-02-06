@@ -3,3 +3,26 @@ body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.padding1015{
+  padding: 10px 15px !important;
+}
+
+.padding2030{
+  padding: 20px 30px !important;
+}
+
+.display-block{
+  display: block;
+}
+
+.display-inline-block{
+  display: inline-block;
+}
+
+.centralize{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
