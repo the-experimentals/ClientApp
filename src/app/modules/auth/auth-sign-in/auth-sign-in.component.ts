@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -9,9 +10,27 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class AuthSignInComponent implements OnInit {
 
   faUser = faUser
-  constructor() { }
+  faLock = faLock
+  faEye = faEyeSlash
+
+  signInForm: FormGroup
+  constructor(private formBuilder:FormBuilder) { 
+    this.signInForm = this.createSignInForm()
+  }
 
   ngOnInit(): void {
+  }
+
+  createSignInForm(): FormGroup{
+    return this.formBuilder.group({
+      'IDENTIFIER': new FormControl('',[Validators.required]),
+      'SECRET': new FormControl('', [Validators.required]),
+      'REMEMBER_ME': new FormControl(false)
+    });
+  }
+
+  passwordToggle(){
+    alert("test")
   }
 
 }

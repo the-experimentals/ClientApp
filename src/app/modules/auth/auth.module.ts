@@ -9,6 +9,9 @@ import {MatCardModule} from '@angular/material/card'
 import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button'
+import {MatCheckboxModule} from '@angular/material/checkbox'
 
 @NgModule({
   declarations: [AuthHomeComponent, AuthSignInComponent],
@@ -19,7 +22,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCheckboxModule
   ]
 })
 export class AuthModule { }
