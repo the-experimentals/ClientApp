@@ -7,7 +7,7 @@ $warn: mat-palette($mat-red);
 .light-theme{
 
   $light-primary: mat-palette($mat-blue);
-  $light-accent: mat-palette($mat-blue, A600);
+  $light-accent: mat-palette($mat-blue, A500);
 
   $light-theme: mat-light-theme((
     color: (
