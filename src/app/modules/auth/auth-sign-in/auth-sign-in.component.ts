@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService, HttpHelperService } from 'src/app/core/services';
@@ -37,7 +38,7 @@ export class AuthSignInComponent implements OnInit {
   }
 
   signInForm: FormGroup
-  constructor(private formBuilder:FormBuilder, private authService: AuthService) { 
+  constructor(private formBuilder:FormBuilder, private authService: AuthService, private router:Router) { 
     this.signInForm = this.createSignInForm()
 
     this.signInForm.valueChanges.subscribe(data => {
@@ -48,7 +49,7 @@ export class AuthSignInComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isAuthenticated().subscribe(res =>{
       if(res)
-        alert("test")
+        this.router.navigate(['/home']);
     })
   }
 
@@ -96,7 +97,8 @@ export class AuthSignInComponent implements OnInit {
     this.isSignInAttempt = true;    
     if(this.signInForm.valid){
       this.authService.login(this.signInForm.value).subscribe(res =>{
-        debugger
+        if(res.IS_AUTHENTICATED)
+          this.router.navigate(['/home']);
       })
     }
     
