@@ -18,35 +18,44 @@ export class AuthService {
               private profileQuery:ProfileQuery
               ) {                    
     let currentUser = localStorage.getItem('currentUser');
-    if(currentUser != null){    
-      let currentProfile = Object.assign(new Profile(), JSON.parse(currentUser))    
-      this.profileQuery.isAuthenticated().pipe(
-        take(1),
-        filter(authenticated => !authenticated),
-        switchMap(() => {          
-          this.profileStore.setLoading(true)
-          return of(currentProfile)
-        })
-      ).subscribe(res => {        
-        this.profileStore.update(state => {
-          return{
-            profile:currentProfile
-          }
-        })
-        this.profileStore.setLoading(false)
-      }, err =>{
-        console.log(err)
-        this.profileStore.setLoading(false)
-      })      
-    }
+    if(currentUser != null){         
+      let currentProfile:Profile = Object.assign(new Profile(), JSON.parse(currentUser))   
+      const jwtHelper = new JwtHelperService()
+      let isUserAuthenticated:boolean =  !
+      jwtHelper.isTokenExpired(currentProfile.TOKEN.ACCESS)
+      
+      if(isUserAuthenticated){
+        this.profileQuery.isAuthenticated().pipe(
+          take(1),
+          filter(authenticated => !authenticated),
+          switchMap(() => {          
+            this.profileStore.setLoading(true)
+            return of(currentProfile)
+          })
+        ).subscribe(res => {        
+          this.profileStore.update(state => {
+            return{
+              profile:currentProfile,
+              isAuthenticated: isUserAuthenticated
+            }
+          })
+          this.profileStore.setLoading(false)
+        }, err =>{
+          console.log(err)
+          this.profileStore.setLoading(false)
+        })      
+      }
+      else{
+        this.logout()
+      }
+    } 
   }
 
   login(user:any):Observable<SignInResponse>{
     return this.httpHelper.post<SignInResponse>("sign-in", "secure", user)
       .pipe(
         map(res => {
-          if(res.IS_AUTHENTICATED){
-            debugger
+          if(res.IS_AUTHENTICATED){            
             this.profileStore.setLoading(true)
             const jwtHelper = new JwtHelperService();
             let profile:Profile = new Profile();
@@ -78,5 +87,23 @@ export class AuthService {
           return throwError(err)          
         })
       )
+  }
+
+  logout(){
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    localStorage.setItem("IS_REFRESHING", "false");
+    // remove state as well    
+    // clearInterval(this.refreshInterval);
+  }
+
+  isAuthenticated(): Observable<boolean>{    
+    return this.profileQuery.select(state => {
+      if(state.isAuthenticated){
+        const jwtHelper = new JwtHelperService();
+        return !jwtHelper.isTokenExpired(state.profile.TOKEN.ACCESS)
+      }        
+        return false
+    })
   }
 }

@@ -46,6 +46,10 @@ export class AuthSignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.isAuthenticated().subscribe(res =>{
+      if(res)
+        alert("test")
+    })
   }
 
   createSignInForm(): FormGroup{
