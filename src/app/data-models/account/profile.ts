@@ -66,14 +66,4 @@ export class Profile{
     public set ROLE(v : ProfileRole) {
         this._ROLE = v;
     }
-
-    // constructor(json?: string){
-    //     if(json !== undefined && json !== ""){
-    //         let jsonObj: any = JSON.parse(json);
-
-    //         for (let prop in jsonObj) {
-    //             this[prop] = jsonObj[prop];
-    //         }
-    //     }
-    // }
 }
