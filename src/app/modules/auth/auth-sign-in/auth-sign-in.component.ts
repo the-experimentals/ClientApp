@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
+import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators/form-field-validator';
 
@@ -51,7 +52,8 @@ export class AuthSignInComponent implements OnInit {
     return this.formBuilder.group({
       'IDENTIFIER': new FormControl('',[Validators.required, Validators.minLength(5)]),
       'SECRET': new FormControl('', [Validators.required, Validators.minLength(8)]),
-      'REMEMBER_ME': new FormControl(false)
+      'REMEMBER_ME': new FormControl(false),
+      'SHOW_PASSWORD': new FormControl(false)
     });
   }
 
@@ -65,8 +67,25 @@ export class AuthSignInComponent implements OnInit {
     return this.signInForm.get('SECRET');
   }
 
+  get SHOW_PASSWORD(){
+    return this.signInForm.get('SHOW_PASSWORD');
+  }
+
   passwordToggle(){
-    alert("test")
+    
+    if(this.SHOW_PASSWORD ==null)
+      return;
+
+    if(this.SHOW_PASSWORD.value)
+    {
+      this.SHOW_PASSWORD.setValue(false);
+      this.faEye = faEyeSlash;
+    }
+    else
+    {
+      this.SHOW_PASSWORD.setValue(true);
+      this.faEye = faEye;
+    }
   }
 
   signIn(){
