@@ -5,6 +5,7 @@ import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators/form-field-validator';
+import {StatusCodes} from 'http-status-codes'
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -96,12 +97,18 @@ export class AuthSignInComponent implements OnInit {
   signIn(){
     this.isSignInAttempt = true;    
     if(this.signInForm.valid){
+      this.signInError = [];
+      this.showSignInErrors = false
       this.authService.login(this.signInForm.value).subscribe(res =>{
         if(res.IS_AUTHENTICATED)
           this.router.navigate(['/home']);
+      }, err =>{
+        if(err.status == StatusCodes.UNAUTHORIZED){
+          this.showSignInErrors = true
+          this.signInError.push(err.error);
+          
+        }
       })
     }
-    
   }
-
 }

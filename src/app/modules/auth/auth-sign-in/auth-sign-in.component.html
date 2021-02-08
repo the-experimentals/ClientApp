@@ -4,7 +4,16 @@
         <span class="mat-h2 display-block m-0">Sign in</span>
         <span class="mat-body display-block m-0">to continue to services</span>
     </header>
+
     <form [formGroup]="signInForm" class="padding1015">
+        <div class="alert alert-danger mt-2" *ngIf="showSignInErrors">
+            <ul class="m-0 p-0" style="list-style-type: none;">
+                <li *ngFor = "let error of signInError">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+        
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Username</mat-label>
             <input matInput formControlName="IDENTIFIER">
