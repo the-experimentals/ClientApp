@@ -106,4 +106,9 @@ export class AuthService {
         return false
     })
   }
+
+  getCurrentProfile():Observable<Profile>{
+    return this.profileQuery.getProfile()
+  }
+
 }
