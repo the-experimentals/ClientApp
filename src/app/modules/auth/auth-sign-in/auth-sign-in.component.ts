@@ -105,7 +105,7 @@ export class AuthSignInComponent implements OnInit {
       }, err =>{
         if(err.status == StatusCodes.UNAUTHORIZED){
           this.showSignInErrors = true
-          this.signInError.push(err.error);
+          this.signInError.push(JSON.parse(err.error));
           
         }
       })
