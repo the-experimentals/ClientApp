@@ -21,7 +21,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
     this.authService.isAuthenticated()
       .pipe(
-        filter(authenticated => !authenticated && isApiUrl),
+        filter(authenticated => authenticated && isApiUrl),
         switchMap(() => {
           return this.authService.getCurrentProfile()
         })
