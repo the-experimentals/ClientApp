@@ -9,9 +9,10 @@ import { MatCardModule } from '@angular/material/card';
 import {MatListModule} from '@angular/material/list'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [SidebarComponent, MainLayoutComponent],
+  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,

@@ -8,11 +8,13 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { StatusCodes } from 'http-status-codes';
+import { AuthService } from '../../services';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private authService:AuthService, private router:Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
@@ -21,6 +23,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         switch(err.status){
           case 0:
             // service not reachable
+            this.router.navigate(['/error'], {state: {errorCode: 0}});
+            break;
           case StatusCodes.INTERNAL_SERVER_ERROR:
             break;
           default:

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthModule, AppHomeModule} from './modules'
+import { ErrorComponent } from './shared/error/error.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 
 const routes: Routes = [{
@@ -12,8 +13,10 @@ const routes: Routes = [{
   children:[{
     path:'',
     loadChildren:'./modules#AppHomeModule'
-  }]
-  
+  }]  
+},{
+  path:'error',
+  component:ErrorComponent
 }];
 
 @NgModule({
