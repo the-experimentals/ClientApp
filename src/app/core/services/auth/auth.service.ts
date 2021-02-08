@@ -7,6 +7,8 @@ import { SignInResponse } from 'src/app/response-models/secure/sign-in-response'
 import { ProfileStore } from '../../state/store';
 import { ProfileQuery } from '../../state/query';
 import { Profile } from 'src/app/data-models/account';
+import { SECURE } from '../../constants/controllers';
+import { SIGN_IN } from '../../constants/actions/secure';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +54,7 @@ export class AuthService {
   }
 
   login(user:any):Observable<SignInResponse>{
-    return this.httpHelper.post<SignInResponse>("sign-in", "secure", user)
+    return this.httpHelper.post<SignInResponse>(SIGN_IN, SECURE, user)
       .pipe(
         map(res => {
           if(res.IS_AUTHENTICATED){            
