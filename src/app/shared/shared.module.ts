@@ -8,6 +8,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import {MatListModule} from '@angular/material/list'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [SidebarComponent, MainLayoutComponent],
@@ -17,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FlexLayoutModule,
     MatCardModule,
     MatListModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }
