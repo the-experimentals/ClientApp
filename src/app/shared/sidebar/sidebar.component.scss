@@ -28,6 +28,7 @@
 
         & .initials{
         
+            color: var(--primary-color);
             font-size: calc(40px / 2); /* 50% of parent */
             line-height: 1;
             position: relative;
