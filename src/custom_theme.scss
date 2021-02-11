@@ -17,6 +17,7 @@ $warn: mat-palette($mat-red);
     )
   ));
 
+  --primary-color: #2196F3;
   @include angular-material-theme($light-theme);
 }
 
@@ -33,6 +34,7 @@ $warn: mat-palette($mat-red);
     )
   ));
 
+  --primary-color: #000;
   @include angular-material-theme($dark-theme);
 }
 
