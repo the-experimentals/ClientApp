@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faKey, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { ProfileQuery } from 'src/app/core/state/query';
 
 @Component({
   selector: 'user-options',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserOptionsComponent implements OnInit {
 
-  constructor() { }
+  initials: string = ""
+  name: string = ""
+  identifier: string = ""
+
+  faKey = faKey
+  faPowerOff = faPowerOff
+  constructor(private profileQuery:ProfileQuery) {
+    profileQuery.getProfile().subscribe(profile => {
+      this.initials = profile.NAME[0].toUpperCase()
+      this.name = profile.NAME
+      this.identifier = profile.IDENTIFIER
+    })
+  }
 
   ngOnInit(): void {
   }

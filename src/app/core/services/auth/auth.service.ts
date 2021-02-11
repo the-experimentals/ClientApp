@@ -63,7 +63,7 @@ export class AuthService {
             let profile:Profile = new Profile();
             let decodedToken = jwtHelper.decodeToken(res.TOKEN.ACCESS);            
             
-            profile.NAME = res.NAME
+            profile.NAME = res.NAME            
             profile.ROLE = decodedToken.role
             profile.PERMISSIONS.push(decodedToken.Permission)
             profile.TOKEN = res.TOKEN;

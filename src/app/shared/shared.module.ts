@@ -13,6 +13,7 @@ import { ErrorComponent } from './error/error.component';
 import { NavMenuComponent } from './sidebar/nav-menu/nav-menu.component';
 import { NavMenuDirective } from './sidebar/directives/nav-menu/nav-menu.directive';
 import { UserOptionsComponent } from './sidebar/nav-menu/user-options/user-options.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent],
@@ -23,7 +24,8 @@ import { UserOptionsComponent } from './sidebar/nav-menu/user-options/user-optio
     MatCardModule,
     MatListModule,
     FontAwesomeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRippleModule
   ]
 })
 export class SharedModule { }
