@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountChangePasswordComponent } from './account-change-password/account-change-password.component';
+import { AccountDashboardComponent } from './account-dashboard/account-dashboard.component';
+import { AccountNewProfileComponent } from './account-new-profile/account-new-profile.component';
+import { AccountProfileCardComponent } from './account-profile-card/account-profile-card.component';
+import { AccountProfileViewComponent } from './account-profile-view/account-profile-view.component';
 
 
 @NgModule({
-  declarations: [AccountChangePasswordComponent],
+  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent],
   imports: [
     CommonModule,
     AccountRoutingModule
