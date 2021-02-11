@@ -1,1 +1,7 @@
-<p>error works!</p>
+<div class="container-fluid p-0" fxLayoutAlign="center">
+    <mat-card fxFlex="400px" class="mt-5 text-center">
+        <div *ngIf="errorCode==0">
+            Client cannot connect to the server
+        </div>
+    </mat-card>
+</div>
