@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
-import { AuthService, HttpHelperService } from 'src/app/core/services';
+import { AuthService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators/form-field-validator';
 import {StatusCodes} from 'http-status-codes'
+import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -39,12 +40,21 @@ export class AuthSignInComponent implements OnInit {
   }
 
   signInForm: FormGroup
-  constructor(private formBuilder:FormBuilder, private authService: AuthService, private router:Router) { 
+  constructor(private formBuilder:FormBuilder, 
+              private authService: AuthService, 
+              private router:Router,
+              private dyanamicContentLoading: DyanamicContentLoadingService,
+              @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
+              private elementRef:ElementRef,
+              private rendrer:Renderer2) { 
     this.signInForm = this.createSignInForm()
 
+    
     this.signInForm.valueChanges.subscribe(data => {
       ValidateOnValueChange(this.signInForm, this.signInFormErrors, this.validationMessages, data);
     });
+
+    this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
   }
 
   ngOnInit(): void {
@@ -99,11 +109,14 @@ export class AuthSignInComponent implements OnInit {
     if(this.signInForm.valid){
       this.signInError = [];
       this.showSignInErrors = false
+      this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent);
       this.authService.login(this.signInForm.value).subscribe(res =>{
+        this.dyanamicContentLoading.hideComponent();
         if(res.IS_AUTHENTICATED)
           this.router.navigate(['/home']);
       }, err =>{
         if(err.status == StatusCodes.UNAUTHORIZED){
+          this.dyanamicContentLoading.hideComponent();
           this.showSignInErrors = true
           this.signInError.push(JSON.parse(err.error));
           
