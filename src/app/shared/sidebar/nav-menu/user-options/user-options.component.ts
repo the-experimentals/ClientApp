@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faKey, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/core/services';
 import { ProfileQuery } from 'src/app/core/state/query';
 
 @Component({
@@ -15,7 +17,7 @@ export class UserOptionsComponent implements OnInit {
 
   faKey = faKey
   faPowerOff = faPowerOff
-  constructor(private profileQuery:ProfileQuery) {
+  constructor(private profileQuery:ProfileQuery, private authService: AuthService, private router:Router) {
     profileQuery.getProfile().subscribe(profile => {
       this.initials = profile.NAME[0].toUpperCase()
       this.name = profile.NAME
@@ -26,4 +28,8 @@ export class UserOptionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  signOut(){    
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
 }

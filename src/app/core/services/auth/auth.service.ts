@@ -4,11 +4,12 @@ import { map, catchError, filter, switchMap, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, of, throwError } from 'rxjs';
 import { SignInResponse } from 'src/app/response-models/secure/sign-in-response';
-import { ProfileStore } from '../../state/store';
+import { getInitialState, ProfileStore } from '../../state/store';
 import { ProfileQuery } from '../../state/query';
 import { Profile } from 'src/app/data-models/account';
 import { SECURE } from '../../constants/controllers';
 import { SIGN_IN } from '../../constants/actions/secure';
+import { state } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -79,8 +80,6 @@ export class AuthService {
             })
 
             this.profileStore.setLoading(false);
-
-            
           }
           
           return res
@@ -96,6 +95,9 @@ export class AuthService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     localStorage.setItem("IS_REFRESHING", "false");
+    this.profileStore.update(state => {
+      return getInitialState()
+    })
     // remove state as well    
     // clearInterval(this.refreshInterval);
   }
