@@ -10,9 +10,12 @@ import {MatListModule} from '@angular/material/list'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ErrorComponent } from './error/error.component';
+import { NavMenuComponent } from './sidebar/nav-menu/nav-menu.component';
+import { NavMenuDirective } from './sidebar/directives/nav-menu/nav-menu.directive';
+import { UserOptionsComponent } from './sidebar/nav-menu/user-options/user-options.component';
 
 @NgModule({
-  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent],
+  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
