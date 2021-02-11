@@ -14,9 +14,10 @@ import { NavMenuComponent } from './sidebar/nav-menu/nav-menu.component';
 import { NavMenuDirective } from './sidebar/directives/nav-menu/nav-menu.directive';
 import { UserOptionsComponent } from './sidebar/nav-menu/user-options/user-options.component';
 import { MatRippleModule } from '@angular/material/core';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 
 @NgModule({
-  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent],
+  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent, LoadingIndicatorComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
