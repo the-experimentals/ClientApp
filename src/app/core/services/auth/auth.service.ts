@@ -62,9 +62,10 @@ export class AuthService {
             const jwtHelper = new JwtHelperService();
             let profile:Profile = new Profile();
             let decodedToken = jwtHelper.decodeToken(res.TOKEN.ACCESS);            
-
-            profile.ROLE = decodedToken.role;
-            profile.PERMISSIONS.push(decodedToken.Permission);
+            
+            profile.NAME = res.NAME
+            profile.ROLE = decodedToken.role
+            profile.PERMISSIONS.push(decodedToken.Permission)
             profile.TOKEN = res.TOKEN;
 
             localStorage.setItem("currentUser", JSON.stringify(profile));

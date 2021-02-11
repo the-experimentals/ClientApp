@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { faClipboardList, faCog, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import { ProfileQuery } from 'src/app/core/state/query';
+import { ProfileStore } from 'src/app/core/state/store';
 
 @Component({
   selector: 'sidebar',
@@ -13,7 +15,13 @@ export class SidebarComponent implements OnInit {
   faUser = faUser
   faClipboardList = faClipboardList
   faCog = faCog
-  constructor() { }
+  initials:string = "";
+  constructor(private profileQuery:ProfileQuery) {
+    this.profileQuery.getProfile().subscribe(profile => {      
+      this.initials = profile.NAME[0].toUpperCase()
+    })
+  }
+
 
   ngOnInit(): void {
   }

@@ -25,6 +25,15 @@ export class SignInResponse{
     public set ERRORS(v : string[]) {
         this._ERRORS = v;
     }
+
+    private _NAME! : string;
+    public get NAME() : string {
+        return this._NAME;
+    }
+    public set NAME(v : string) {
+        this._NAME = v;
+    }
+    
     
     
     private _PROFILE_ID! : string;
