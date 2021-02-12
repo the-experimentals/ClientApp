@@ -7,13 +7,25 @@ import { AccountDashboardComponent } from './account-dashboard/account-dashboard
 import { AccountNewProfileComponent } from './account-new-profile/account-new-profile.component';
 import { AccountProfileCardComponent } from './account-profile-card/account-profile-card.component';
 import { AccountProfileViewComponent } from './account-profile-view/account-profile-view.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FontAwesomeModule,
+    FlexLayoutModule,
+    MatCheckboxModule,
+    MatButtonModule
   ]
 })
 export class AccountModule { }
