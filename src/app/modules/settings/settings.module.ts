@@ -8,6 +8,7 @@ import { SettingsGeneralComponent } from './settings-general/settings-general.co
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatRippleModule } from '@angular/material/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SettingsRoutingModule,
     FlexLayoutModule,
     MatRippleModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatSlideToggleModule
   ]
 })
 export class SettingsModule { }

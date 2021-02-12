@@ -1,1 +1,26 @@
-<p>settings-themes works!</p>
+<div class="padding2030">
+    <div>
+        <fa-icon [icon]="faLongArrowAltLeft" class="pointer" style="font-size: 2rem;" routerLink="/settings"></fa-icon>
+    </div>
+    <header>
+        <span class="mat-display-1">Themes</span>
+        <hr>
+    </header>
+
+    <div class="padding2030 margin-auto" style="width:800px">
+        <ul>
+            <li>
+                <div class="container-fluid padding1015">
+                    <div fxFlex>
+                        <span class="display-block mat-h2 m-0">Use dark mode</span>
+                        <span class="display-block mat-body m-0">Dark theme turns the light surfaces of the page dark, creating an experience ideal for night. Try it out!</span>
+                        <span class="display-block mat-small m-0" >Your Dark theme setting will apply to this browser only.</span>
+                    </div>
+                    <form  fxFlex="60px" class="text-center position-relative">
+                        <mat-slide-toggle color="primary"></mat-slide-toggle>                        
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
