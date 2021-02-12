@@ -1,6 +1,4 @@
-import { Component, ElementRef, Inject, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
-import { DyanamicContentLoadingService } from 'src/app/core/services';
-import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home-dashboard',
@@ -9,12 +7,8 @@ import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/load
 })
 export class HomeDashboardComponent implements OnInit {
 
-  constructor(private dyanamicContentLoading: DyanamicContentLoadingService,
-    @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
-    private elementRef:ElementRef,
-    private rendrer:Renderer2) {
-      this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
-      this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent);
+  constructor() {
+      
   }
 
   ngOnInit(): void {
