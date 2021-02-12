@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AuthModule, AppHomeModule, AccountModule} from './modules'
+import {AuthModule, AppHomeModule, AccountModule, SettingsModule} from './modules'
 import { ErrorComponent } from './shared/error/error.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 
@@ -24,6 +24,13 @@ const routes: Routes = [{
   children:[{
     path:'',
     loadChildren: 'src/app/modules#AccountModule'
+  }]
+},{
+  path:'settings',
+  component:MainLayoutComponent,
+  children:[{
+    path:'',
+    loadChildren:'src/app/modules#SettingsModule'
   }]
 }];
 
