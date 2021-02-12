@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { faEye, faEyeSlash, faKey } from '@fortawesome/free-solid-svg-icons';
+import {faKey } from '@fortawesome/free-solid-svg-icons';
+import { CHANGE_PASSWORD } from 'src/app/core/constants/actions/account';
+import { ACCOUNT, SECURE } from 'src/app/core/constants/controllers';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators';
 import { MatchPassword } from 'src/app/core/validators/match-password';
@@ -15,7 +17,6 @@ import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/load
 export class AccountChangePasswordComponent implements OnInit {
 
   faKey = faKey
-  faEye = faEye
 
   changePasswordForm:FormGroup
   isChangePasswordAttempt:boolean = false
@@ -92,7 +93,7 @@ export class AccountChangePasswordComponent implements OnInit {
       this.showChangePasswordErrors = false;
       this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent)
 
-      this.httpHelper.post<ChangePassword>("","", this.changePasswordForm.value)
+      this.httpHelper.put<ChangePassword>(CHANGE_PASSWORD,ACCOUNT, this.changePasswordForm.value)
         .subscribe(res =>{
           this.dyanamicContentLoading.hideComponent(); 
           if(res.IS_CHANGED){

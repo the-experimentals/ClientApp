@@ -1,0 +1,1 @@
+export const CHANGE_PASSWORD: string = "change-password"
