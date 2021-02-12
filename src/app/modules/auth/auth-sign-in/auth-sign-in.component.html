@@ -6,7 +6,7 @@
     </header>
 
     <form [formGroup]="signInForm" class="padding1015">
-        <div class="alert alert-danger mt-2" *ngIf="showSignInErrors">
+        <div class="alert alert-danger mt-2 shadow-1" *ngIf="showSignInErrors">
             <ul class="m-0 p-0" style="list-style-type: none;">
                 <li *ngFor = "let error of signInError">
                     {{error}}

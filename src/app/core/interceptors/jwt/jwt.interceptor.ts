@@ -26,11 +26,14 @@ export class JwtInterceptor implements HttpInterceptor {
           return this.authService.getCurrentProfile()
         })
       ).subscribe(profile =>{
-        request = request.clone({
-          setHeaders: {
-              Authorization: `Bearer ${profile.TOKEN.ACCESS}`
-          }
-        });
+        if(profile !== undefined){
+          request = request.clone({
+            setHeaders: {
+                Authorization: `Bearer ${profile.TOKEN.ACCESS}`
+            }
+          });
+        }
+        
       })
     
     return next.handle(request);

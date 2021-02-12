@@ -1,5 +1,7 @@
-import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import {faKey } from '@fortawesome/free-solid-svg-icons';
 import { CHANGE_PASSWORD } from 'src/app/core/constants/actions/account';
 import { ACCOUNT, SECURE } from 'src/app/core/constants/controllers';
@@ -16,6 +18,8 @@ import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/load
 })
 export class AccountChangePasswordComponent implements OnInit {
 
+  
+  
   faKey = faKey
 
   changePasswordForm:FormGroup
@@ -48,7 +52,7 @@ export class AccountChangePasswordComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private httpHelper:HttpHelperService, 
     private dyanamicContentLoading: DyanamicContentLoadingService,
-    @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef, ) { 
+    @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,private router:Router ) { 
 
     this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
     this.changePasswordForm = this.createChangePasswordForm();
@@ -98,6 +102,7 @@ export class AccountChangePasswordComponent implements OnInit {
           this.dyanamicContentLoading.hideComponent(); 
           if(res.IS_CHANGED){
             alert("Changed")
+            this.router.navigate(['/home'])            
           }
         }, err => {      
           this.dyanamicContentLoading.hideComponent();  

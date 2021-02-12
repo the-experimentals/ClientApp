@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faKey, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { of } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/services';
 import { ProfileQuery } from 'src/app/core/state/query';
 
@@ -19,10 +21,14 @@ export class UserOptionsComponent implements OnInit {
   faPowerOff = faPowerOff
   constructor(private profileQuery:ProfileQuery, private authService: AuthService, private router:Router) {
     profileQuery.getProfile().subscribe(profile => {
-      this.initials = profile.NAME[0].toUpperCase()
-      this.name = profile.NAME
-      this.identifier = profile.IDENTIFIER
+      if(profile !== undefined){
+        this.initials = profile.NAME[0].toUpperCase()
+        this.name = profile.NAME
+        this.identifier = profile.IDENTIFIER
+      }
+      
     })
+
   }
 
   ngOnInit(): void {
