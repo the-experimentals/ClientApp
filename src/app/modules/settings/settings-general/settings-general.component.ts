@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-settings-general',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsGeneralComponent implements OnInit {
 
+  faLongArrowAltLeft = faLongArrowAltLeft
   constructor() { }
 
   ngOnInit(): void {
