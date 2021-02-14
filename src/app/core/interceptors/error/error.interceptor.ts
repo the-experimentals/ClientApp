@@ -19,17 +19,19 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
       .pipe(catchError(err =>{
-        console.log(err)        
-        switch(err.status){
-          case 0:
-            // service not reachable
-            this.router.navigate(['/error'], {state: {errorCode: 0}});
-            break;
-          case StatusCodes.INTERNAL_SERVER_ERROR:
-            break;
-          default:
-            // do nothing
-        }
+        console.log(err)       
+        this.router.navigate(['/error'], {state: {errorCode: err.status}}); 
+        // switch(err.status){
+        //   case 0:
+        //     // service not reachable
+        //     this.router.navigate(['/error'], {state: {errorCode: 0}});
+        //     break;
+        //   case StatusCodes.INTERNAL_SERVER_ERROR:
+        //     this.router.navigate(['/error'], {state: {errorCode: 500}});
+        //     break;
+        //   default:
+        //     // do nothing
+        // }
         return throwError(err)
       }))
   }
