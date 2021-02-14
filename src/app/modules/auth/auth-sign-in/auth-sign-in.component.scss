@@ -5,3 +5,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media only screen and (max-width: 425px){
+    .sign-in-card{
+        width: 100%;
+    }
+}
