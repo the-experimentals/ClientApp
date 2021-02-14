@@ -1,1 +1,0 @@
-export const SIGN_IN:string = "sign-in"
