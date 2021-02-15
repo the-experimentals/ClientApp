@@ -8,7 +8,7 @@ import { getInitialState, ProfileStore } from '../../state/store';
 import { ProfileQuery } from '../../state/query';
 import { Profile } from 'src/app/data-models/account';
 import { SECURE } from '../../constants/controllers';
-import { SIGN_IN } from '../../constants/actions/secure';
+import { SIGN_IN } from '../../constants/actions/auth';
 import { state } from '@angular/animations';
 
 @Injectable({
@@ -80,6 +80,7 @@ export class AuthService {
             })
 
             this.profileStore.setLoading(false);
+            this.refreshToken(false);
           }
           
           return res
@@ -89,6 +90,26 @@ export class AuthService {
           return throwError(err)          
         })
       )
+  }
+
+  refreshToken(refreshNow:boolean){
+    this.isAuthenticated()
+      .pipe(
+        take(1),
+        filter(authenticated => authenticated)
+      ).subscribe(res =>{
+        
+        if(res)
+          this.refreshTokenNow()
+        else
+          setInterval(() => {
+            this.refreshTokenNow();
+          }, 500)
+      })
+  }
+
+  refreshTokenNow(){
+
   }
 
   logout(){
@@ -103,6 +124,8 @@ export class AuthService {
   }
 
   isAuthenticated(): Observable<boolean>{    
+    let isAuthenticated:boolean = false;
+    
     return this.profileQuery.select(state => {
       if(state.isAuthenticated){
         const jwtHelper = new JwtHelperService();
