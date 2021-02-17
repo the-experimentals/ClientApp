@@ -109,7 +109,7 @@ export class AuthService {
         if(refreshNow)
           this.refreshTokenNow();
           
-        interval(2000).pipe(take(1)).subscribe(() =>{                        
+        interval((profile.TOKEN.TTL - 2) * 60000).pipe(take(1)).subscribe(() =>{                        
           this.refreshTokenNow();
         })  
         
