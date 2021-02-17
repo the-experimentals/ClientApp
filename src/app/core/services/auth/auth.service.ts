@@ -101,7 +101,7 @@ export class AuthService {
   }
 
   refreshToken(refreshNow:boolean){
-    this.isAuthenticated()
+    this.refreshInterval = this.isAuthenticated()
       .pipe(
         take(1),
         filter(authenticated => authenticated),
@@ -112,7 +112,7 @@ export class AuthService {
         if(refreshNow)
           this.refreshTokenNow();
         else
-          this.refreshInterval = interval(2000).pipe(take(1)).subscribe(() =>{
+          interval((profile.TOKEN.TTL - 2) * 60000).pipe(take(1)).subscribe(() =>{            
             this.refreshTokenNow();
           })
         
@@ -126,16 +126,13 @@ export class AuthService {
         filter(profile => profile !== undefined)
       ).pipe(take(1)).subscribe(currentProfile => {
         if(currentProfile.TOKEN.ALLOW_REFRESH){
-          console.log("Refreshing token")
-          console.log("Current refresh token ==> " + currentProfile.TOKEN.REFRESH)
-          console.log("Current access token ==> " + currentProfile.TOKEN.ACCESS)
+          
           let refreshToken = {REFRESH: currentProfile.TOKEN.REFRESH} 
     
           this.httpHelper.put<RefreshTokenResponse>("refresh-token","secure", refreshToken)
             .subscribe(res => {
               if(res.IS_REFRESHED){
     
-                console.log("Refreshed token ===> " + res.REFRESH)
                 // update profile state
                 this.profileStore.update(state =>{
                   let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
@@ -145,8 +142,6 @@ export class AuthService {
                   }
                 })
                 
-                console.log("##################")
-                console.log("Updated")
                 localStorage.removeItem('currentUser');
                 localStorage.setItem("currentUser", JSON.stringify(currentProfile));              
               }              
