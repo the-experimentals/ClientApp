@@ -17,5 +17,7 @@ export class AppComponent implements OnInit{
       if(!authenitcated)
         this.router.navigate(['']);
     })
+
+    this.authService.refreshToken(true);
   }
 }

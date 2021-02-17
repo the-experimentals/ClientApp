@@ -97,7 +97,7 @@ export class AuthService {
       )
   }
 
-  refreshToken(refreshNow:boolean){
+  refreshToken(refreshNow:boolean){    
     this.refreshInterval = this.isAuthenticated()
       .pipe(
         take(1),
@@ -108,10 +108,10 @@ export class AuthService {
       ).pipe(filter(profile => profile !== undefined)).subscribe(profile =>{                
         if(refreshNow)
           this.refreshTokenNow();
-        else
-          interval((profile.TOKEN.TTL - 2) * 60000).pipe(take(1)).subscribe(() =>{            
-            this.refreshTokenNow();
-          })
+          
+        interval(2000).pipe(take(1)).subscribe(() =>{                        
+          this.refreshTokenNow();
+        })  
         
       })
   }
