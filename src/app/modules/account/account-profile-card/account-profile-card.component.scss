@@ -1,3 +1,5 @@
+@import '../../../../mixins';
+
 .profile-card{
     border-radius: 0.25rem;    
     padding: 20px 30px;
@@ -18,11 +20,7 @@
         background-color: #f5f5f5;
 
         & .initials{
-            color: var(--combo-black-blue-500);
-            font-size: calc(70px / 2); /* 50% of parent */
-            line-height: 1;
-            position: relative;
-            top: calc(70px / 4); /* 25% of parent */
+            @include initials(70px);
         }
     }
 }
