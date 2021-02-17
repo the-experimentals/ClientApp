@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Store, StoreConfig } from "@datorama/akita";
+import { EntityState, Store, StoreConfig } from "@datorama/akita";
 import { Profile } from "src/app/data-models/account";
+import { produce } from 'immer';
 
-export interface ProfileState{
+export interface ProfileState extends EntityState<Profile>{
     profile:Profile,
     isAuthenticated:boolean
 }
@@ -14,7 +15,7 @@ export const getInitialState = () =>{
     }
 }
 
-@StoreConfig({name: 'profile'})
+@StoreConfig({name: 'profile', resettable: true, producerFn: produce})
 @Injectable({
     providedIn:'root'
 })

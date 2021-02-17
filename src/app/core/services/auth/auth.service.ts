@@ -2,23 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpHelperService } from '../http-helper/http-helper.service';
 import { map, catchError, filter, switchMap, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, of, throwError } from 'rxjs';
+import { interval, Observable, of, Subscription, throwError } from 'rxjs';
 import { SignInResponse } from 'src/app/response-models/secure/sign-in-response';
 import { getInitialState, ProfileStore } from '../../state/store';
 import { ProfileQuery } from '../../state/query';
 import { Profile } from 'src/app/data-models/account';
 import { SECURE } from '../../constants/controllers';
 import { SIGN_IN } from '../../constants/actions/auth';
+import { RefreshTokenResponse } from 'src/app/response-models/secure/refresh-token-response';
+import { Token } from 'src/app/data-models/secure';
+import produce from 'immer';
 import { state } from '@angular/animations';
+import { WritableDraft } from 'immer/dist/internal';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private refreshInterval!: Subscription
   constructor(private httpHelper:HttpHelperService, 
               private profileStore:ProfileStore, 
-              private profileQuery:ProfileQuery
+              private profileQuery:ProfileQuery,
+              private router:Router
               ) {                    
     let currentUser = localStorage.getItem('currentUser');
     if(currentUser != null){         
@@ -96,31 +104,72 @@ export class AuthService {
     this.isAuthenticated()
       .pipe(
         take(1),
-        filter(authenticated => authenticated)
-      ).subscribe(res =>{
-        
-        if(res)
-          this.refreshTokenNow()
+        filter(authenticated => authenticated),
+        switchMap(() =>{
+          return this.getCurrentProfile();
+        })
+      ).pipe(filter(profile => profile !== undefined)).subscribe(profile =>{                
+        if(refreshNow)
+          this.refreshTokenNow();
         else
-          setInterval(() => {
+          this.refreshInterval = interval(2000).pipe(take(1)).subscribe(() =>{
             this.refreshTokenNow();
-          }, 500)
+          })
+        
       })
   }
 
   refreshTokenNow(){
+    this.getCurrentProfile()
+      .pipe(
+        take(1),
+        filter(profile => profile !== undefined)
+      ).pipe(take(1)).subscribe(currentProfile => {
+        if(currentProfile.TOKEN.ALLOW_REFRESH){
+          console.log("Refreshing token")
+          console.log("Current refresh token ==> " + currentProfile.TOKEN.REFRESH)
+          console.log("Current access token ==> " + currentProfile.TOKEN.ACCESS)
+          let refreshToken = {REFRESH: currentProfile.TOKEN.REFRESH} 
+    
+          this.httpHelper.put<RefreshTokenResponse>("refresh-token","secure", refreshToken)
+            .subscribe(res => {
+              if(res.IS_REFRESHED){
+    
+                console.log("Refreshed token ===> " + res.REFRESH)
+                // update profile state
+                this.profileStore.update(state =>{
+                  let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
+                  updatedProfile.TOKEN = res
+                  return {
+                    profile: updatedProfile
+                  }
+                })
+                
+                console.log("##################")
+                console.log("Updated")
+                localStorage.removeItem('currentUser');
+                localStorage.setItem("currentUser", JSON.stringify(currentProfile));              
+              }              
+            }, err =>{
+              this.logout()
+            })
+        }
+      })
 
+
+    
   }
 
   logout(){
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    localStorage.setItem("IS_REFRESHING", "false");
-    this.profileStore.update(state => {
-      return getInitialState()
-    })
+    localStorage.removeItem('currentUser')
+    // localStorage.setItem("IS_REFRESHING", "false")
+    this.profileStore.reset()
     // remove state as well    
     // clearInterval(this.refreshInterval);
+    this.refreshInterval.unsubscribe();
+    this.router.navigate([''])
+    
   }
 
   isAuthenticated(): Observable<boolean>{    
