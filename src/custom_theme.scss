@@ -5,7 +5,7 @@
 $theme-colors:(
     "white": #f6f6f6,
     "black": #1B1C1E,
-    "light-black": rgb(53,54,58),
+    "light-black": #424242,
     "blue-500": #2196f3,
     "blue-900": #0d47a1
 );
@@ -109,4 +109,8 @@ $warn: mat-palette($mat-red);
 
 .mat-list-item-content{
   padding: 0 !important;
+}
+
+.mat-tab{
+  color: red;
 }
