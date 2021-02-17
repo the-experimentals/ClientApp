@@ -2,9 +2,48 @@
 
 @include mat-core();
 
+$theme-colors:(
+    "white": #f6f6f6,
+    "black": #1B1C1E,
+    "light-black": rgb(53,54,58),
+    "blue-500": #2196f3,
+    "blue-900": #0d47a1
+);
+
+$theme-dark:(
+    "combo-black-blue-500": map-get($map: $theme-colors, $key: "black"),    
+    "combo-black-blue-900": map-get($map: $theme-colors, $key: "black"),
+
+    "combo-white-black": map-get($map: $theme-colors, $key: "white"),
+    "combo-black-white": map-get($map: $theme-colors, $key: "black"),
+
+    "combo-white-blue-500": map-get($map: $theme-colors, $key: "white"),
+    "combo-white-blue-900": map-get($map: $theme-colors, $key: "white"),
+
+    "combo-white-light-black": map-get($map: $theme-colors, $key: "light-black")
+);
+
+$theme-light:(
+    "combo-black-blue-500": map-get($map: $theme-colors, $key: "blue-500"),
+    "combo-black-blue-900": map-get($map: $theme-colors, $key: "blue-900"),
+
+    "combo-white-black": map-get($map: $theme-colors, $key: "black"),
+    "combo-black-white": map-get($map: $theme-colors, $key: "white"),
+
+    "combo-white-blue-500": map-get($map: $theme-colors, $key: "blue-500"),
+    "combo-white-blue-900": map-get($map: $theme-colors, $key: "blue-900"),
+
+    "combo-white-light-black": map-get($map: $theme-colors, $key: "white")
+);
+
+
 $warn: mat-palette($mat-red);
 
 .light-theme{
+  // define a css variable for each theme color
+  @each $name, $color in $theme-light {
+    --#{$name}: #{$color};
+  }
 
   $light-primary: mat-palette($mat-blue);
   $light-accent: mat-palette($mat-blue, A500);
@@ -17,11 +56,16 @@ $warn: mat-palette($mat-red);
     )
   ));
 
-  --primary-color: #2196F3;
   @include angular-material-theme($light-theme);
 }
 
 .dark-theme{
+
+  // define a css variable for each theme color
+  @each $name, $color in $theme-dark {
+    --#{$name}: #{$color};
+  }
+
   background-color: #1B1C1E;
   $dark-primary: mat-palette($mat-gray, A100);
   $dark-accent: mat-palette($mat-gray, A50);
@@ -34,7 +78,6 @@ $warn: mat-palette($mat-red);
     )
   ));
 
-  --primary-color: #000;
   @include angular-material-theme($dark-theme);
 }
 

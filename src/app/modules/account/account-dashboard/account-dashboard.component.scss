@@ -1,7 +1,7 @@
 .profile-card{
     border-radius: 0.25rem;    
     padding: 20px 30px;
-    background-color: #f6f6f6;
+    background-color: var(--combo-black-white);
     transition: all 0.2s ease-in-out;
 
     &:hover{
