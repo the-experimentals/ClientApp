@@ -1,0 +1,20 @@
+.profile-card{
+    border-radius: 0.25rem;    
+    padding: 20px 30px;
+    background-color: var(--combo-black-white);
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+
+    &:hover{
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;
+    }
+
+    & .profile-icon{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        margin: auto;        
+        background-color: #f5f5f5;
+    }
+}
