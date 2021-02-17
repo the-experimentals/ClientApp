@@ -4,16 +4,13 @@ import { map, catchError, filter, switchMap, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { interval, Observable, of, Subscription, throwError } from 'rxjs';
 import { SignInResponse } from 'src/app/response-models/secure/sign-in-response';
-import { getInitialState, ProfileStore } from '../../state/store';
+import { ProfileStore } from '../../state/store';
 import { ProfileQuery } from '../../state/query';
 import { Profile } from 'src/app/data-models/account';
 import { SECURE } from '../../constants/controllers';
 import { SIGN_IN } from '../../constants/actions/auth';
 import { RefreshTokenResponse } from 'src/app/response-models/secure/refresh-token-response';
-import { Token } from 'src/app/data-models/secure';
-import produce from 'immer';
-import { state } from '@angular/animations';
-import { WritableDraft } from 'immer/dist/internal';
+
 import { Router } from '@angular/router';
 
 
@@ -147,6 +144,7 @@ export class AuthService {
               }              
             }, err =>{
               this.logout()
+              throwError(err)
             })
         }
       })
@@ -168,8 +166,6 @@ export class AuthService {
   }
 
   isAuthenticated(): Observable<boolean>{    
-    let isAuthenticated:boolean = false;
-    
     return this.profileQuery.select(state => {
       if(state.isAuthenticated){
         const jwtHelper = new JwtHelperService();
