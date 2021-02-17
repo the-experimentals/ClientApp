@@ -18,6 +18,6 @@ export class AppComponent implements OnInit{
         this.router.navigate(['']);
     })
 
-    this.authService.refreshToken(true);
+    // this.authService.refreshToken(true);
   }
 }
