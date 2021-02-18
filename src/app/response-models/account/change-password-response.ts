@@ -1,5 +1,4 @@
-export class ChangePassword{
-    
+export class ChangePasswordResponse{    
     private _IS_CHANGED! : string;
     public get IS_CHANGED() : string {
         return this._IS_CHANGED;

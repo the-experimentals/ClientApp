@@ -8,7 +8,7 @@ import { ACCOUNT, SECURE } from 'src/app/core/constants/controllers';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators';
 import { MatchPassword } from 'src/app/core/validators/match-password';
-import { ChangePassword } from 'src/app/response-models/account/change-password';
+import { ChangePasswordResponse } from 'src/app/response-models/account/change-password-response';
 import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
 
 @Component({
@@ -97,7 +97,7 @@ export class AccountChangePasswordComponent implements OnInit {
       this.showChangePasswordErrors = false;
       this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent)
 
-      this.httpHelper.put<ChangePassword>(CHANGE_PASSWORD,ACCOUNT, this.changePasswordForm.value)
+      this.httpHelper.put<ChangePasswordResponse>(CHANGE_PASSWORD,ACCOUNT, this.changePasswordForm.value)
         .subscribe(res =>{
           this.dyanamicContentLoading.hideComponent(); 
           if(res.IS_CHANGED){
