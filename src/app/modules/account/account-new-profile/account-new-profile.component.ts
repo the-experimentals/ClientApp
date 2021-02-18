@@ -2,6 +2,8 @@ import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faUser } from '@fortawesome/free-solid-svg-icons';
+import { CREATE_NEW_PROFILE } from 'src/app/core/constants/actions/account';
+import { ACCOUNT } from 'src/app/core/constants/controllers';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators';
 import { MatchPassword } from 'src/app/core/validators/match-password';
@@ -125,7 +127,7 @@ export class AccountNewProfileComponent implements OnInit {
     this.createNewProfileErrors = []
     if(this.newProfileForm.valid){
       this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent)
-      this.httpHelper.post<NewProfileResponse>("create-new-profile","account", this.newProfileForm.value)
+      this.httpHelper.post<NewProfileResponse>(CREATE_NEW_PROFILE,ACCOUNT, this.newProfileForm.value)
         .subscribe(
           res => {
             this.dyanamicContentLoading.hideComponent();

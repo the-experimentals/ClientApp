@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProfileCard } from 'src/app/data-models/account';
 
 @Component({
   selector: 'account-profile-card',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountProfileCardComponent implements OnInit {
 
+  @Input() cardData!: ProfileCard
   constructor() { }
 
   ngOnInit(): void {
