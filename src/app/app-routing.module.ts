@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {AuthModule, AppHomeModule, AccountModule, SettingsModule} from './modules'
 import { ErrorComponent } from './shared/error/error.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
+import * as Roles from 'src/app/core/constants/roles';
+import { AuthGuard } from './core/guards';
 
 const routes: Routes = [{
   path:'',
@@ -10,6 +12,7 @@ const routes: Routes = [{
 },{
   path:'home',
   component: MainLayoutComponent,
+  canActivate: [AuthGuard],
   children:[{
     path:'',
     loadChildren:'./modules#AppHomeModule'
@@ -20,7 +23,7 @@ const routes: Routes = [{
 },{
   path:'account',
   component:MainLayoutComponent,
-  // canActivate: [AuthGuard],
+  canActivate: [AuthGuard],
   children:[{
     path:'',
     loadChildren: 'src/app/modules#AccountModule'
@@ -28,6 +31,8 @@ const routes: Routes = [{
 },{
   path:'settings',
   component:MainLayoutComponent,
+  canActivate:[AuthGuard],
+  data: {roles: Roles.ADMIN},
   children:[{
     path:'',
     loadChildren:'src/app/modules#SettingsModule'

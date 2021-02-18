@@ -3,16 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountChangePasswordComponent } from './account-change-password/account-change-password.component';
 import { AccountDashboardComponent } from './account-dashboard/account-dashboard.component';
 import { AccountNewProfileComponent } from './account-new-profile/account-new-profile.component';
+import * as Roles from 'src/app/core/constants/roles';
 
 const routes: Routes = [{
-  path:'',
-  component: AccountDashboardComponent
+  path:'',  
+  component: AccountDashboardComponent,
+  data: {roles: Roles.ADMIN},
 },{
   path:'change-password',
   component:AccountChangePasswordComponent
 },{
-  path:'new-profile',
-  component:AccountNewProfileComponent
+  path:'new-profile',  
+  component:AccountNewProfileComponent,
+  data: {roles: Roles.ADMIN},
 }];
 
 @NgModule({
