@@ -10,7 +10,7 @@
         </div>        
     </div>
 
-    <div style="width: 500px;" class="centralize text-center" *ngIf="profilesData.length == 0">
+    <div style="width: 500px;" class="centralize text-center" *ngIf="!isLoading && profilesData.length == 0">
         <img src="assets/illustrations/empty-illustration.svg">
         <span class="display-block mat-display-1">No profile available.</span>
     </div>

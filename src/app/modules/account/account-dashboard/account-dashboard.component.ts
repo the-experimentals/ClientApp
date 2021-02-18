@@ -14,6 +14,7 @@ export class AccountDashboardComponent implements OnInit {
 
   profilesData:ProfileCard[];
   profileCount:number = 0;
+  isLoading:boolean = false;
 
   constructor(private httpHelper:HttpHelperService, 
               private dyanamicContentLoading: DyanamicContentLoadingService,
@@ -24,18 +25,21 @@ export class AccountDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true
     this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent);
     this.httpHelper.get<Array<ProfileCard>>(GET_PROFILES, ACCOUNT)
       .subscribe(
         res =>{
-          this.dyanamicContentLoading.hideComponent();
+          this.dyanamicContentLoading.hideComponent()
           this.profilesData = res;
-          this.profileCount = this.profilesData.length;
+          this.profileCount = this.profilesData.length
+          this.isLoading = false
         },         
         err => {
           console.log(err)
           this.dyanamicContentLoading.hideComponent();
-          this.profileCount = 0; 
+          this.profileCount = 0
+          this.isLoading = false 
         }
       )
   }

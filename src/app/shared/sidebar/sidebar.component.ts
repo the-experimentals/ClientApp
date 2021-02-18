@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { faClipboardList, faCog, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faCog, faHome, faShieldAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { filter, take } from 'rxjs/operators';
 import { ProfileQuery } from 'src/app/core/state/query';
 import { ProfileStore } from 'src/app/core/state/store';
@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
   faUser = faUser
   faClipboardList = faClipboardList
   faCog = faCog
+  faShieldAlt = faShieldAlt
   initials:string = "";
   constructor(private profileQuery:ProfileQuery) {
     this.profileQuery.getProfile().pipe(
