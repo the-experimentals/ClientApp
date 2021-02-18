@@ -18,8 +18,8 @@
                         <span class="display-block mat-body m-0">Dark theme turns the light surfaces of the page dark, creating an experience ideal for night. Try it out!</span>
                         <span class="display-block mat-small m-0" >Your Dark theme setting will apply to this browser only.</span>
                     </div>
-                    <form  fxFlex="60px" class="text-center position-relative">
-                        <mat-slide-toggle color="primary"></mat-slide-toggle>                        
+                    <form [formGroup]="themeSwitcherForm" fxFlex="60px" class="text-center position-relative">
+                        <mat-slide-toggle formControlName="THEME_SWITCH" (change)="switchTheme($event)" color="primary"></mat-slide-toggle>                        
                     </form>
                 </div>
             </li>

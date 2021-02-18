@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './core/services';
+import { AuthService, ThemeSwitcherService } from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,23 @@ import { AuthService } from './core/services';
 export class AppComponent implements OnInit{
   title = 'Task Manager';
 
-  constructor(private authService:AuthService, private router:Router){}
+  constructor(private authService:AuthService, 
+              private router:Router,
+              private renderer:Renderer2, 
+              private themeSwitcher: ThemeSwitcherService){
+
+    var body = document.getElementsByTagName('body')[0];
+    themeSwitcher.getThemeState().subscribe(state =>{
+      if(state !== null){
+        if(state == ThemeSwitcherService.THEME_LIGHT)
+          this.renderer.removeClass(body,ThemeSwitcherService.THEME_DARK);
+        else
+          this.renderer.removeClass(body,ThemeSwitcherService.THEME_LIGHT);
+
+        this.renderer.addClass(body,state);
+        }      
+    })
+  }
 
   ngOnInit(){
     this.authService.isAuthenticated().subscribe(authenitcated => {
