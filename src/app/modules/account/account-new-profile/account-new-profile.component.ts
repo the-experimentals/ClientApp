@@ -132,7 +132,7 @@ export class AccountNewProfileComponent implements OnInit {
           res => {
             this.dyanamicContentLoading.hideComponent();
             if(res.IS_SAVED){
-              this.router.navigate(['/account/dashboard']);
+              this.router.navigate(['/account']);
             }            
           },
           err =>{

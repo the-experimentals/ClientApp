@@ -15,13 +15,12 @@ export class AppComponent implements OnInit{
               private renderer:Renderer2, 
               private themeSwitcher: ThemeSwitcherService){
 
-    var body = document.getElementsByTagName('body')[0];
+    var body = document.getElementsByTagName('body')[0]
     themeSwitcher.getThemeState().subscribe(state =>{
       if(state !== null){
         if(state == ThemeSwitcherService.THEME_LIGHT)
-          this.renderer.removeClass(body,ThemeSwitcherService.THEME_DARK);
+          this.renderer.removeClass(body,ThemeSwitcherService.THEME_DARK)
         else
-          this.renderer.removeClass(body,ThemeSwitcherService.THEME_LIGHT);
 
         this.renderer.addClass(body,state);
         }      
@@ -31,9 +30,9 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.authService.isAuthenticated().subscribe(authenitcated => {
       if(!authenitcated)
-        this.router.navigate(['']);
-    })
+        this.router.navigate([''])
+    }).unsubscribe()
 
-    // this.authService.refreshToken(true);
+    this.authService.loadLocalUser()
   }
 }

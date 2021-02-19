@@ -24,39 +24,39 @@ export class AuthService {
               private profileStore:ProfileStore, 
               private profileQuery:ProfileQuery,
               private router:Router
-              ) {                    
-    let currentUser = localStorage.getItem('currentUser');
-    if(currentUser != null){         
-      let currentProfile:Profile = Object.assign(new Profile(), JSON.parse(currentUser))   
+              ) {}
+
+  loadLocalUser(){
+    // check user in local storage of browser
+    let storedUser = localStorage.getItem('currentUser');
+
+    if(storedUser !== null){
+      // check if token present in this profile is valid
+
+      let storedProfile:Profile = Object.assign(new Profile(), JSON.parse(storedUser))   
       const jwtHelper = new JwtHelperService()
-      let isUserAuthenticated:boolean =  !
-      jwtHelper.isTokenExpired(currentProfile.TOKEN.ACCESS)
-      
-      if(isUserAuthenticated){
-        this.profileQuery.isAuthenticated().pipe(
-          take(1),
-          filter(authenticated => !authenticated),
-          switchMap(() => {          
-            this.profileStore.setLoading(true)
-            return of(currentProfile)
-          })
-        ).subscribe(res => {        
-          this.profileStore.update(state => {
-            return{
-              profile:currentProfile,
-              isAuthenticated: isUserAuthenticated
-            }
-          })
-          this.profileStore.setLoading(false)
-        }, err =>{
-          console.log(err)
-          this.profileStore.setLoading(false)
-        })      
+
+      let isTokenExpired:boolean =  jwtHelper.isTokenExpired(storedProfile.TOKEN.ACCESS)
+
+      // if token is not yet expired, load it in state
+      if(!isTokenExpired){
+        this.profileStore.reset()
+
+        this.profileStore.update(() =>{
+          return {
+            profile: storedProfile,
+            isAuthenticated: true
+          }
+        })
+
+        // then refresh tokens
+        this.refreshToken(true)        
+
       }
       else{
         this.logout()
       }
-    } 
+    }
   }
 
   login(user:any):Observable<SignInResponse>{
@@ -97,7 +97,7 @@ export class AuthService {
       )
   }
 
-  refreshToken(refreshNow:boolean){    
+  private refreshToken(refreshNow:boolean){    
     this.refreshInterval = this.isAuthenticated()
       .pipe(
         take(1),
@@ -116,7 +116,7 @@ export class AuthService {
       })
   }
 
-  refreshTokenNow(){
+  private refreshTokenNow(){
     this.getCurrentProfile()
       .pipe(
         take(1),
