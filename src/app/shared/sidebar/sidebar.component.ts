@@ -3,6 +3,7 @@ import { faClipboardList, faCog, faHome, faShieldAlt, faUser } from '@fortawesom
 import { filter, take } from 'rxjs/operators';
 import { ProfileQuery } from 'src/app/core/state/query';
 import { ProfileStore } from 'src/app/core/state/store';
+import * as Roles from 'src/app/core/constants/roles';
 
 @Component({
   selector: 'sidebar',
@@ -18,12 +19,15 @@ export class SidebarComponent implements OnInit {
   faCog = faCog
   faShieldAlt = faShieldAlt
   initials:string = "";
+  isAdmin:boolean = false;
+
   constructor(private profileQuery:ProfileQuery) {
     this.profileQuery.getProfile().pipe(
       take(1),
       filter(profile => profile !== undefined)
     ).subscribe(profile => {    
-      this.initials = profile.NAME[0].toUpperCase()        
+      this.initials = profile.NAME[0].toUpperCase()    
+      this.isAdmin = profile.ROLE == Roles.ADMIN   
     }).unsubscribe()
   }
 
