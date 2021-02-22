@@ -15,9 +15,12 @@ import { NavMenuDirective } from './sidebar/directives/nav-menu/nav-menu.directi
 import { UserOptionsComponent } from './sidebar/nav-menu/user-options/user-options.component';
 import { MatRippleModule } from '@angular/material/core';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent, LoadingIndicatorComponent],
+  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent, LoadingIndicatorComponent, DialogComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -26,7 +29,9 @@ import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator
     MatListModule,
     FontAwesomeModule,
     MatTooltipModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class SharedModule { }
