@@ -98,25 +98,29 @@ export class AuthService {
   }
 
   private refreshToken(refreshNow:boolean){    
-    this.refreshInterval = this.isAuthenticated()
+    let isAuthenticated:boolean = false;
+
+    this.isAuthenticated()
       .pipe(
         take(1),
-        filter(authenticated => authenticated),
-        switchMap(() =>{
-          return this.getCurrentProfile();
-        })
-      ).pipe(filter(profile => profile !== undefined)).subscribe(profile =>{                
-        if(refreshNow)
-          this.refreshTokenNow();
+        filter(authenticated => authenticated),        
+      ).subscribe(res => isAuthenticated = res).unsubscribe()
+
+    if(isAuthenticated){
+      if(refreshNow)
+        this.refreshTokenNow();
           
-        interval((profile.TOKEN.TTL - 2) * 60000).pipe(take(1)).subscribe(() =>{                        
-          this.refreshTokenNow();
-        })  
+        this.profileQuery.getProfile().subscribe(profile => {
+          this.refreshInterval = interval((profile.TOKEN.TTL - 2) * 60000).pipe(take(1)).subscribe(() =>{                        
+            this.refreshTokenNow();
+          })
+        }).unsubscribe()
+
         
-      })
+    }
   }
 
-  private refreshTokenNow(){
+  private refreshTokenNow(){    
     this.getCurrentProfile()
       .pipe(
         take(1),
@@ -134,13 +138,14 @@ export class AuthService {
                 this.profileStore.update(state =>{
                   let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
                   updatedProfile.TOKEN = res
+
+                  localStorage.removeItem('currentUser');
+                  localStorage.setItem("currentUser", JSON.stringify(updatedProfile));              
+
                   return {
                     profile: updatedProfile
                   }
                 })
-                
-                localStorage.removeItem('currentUser');
-                localStorage.setItem("currentUser", JSON.stringify(currentProfile));              
               }              
             }, err =>{
               this.logout()

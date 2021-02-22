@@ -28,11 +28,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.authService.isAuthenticated().subscribe(authenitcated => {
-      if(!authenitcated)
-        this.router.navigate([''])
-    }).unsubscribe()
-
     this.authService.loadLocalUser()
   }
 }
