@@ -9,7 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ErrorInterceptor } from './core/interceptors/error/error.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt/jwt.interceptor';
-import { MatDialogModule } from '@angular/material/dialog';
+import { AlertDialogModule } from './modules/alert-dialog/alert-dialog.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     FontAwesomeModule,
     HttpClientModule,
-    SharedModule,
-    MatDialogModule
+    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

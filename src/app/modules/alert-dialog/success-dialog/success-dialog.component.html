@@ -1,1 +1,16 @@
-<p>success-dialog works!</p>
+<div>
+    <header class="text-center position-relative shadow-1">
+        <fa-icon [icon]="faTimes" class="position-absolute pointer" mat-dialog-close style="top: 6px;left: 10px;"></fa-icon>
+        <span mat-dialog-title class="m-0">Success</span>
+        <hr class="m-0"/>
+    </header>
+    <div class="padding2030 text-center">        
+        <fa-icon [icon]="faCheckCircle" style="font-size: 6rem; color: #4CAF50"></fa-icon>
+        <span class="mat-body display-block mt-1">
+            {{data.MESSAGE}}            
+        </span>
+        <hr>
+        <button mat-raised-button class=" w-100" color="primary" mat-dialog-close>Ok</button>
+    </div>
+    
+</div>

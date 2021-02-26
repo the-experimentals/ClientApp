@@ -10,10 +10,11 @@ export class AlertDialogService {
 
   constructor(private dialog: MatDialog) { }
 
-  successAlert(){
+  successAlert(alertData: AlertData){
     this.dialog.open(SuccessDialogComponent, {
       disableClose: true,      
       width: '220px',
+      data: alertData
     });
   }
 }
