@@ -106,9 +106,13 @@ export class AccountChangePasswordComponent implements OnInit {
           this.dyanamicContentLoading.hideComponent(); 
           if(res.IS_CHANGED){
             let alertData: AlertData = new AlertData();
-            alertData.MESSAGE = "Your password was successfully changed."
-            this.alertDialogService.successAlert(alertData)
-            this.router.navigate(['/home'])            
+            alertData.MESSAGE = "Your password was successfully changed. Click ok to return to home."
+            const dialogRef = this.alertDialogService.successAlert(alertData)
+
+            dialogRef.afterClosed().subscribe(res =>{
+              this.router.navigate(['/home'])     
+            })
+                   
           }
         }, err => {      
           this.dyanamicContentLoading.hideComponent();  
