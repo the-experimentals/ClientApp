@@ -6,10 +6,12 @@ import {faKey } from '@fortawesome/free-solid-svg-icons';
 import { CHANGE_PASSWORD } from 'src/app/core/constants/actions/account';
 import { ACCOUNT, SECURE } from 'src/app/core/constants/controllers';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
+import { AlertDialogService } from 'src/app/core/services/alert-dialog/alert-dialog.service';
 import { ValidateOnValueChange } from 'src/app/core/validators';
 import { MatchPassword } from 'src/app/core/validators/match-password';
 import { ChangePasswordResponse } from 'src/app/response-models/account/change-password-response';
 import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
+import { AlertData } from '../../alert-dialog/data-models/alert-data';
 
 @Component({
   selector: 'app-account-change-password',
@@ -52,7 +54,9 @@ export class AccountChangePasswordComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private httpHelper:HttpHelperService, 
     private dyanamicContentLoading: DyanamicContentLoadingService,
-    @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,private router:Router ) { 
+    @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
+    private router:Router,
+    private alertDialogService:AlertDialogService ) { 
 
     this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
     this.changePasswordForm = this.createChangePasswordForm();
@@ -101,7 +105,9 @@ export class AccountChangePasswordComponent implements OnInit {
         .subscribe(res =>{
           this.dyanamicContentLoading.hideComponent(); 
           if(res.IS_CHANGED){
-            alert("Changed")
+            let alertData: AlertData = new AlertData();
+            alertData.MESSAGE = "Your password was successfully changed."
+            this.alertDialogService.successAlert(alertData)
             this.router.navigate(['/home'])            
           }
         }, err => {      
