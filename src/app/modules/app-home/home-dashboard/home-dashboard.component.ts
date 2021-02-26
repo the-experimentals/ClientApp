@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AlertDialogService } from 'src/app/core/services/alert-dialog/alert-dialog.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
@@ -9,7 +10,7 @@ import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 })
 export class HomeDashboardComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {
+  constructor(private alertDialogService: AlertDialogService) {
       
   }
 
@@ -17,12 +18,7 @@ export class HomeDashboardComponent implements OnInit {
   }
 
   test(){
-    this.dialog.open(DialogComponent, {
-      disableClose: true,
-      
-      width: '220px',
-      
-    });
+    this.alertDialogService.successAlert();
 
   }
 

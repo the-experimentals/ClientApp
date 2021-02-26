@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCheckCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-success-dialog',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessDialogComponent implements OnInit {
 
+  faTimes = faTimes
+  faCheckCircle = faCheckCircle
   constructor() { }
 
   ngOnInit(): void {
