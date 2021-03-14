@@ -4,6 +4,7 @@ import { AccountChangePasswordComponent } from './account-change-password/accoun
 import { AccountDashboardComponent } from './account-dashboard/account-dashboard.component';
 import { AccountNewProfileComponent } from './account-new-profile/account-new-profile.component';
 import * as Roles from 'src/app/core/constants/roles';
+import { AccountProfileViewComponent } from './account-profile-view/account-profile-view.component';
 
 const routes: Routes = [{
   path:'',  
@@ -16,6 +17,9 @@ const routes: Routes = [{
   path:'new-profile',  
   component:AccountNewProfileComponent,
   data: {roles: Roles.ADMIN},
+},{
+  path:'view',
+  component:AccountProfileViewComponent
 }];
 
 @NgModule({
