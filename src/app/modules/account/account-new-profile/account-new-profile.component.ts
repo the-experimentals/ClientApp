@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faUser } from '@fortawesome/free-solid-svg-icons';
 import { CREATE_NEW_PROFILE } from 'src/app/core/constants/actions/account';
 import { ACCOUNT } from 'src/app/core/constants/controllers';
-import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
+import { AlertDialogService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators';
 import { MatchPassword } from 'src/app/core/validators/match-password';
 import { NewProfileResponse } from 'src/app/response-models/account';
 import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
+import { AlertData } from '../../alert-dialog/data-models/alert-data';
 
 @Component({
   selector: 'app-account-new-profile',
@@ -67,7 +68,8 @@ export class AccountNewProfileComponent implements OnInit {
               private dyanamicContentLoading: DyanamicContentLoadingService,
               private httpHelper: HttpHelperService,
               private router:Router,
-              @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef) { 
+              @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
+              private alertDialog:AlertDialogService) { 
 
     this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
 
@@ -132,7 +134,15 @@ export class AccountNewProfileComponent implements OnInit {
           res => {
             this.dyanamicContentLoading.hideComponent();
             if(res.IS_SAVED){
-              this.router.navigate(['/account']);
+
+              let alertData: AlertData = new AlertData();
+              alertData.MESSAGE = "New profile created successfully. Click ok to return to account dashboard."
+              const dialogRef = this.alertDialog.successAlert(alertData)
+
+              dialogRef.afterClosed().subscribe(res =>{
+                this.router.navigate(['/account']);
+              })
+              
             }            
           },
           err =>{
