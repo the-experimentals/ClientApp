@@ -27,7 +27,10 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.router.navigate(['/error'], {state: {errorCode: 0}});
             break;          
           case StatusCodes.INTERNAL_SERVER_ERROR:
-            this.router.navigate(['/error'], {state: {errorCode: 500}});
+            this.router.navigate(['/error'], {state: {errorCode: StatusCodes.INTERNAL_SERVER_ERROR}});
+            break;
+          case StatusCodes.BAD_GATEWAY:
+            this.router.navigate(['/error'], {state: {errorCode: StatusCodes.BAD_GATEWAY}});
             break;
           default:
             // do nothing
