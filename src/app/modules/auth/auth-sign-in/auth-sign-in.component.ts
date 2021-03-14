@@ -118,7 +118,7 @@ export class AuthSignInComponent implements OnInit {
         if(err.status == StatusCodes.UNAUTHORIZED){
           this.dyanamicContentLoading.hideComponent();
           this.showSignInErrors = true
-          this.signInError.push(JSON.parse(err.error));
+          this.signInError.push(err.error.ERRORS);
           
         }
       })
