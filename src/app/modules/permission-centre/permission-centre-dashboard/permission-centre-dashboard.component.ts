@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-permission-centre-dashboard',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PermissionCentreDashboardComponent implements OnInit {
 
+  faPlus = faPlus
+  faMinus = faMinus
   constructor() { }
 
   ngOnInit(): void {
