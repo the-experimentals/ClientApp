@@ -6,6 +6,7 @@ import { PermissionCentreDashboardComponent } from './permission-centre-dashboar
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatRippleModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [PermissionCentreDashboardComponent],
@@ -14,7 +15,8 @@ import { MatRippleModule } from '@angular/material/core';
     PermissionCentreRoutingModule,
     FlexLayoutModule,
     FontAwesomeModule,
-    MatRippleModule
+    MatRippleModule,
+    MatCheckboxModule
   ]
 })
 export class PermissionCentreModule { }
