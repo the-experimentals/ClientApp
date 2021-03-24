@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AuthModule, AppHomeModule, AccountModule, SettingsModule} from './modules'
+import {AuthModule, AppHomeModule, AccountModule, SettingsModule, PermissionCentreModule} from './modules'
 import { ErrorComponent } from './shared/error/error.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import * as Roles from 'src/app/core/constants/roles';
@@ -36,6 +36,15 @@ const routes: Routes = [{
   children:[{
     path:'',
     loadChildren:'src/app/modules#SettingsModule'
+  }]
+},{
+  path:'permission-center',
+  component:MainLayoutComponent,
+  canActivate:[AuthGuard],
+  data: {roles: Roles.ADMIN},
+  children: [{
+    path: '',
+    loadChildren: 'src/app/modules#PermissionCentreModule'
   }]
 }];
 
