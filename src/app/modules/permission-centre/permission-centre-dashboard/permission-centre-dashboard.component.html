@@ -13,9 +13,17 @@
                 <fa-icon [icon]="faMinus"></fa-icon>
             </div>
             <hr class="m-0" style="background-color: var(--combo-white-black);"/>
+            <div class="mt-1">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Serach</mat-label>
+                    <input matInput>
+                    <fa-icon [icon]="faUser" matPrefix></fa-icon>                    
+                    <mat-hint>Enter user's name to search in list</mat-hint>
+                </mat-form-field>                
+            </div>
             <div class="mt-2">
                 <ul class="selection-list">
-                    <li class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
+                    <li matRipple class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
                         <div fxFlex="40px" class="position-relative pl-2">
                             <mat-checkbox class="vertical-center" color="primary"></mat-checkbox>
                         </div>
@@ -32,7 +40,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
+                    <li matRipple class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
                         <div fxFlex="40px" class="position-relative pl-2">
                             <mat-checkbox class="vertical-center" color="primary"></mat-checkbox>
                         </div>
@@ -49,7 +57,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="container-fluid p-0">
+                    <li matRipple class="container-fluid p-0">
                         <div fxFlex="40px" class="position-relative pl-2">
                             <mat-checkbox class="vertical-center" color="primary"></mat-checkbox>
                         </div>
@@ -66,7 +74,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
+                    <li matRipple class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
                         <div fxFlex="40px" class="position-relative pl-2">
                             <mat-checkbox class="vertical-center" color="primary"></mat-checkbox>
                         </div>
@@ -83,7 +91,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="container-fluid p-0">
+                    <li matRipple class="container-fluid p-0">
                         <div fxFlex="40px" class="position-relative pl-2">
                             <mat-checkbox class="vertical-center" color="primary"></mat-checkbox>
                         </div>
@@ -100,7 +108,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
+                    <li matRipple class="container-fluid p-0" style="background-color: #424242;border-top-left-radius: 0.25rem;border-bottom-left-radius: 0.25rem;">
                         <div fxFlex="40px" class="position-relative pl-2">
                             <mat-checkbox class="vertical-center" color="primary"></mat-checkbox>
                         </div>

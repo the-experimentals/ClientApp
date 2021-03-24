@@ -7,6 +7,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatRippleModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [PermissionCentreDashboardComponent],
@@ -16,7 +18,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FlexLayoutModule,
     FontAwesomeModule,
     MatRippleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class PermissionCentreModule { }
