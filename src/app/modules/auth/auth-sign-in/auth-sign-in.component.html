@@ -14,25 +14,29 @@
             </ul>
         </div>
         
-        <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="IDENTIFIER" autofocus>
-            <fa-icon [icon]="faUser" matPrefix></fa-icon>
-            <mat-error *ngIf="(isSignInAttempt || (IDENTIFIER != null && IDENTIFIER.touched)) && signInFormErrors.IDENTIFIER">
-                {{signInFormErrors.IDENTIFIER}}
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="SECRET" type="{{ (SHOW_PASSWORD!=null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">
-            <fa-icon [icon]="faLock" matPrefix></fa-icon>
-            <button type="button" (click)="passwordToggle()" mat-icon-button matSuffix>
-                <fa-icon [icon]="faEye" class="ml-2"></fa-icon>
-            </button>
-            <mat-error *ngIf="(isSignInAttempt || (SECRET != null && SECRET.touched)) && signInFormErrors.SECRET">
-                {{signInFormErrors.SECRET}}
-            </mat-error>
-        </mat-form-field>
+    
+
+        <div>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="IDENTIFIER" autofocus>
+                <fa-icon [icon]="faUser" matPrefix></fa-icon>
+                <mat-error *ngIf="(isSignInAttempt || (IDENTIFIER != null && IDENTIFIER.touched)) && signInFormErrors.IDENTIFIER">
+                    {{signInFormErrors.IDENTIFIER}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="SECRET" type="{{ (SHOW_PASSWORD!=null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">
+                <fa-icon [icon]="faLock" matPrefix></fa-icon>
+                <button type="button" (click)="passwordToggle()" mat-icon-button matSuffix>
+                    <fa-icon [icon]="faEye" class="ml-2"></fa-icon>
+                </button>
+                <mat-error *ngIf="(isSignInAttempt || (SECRET != null && SECRET.touched)) && signInFormErrors.SECRET">
+                    {{signInFormErrors.SECRET}}
+                </mat-error>
+            </mat-form-field>
+        </div>
         <mat-checkbox color="primary">Remember me</mat-checkbox>
         <div class="mt-2 text-right">
             <button mat-raised-button color="primary" (click)="signIn()">Sign in</button>
