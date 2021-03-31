@@ -41,6 +41,13 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.vertical-center{
+  position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+
 .pointer{
   cursor: pointer;
 }
