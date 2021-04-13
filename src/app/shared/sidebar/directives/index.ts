@@ -1,0 +1,1 @@
+export {NavMenuDirective} from './nav-menu/nav-menu.directive'

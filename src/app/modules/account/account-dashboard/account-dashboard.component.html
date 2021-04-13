@@ -1,0 +1,21 @@
+<div class="padding2030 position-relative h-100">
+    <header>
+        <span class="mat-display-1">Profiles</span>
+        <hr>
+    </header>  
+
+    <div class="container-fluid" fxLayout="row wrap" fxLayoutAlign="center" *ngIf="profilesData.length > 0">
+        <div fxFlex="250px" class="padding1015" *ngFor="let cardData of profilesData; index as i" [attr.data-index]="i">
+            <account-profile-card [cardData]="cardData"></account-profile-card>            
+        </div>        
+    </div>
+
+    <div style="width: 500px;" class="centralize text-center" *ngIf="!isLoading && profilesData.length == 0">
+        <img src="assets/illustrations/empty-illustration.svg">
+        <span class="display-block mat-display-1">No profile available.</span>
+    </div>
+
+    <footer class="position-absolute shadow-1 padding1015 text-right" style="bottom: 0; left: 0;right: 0;">
+        <button mat-raised-button color="primary" routerLink="/account/new-profile">New profile</button>
+    </footer>
+</div>

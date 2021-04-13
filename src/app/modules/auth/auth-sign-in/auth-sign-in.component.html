@@ -1,0 +1,49 @@
+<mat-card class="padding2030 sign-in-card">
+    <header class="text-center">
+        <span class="mat-display-1 display-block m-0">Welcome</span>
+        <span class="mat-h2 display-block m-0">Sign in</span>
+        <span class="mat-body display-block m-0">to continue to services</span>
+    </header>
+
+    <form [formGroup]="signInForm" class="padding1015">
+        <div class="alert alert-danger mt-2 shadow-1" *ngIf="showSignInErrors">
+            <ul class="m-0 p-0" style="list-style-type: none;">
+                <li *ngFor = "let error of signInError">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+        
+    
+
+        <div>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="IDENTIFIER" autofocus>
+                <fa-icon [icon]="faUser" matPrefix></fa-icon>
+                <mat-error *ngIf="(isSignInAttempt || (IDENTIFIER != null && IDENTIFIER.touched)) && signInFormErrors.IDENTIFIER">
+                    {{signInFormErrors.IDENTIFIER}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="SECRET" type="{{ (SHOW_PASSWORD!=null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">
+                <fa-icon [icon]="faLock" matPrefix></fa-icon>
+                <button type="button" (click)="passwordToggle()" mat-icon-button matSuffix>
+                    <fa-icon [icon]="faEye" class="ml-2"></fa-icon>
+                </button>
+                <mat-error *ngIf="(isSignInAttempt || (SECRET != null && SECRET.touched)) && signInFormErrors.SECRET">
+                    {{signInFormErrors.SECRET}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <mat-checkbox color="primary">Remember me</mat-checkbox>
+        <div class="mt-2 text-right">
+            <button mat-raised-button color="primary" (click)="signIn()">Sign in</button>
+        </div>
+        <div class="text-right">
+            <button type="button" mat-button color="primary">Forget password?</button>
+        </div>
+
+    </form>
+</mat-card>
