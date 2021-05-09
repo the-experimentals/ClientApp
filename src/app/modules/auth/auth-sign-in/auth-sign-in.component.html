@@ -30,7 +30,7 @@
                 <input matInput formControlName="SECRET" type="{{ (SHOW_PASSWORD!=null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">
                 <fa-icon [icon]="faLock" matPrefix></fa-icon>
                 <button type="button" (click)="passwordToggle()" mat-icon-button matSuffix>
-                    <fa-icon [icon]="faEye" class="ml-2"></fa-icon>
+                    <fa-icon [icon]="faEye" class="m-0"></fa-icon>
                 </button>
                 <mat-error *ngIf="(isSignInAttempt || (SECRET != null && SECRET.touched)) && signInFormErrors.SECRET">
                     {{signInFormErrors.SECRET}}
