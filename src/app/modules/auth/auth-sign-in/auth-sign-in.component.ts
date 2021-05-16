@@ -2,7 +2,7 @@ import { Component, ElementRef, Inject, OnInit, Renderer2, ViewContainerRef } fr
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
-import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faLock, faTrash, faTrashAlt, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators/form-field-validator';
 import {StatusCodes} from 'http-status-codes'
@@ -18,6 +18,8 @@ export class AuthSignInComponent implements OnInit {
   faUser = faUser
   faLock = faLock
   faEye = faEyeSlash
+  faTrash = faTrash
+  faUserCircle = faUserCircle
 
   signInError!:string[];
   showSignInErrors:boolean = false;

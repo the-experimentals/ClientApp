@@ -15,7 +15,44 @@
         </div>
         
     
-
+        <div *ngIf="false">
+            <!-- List of user's already logged in -->
+            <ul class="logged-in-users">
+                <li class="container-fluid">
+                    <div fxFlex="50px" class="position-relative">
+                        <div style="border: 1px solid;width: 40px;height: 40px;border-radius: 50%;" class="centralize">                            
+                        </div>
+                    </div>
+                    <div fxFlex class="ms-1">
+                        <span class="mat-h2 display-block m-0">Admin</span>
+                        <span class="mat-small display-block m-0">@admin</span>
+                    </div>
+                </li>
+                <li class="container-fluid">
+                    <div fxFlex="50px" class="position-relative">
+                        <div style="border: 1px solid;width: 40px;height: 40px;border-radius: 50%;" class="centralize">                            
+                        </div>
+                    </div>
+                    <div fxFlex class="ms-1">
+                        <span class="mat-h2 display-block m-0">Admin</span>
+                        <span class="mat-small display-block m-0">@admin</span>
+                    </div>
+                    <div fxFlex="fit-content" class="position-relative">
+                        <button class="vertical-center trash-icon" mat-icon-button>
+                            <fa-icon [icon]="faTrash" style="color: #F44336;"></fa-icon>
+                        </button>
+                    </div>
+                </li>
+                <li class="container-fluid">
+                    <div fxFlex="50px" class="position-relative">
+                        <fa-icon [icon]="faUserCircle" style="margin-right: 0.5rem;" class="icon-21 centralize"></fa-icon>
+                    </div>
+                    <div fxFlex class="ms-1">
+                        <span class="mat-h4">Use another account</span>
+                    </div>                    
+                </li>
+            </ul>
+        </div>
         <div>
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>Username</mat-label>
