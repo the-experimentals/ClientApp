@@ -8,14 +8,14 @@ import { AuthGuard } from './core/guards';
 
 const routes: Routes = [{
   path:'',
-  loadChildren:'./modules#AuthModule'
+  loadChildren:() => import('./modules').then(m => m.AuthModule)
 },{
   path:'home',
   component: MainLayoutComponent,
   canActivate: [AuthGuard],
   children:[{
     path:'',
-    loadChildren:'./modules#AppHomeModule'
+    loadChildren:() => import('./modules').then(m => m.AppHomeModule)
   }]  
 },{
   path:'error',
@@ -26,7 +26,7 @@ const routes: Routes = [{
   canActivate: [AuthGuard],
   children:[{
     path:'',
-    loadChildren: 'src/app/modules#AccountModule'
+    loadChildren: () => import('src/app/modules').then(m => m.AccountModule)
   }]
 },{
   path:'settings',
@@ -35,7 +35,7 @@ const routes: Routes = [{
   data: {roles: Roles.ADMIN},
   children:[{
     path:'',
-    loadChildren:'src/app/modules#SettingsModule'
+    loadChildren:() => import('src/app/modules').then(m => m.SettingsModule)
   }]
 },{
   path:'permission-center',
@@ -44,7 +44,7 @@ const routes: Routes = [{
   data: {roles: Roles.ADMIN},
   children: [{
     path: '',
-    loadChildren: 'src/app/modules#PermissionCentreModule'
+    loadChildren: () => import('src/app/modules').then(m => m.PermissionCentreModule)
   }]
 }];
 
