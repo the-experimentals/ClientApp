@@ -91,6 +91,14 @@ $warn: mat.define-palette(mat.$red-palette);
     font-size: 21px;
     margin-right: 0.5rem;
   }
+
+  & .mat-form-field-wrapper{
+    padding-bottom: 0 !important;
+  }
+
+  & .mat-form-field-subscript-wrapper{
+    position: relative !important;
+  }
 }
 
 .mat-checkbox-inner-container{

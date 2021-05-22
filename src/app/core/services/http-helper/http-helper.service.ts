@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,8 +12,10 @@ export class HttpHelperService {
   constructor(private httpClient: HttpClient) { }
 
   public get<T>(action:string, controller:string, data?:any): Observable<T>
-  {
-    return this.httpClient.get<T>(this.BASE_URL + controller + '/' + action);    
+  {    
+    let url:string = this.BASE_URL + controller + '/' + action;
+
+    return this.httpClient.get<T>(this.BASE_URL + controller + '/' + action, {params: data});    
   }
 
   public post<T>(action:string, controller:string, data:any): Observable<T>

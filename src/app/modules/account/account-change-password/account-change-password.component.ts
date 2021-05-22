@@ -36,7 +36,8 @@ export class AccountChangePasswordComponent implements OnInit {
     },    
     'NEW_PASSWORD':{
       'required': 'You must enter data in new password',
-      'minlength':'Your new password cannot be lesser than 8 characters'
+      'minlength':'Your new password cannot be lesser than 8 characters',
+      'pwnedPassword': "This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
     },
     'CONFIRM_PASSWORD':{
       'required': 'You must enter data in confirm password',
@@ -56,7 +57,7 @@ export class AccountChangePasswordComponent implements OnInit {
     private dyanamicContentLoading: DyanamicContentLoadingService,
     @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
     private router:Router,
-    private alertDialogService:AlertDialogService ) { 
+    private alertDialogService:AlertDialogService) { 
 
     this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
     this.changePasswordForm = this.createChangePasswordForm();
@@ -120,6 +121,21 @@ export class AccountChangePasswordComponent implements OnInit {
           this.showChangePasswordErrors = true
           this.changePasswordErrors = err.error
         })
+    }
+  }
+
+  test(){
+    if(this.NEW_PASSWORD?.valid){    
+      this.httpHelper.get("check-pwned-password", "account", {SECRET: this.NEW_PASSWORD.value}).subscribe(res =>{
+        debugger
+        if(res){
+          this.NEW_PASSWORD?.setErrors({pwnedPassword: res});
+          this.changePasswordFormErrors.NEW_PASSWORD += this.validationMessages['NEW_PASSWORD']['pwnedPassword']
+        }
+        else{
+          this.NEW_PASSWORD?.setErrors(null);
+        }
+      })
     }
   }
 
