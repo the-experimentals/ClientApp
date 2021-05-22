@@ -11,7 +11,6 @@ export class AppComponent implements OnInit{
   title = 'Task Manager';
 
   constructor(private authService:AuthService, 
-              private router:Router,
               private renderer:Renderer2, 
               private themeSwitcher: ThemeSwitcherService){
 

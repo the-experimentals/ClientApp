@@ -59,5 +59,14 @@ export class SignInResponse{
     public set ALLOW_REFRESH(v : boolean) {
         this._ALLOW_REFRESH = v;
     }
+    
+    private _HAS_PWNED_PASSWORD! : boolean;
+    public get HAS_PWNED_PASSWORD() : boolean {
+        return this._HAS_PWNED_PASSWORD;
+    }
+    public set HAS_PWNED_PASSWORD(v : boolean) {
+        this._HAS_PWNED_PASSWORD = v;
+    }
+        
         
 }

@@ -123,8 +123,21 @@ export class AuthSignInComponent implements OnInit {
       this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent);
       this.authService.login(this.signInForm.value).subscribe(res =>{
         this.dyanamicContentLoading.hideComponent();
-        if(res.IS_AUTHENTICATED)
-          this.router.navigate(['/home']);
+        if(res.IS_AUTHENTICATED){        
+          if(res.HAS_PWNED_PASSWORD){
+            let alertData: AlertData = new AlertData();
+            alertData.MESSAGE = "The password for this account has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
+
+            const dialogRef = this.alertDialogService.warningAlert(alertData)
+            dialogRef.afterClosed().subscribe(res =>{
+              this.router.navigate(['/home'])     
+            })
+          }
+          else{
+            this.router.navigate(['/home'])               
+          }
+            
+        }          
       }, err =>{
         if(err.status == StatusCodes.UNAUTHORIZED){
           this.dyanamicContentLoading.hideComponent();
