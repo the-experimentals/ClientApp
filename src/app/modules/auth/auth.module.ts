@@ -13,9 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { MatListModule } from '@angular/material/list';
+import { AuthForgetPasswordComponent } from './auth-forget-password/auth-forget-password.component';
+import { AuthVerifyAccountComponent } from './auth-verify-account/auth-verify-account.component';
 
 @NgModule({
-  declarations: [AuthHomeComponent, AuthSignInComponent],
+  declarations: [AuthHomeComponent, AuthSignInComponent, AuthForgetPasswordComponent, AuthVerifyAccountComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
