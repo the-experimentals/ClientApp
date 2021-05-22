@@ -3,10 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash, faLock, faTrash, faTrashAlt, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { AuthService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
+import { AlertDialogService, AuthService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { ValidateOnValueChange } from 'src/app/core/validators/form-field-validator';
 import {StatusCodes} from 'http-status-codes'
 import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AlertData } from '../../alert-dialog/data-models/alert-data';
 
 @Component({
   selector: 'app-auth-sign-in',
@@ -48,7 +50,8 @@ export class AuthSignInComponent implements OnInit {
               private dyanamicContentLoading: DyanamicContentLoadingService,
               @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
               private elementRef:ElementRef,
-              private rendrer:Renderer2) { 
+              private rendrer:Renderer2,
+              private alertDialogService:AlertDialogService) { 
     this.signInForm = this.createSignInForm()
 
     
@@ -107,6 +110,12 @@ export class AuthSignInComponent implements OnInit {
   }
 
   signIn(){
+
+
+    // let alertData: AlertData = new AlertData();
+    // alertData.MESSAGE = "The password for this account has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
+    // const dialogRef = this.alertDialogService.warningAlert(alertData)
+
     this.isSignInAttempt = true;    
     if(this.signInForm.valid){
       this.signInError = [];
@@ -125,5 +134,7 @@ export class AuthSignInComponent implements OnInit {
         }
       })
     }
+
+    
   }
 }

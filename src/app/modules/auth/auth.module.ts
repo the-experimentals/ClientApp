@@ -29,7 +29,7 @@ import { AuthVerifyAccountComponent } from './auth-verify-account/auth-verify-ac
     ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule    
   ]
 })
 export class AuthModule { }
