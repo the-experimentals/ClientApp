@@ -36,7 +36,8 @@ export class AccountNewProfileComponent implements OnInit {
     },    
     'SECRET':{
       'required': 'You must enter data in password',
-      'minlength':'Your password cannot be lesser than 8 characters'
+      'minlength':'Your password cannot be lesser than 8 characters',
+      'pwnedPassword': "This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
     },
     'CONFIRM_SECRET':{
       'required': 'You must enter data in confirm password',
@@ -150,6 +151,20 @@ export class AccountNewProfileComponent implements OnInit {
             this.createNewProfileErrors.push(err.error)                       
           }
         )
+    }
+  }
+
+  checkPwnedPassword(){
+    if(this.SECRET?.valid){    
+      this.httpHelper.get("check-pwned-password", "account", {SECRET: this.SECRET.value}).subscribe(res =>{        
+        if(res){
+          this.SECRET?.setErrors({pwnedPassword: res});
+          this.newProfileFormErrors.SECRET += this.validationMessages['SECRET']['pwnedPassword']
+        }
+        else{
+          this.SECRET?.setErrors(null);
+        }
+      })
     }
   }
 }
