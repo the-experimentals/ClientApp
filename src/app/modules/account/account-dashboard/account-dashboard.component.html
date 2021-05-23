@@ -1,10 +1,38 @@
-<div class="padding2030 position-relative h-100">
-    <header>
+<div class="container-fluid padding2030 position-relative h-100" fxLayout="column">
+    <header fxFlex="73px">
         <span class="mat-display-1">Profiles</span>
         <hr>
     </header>  
+    <div fxFlex>
+        <div class="container-fluid p-0 h-100">
+            <div fxFlex="280px" class="p-2" style="background-color: var(--combo-black-white); border-radius: 0.25rem; margin-right: 10px;">
+                <div matRipple class="p-2 display-inline-block pointer">
+                    <fa-icon [icon]="faPlus"></fa-icon>
+                </div>
+                <div matRipple class="p-2 display-inline-block pointer">                    
+                    <fa-icon [icon]="faMinus"></fa-icon>
+                </div>
+                <hr class="m-0" style="background-color: var(--combo-white-black);"/>
+                
+                <div class="mt-1">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Serach</mat-label>
+                        <input matInput>
+                        <fa-icon [icon]="faUser" matPrefix></fa-icon>                    
+                        <mat-hint>Enter user's name to search in list</mat-hint>
+                    </mat-form-field>                
+                </div>
+            </div>
+            <div fxFlex class="position-relative">                
+                <div style="width: 500px;" class="centralize text-center" >
+                    <img src="assets/illustrations/account-illustration.svg" style="width: 500px;">
+                    <span class="display-block mat-display-1">Select profile to view.</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="container-fluid" fxLayout="row wrap" fxLayoutAlign="center" *ngIf="profilesData.length > 0">
+    <!-- <div class="container-fluid" fxLayout="row wrap" fxLayoutAlign="center" *ngIf="profilesData.length > 0">
         <div fxFlex="250px" class="padding1015" *ngFor="let cardData of profilesData; index as i" [attr.data-index]="i">
             <account-profile-card [cardData]="cardData"></account-profile-card>            
         </div>        
@@ -17,5 +45,5 @@
 
     <footer class="position-absolute shadow-1 padding1015 text-end" style="bottom: 0; left: 0;right: 0;">
         <button mat-raised-button color="primary" routerLink="/account/new-profile">New profile</button>
-    </footer>
+    </footer> -->
 </div>

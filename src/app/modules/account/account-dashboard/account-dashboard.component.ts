@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import { faMinus, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
 import { GET_PROFILES } from 'src/app/core/constants/actions/account';
 import { ACCOUNT } from 'src/app/core/constants/controllers';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
@@ -11,6 +12,10 @@ import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/load
   styleUrls: ['./account-dashboard.component.scss']
 })
 export class AccountDashboardComponent implements OnInit {
+
+  faPlus = faPlus
+  faMinus = faMinus
+  faUser = faUser
 
   profilesData:ProfileCard[];
   profileCount:number = 0;
