@@ -6,6 +6,9 @@ import { CustomSelectListComponent } from './custom-select-list/custom-select-li
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CustomSelectListRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatCheckboxModule,
+    FlexLayoutModule,
+    MatRippleModule
   ],
   exports:[CustomSelectListComponent]
 })
