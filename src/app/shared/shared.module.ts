@@ -17,10 +17,10 @@ import { MatRippleModule } from '@angular/material/core';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { CustomSelectListComponent } from './custom-select-list/custom-select-list.component';
+
 
 @NgModule({
-  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent, LoadingIndicatorComponent, CustomSelectListComponent],
+  declarations: [SidebarComponent, MainLayoutComponent, ErrorComponent, NavMenuComponent, NavMenuDirective, UserOptionsComponent, LoadingIndicatorComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
