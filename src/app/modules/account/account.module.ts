@@ -18,8 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
-import { SharedModule } from 'src/app/shared/shared.module';
-
+import { CustomSelectListModule } from '../custom-select-list/custom-select-list.module';
 @NgModule({
   declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent],
   imports: [
@@ -36,6 +35,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatTabsModule,
     MatSelectModule,
     MatRippleModule,    
+    CustomSelectListModule
   ]
 })
 export class AccountModule { }

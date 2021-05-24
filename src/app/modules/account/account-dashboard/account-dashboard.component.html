@@ -6,23 +6,8 @@
     <div fxFlex>
         <div class="container-fluid p-0 h-100">
             
-            <div fxFlex="280px" class="p-2" style="background-color: var(--combo-black-white); border-radius: 0.25rem; margin-right: 10px;">
-                <div matRipple class="p-2 display-inline-block pointer">
-                    <fa-icon [icon]="faPlus"></fa-icon>
-                </div>
-                <div matRipple class="p-2 display-inline-block pointer">                    
-                    <fa-icon [icon]="faMinus"></fa-icon>
-                </div>
-                <hr class="m-0" style="background-color: var(--combo-white-black);"/>
-                
-                <div class="mt-1">
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Serach</mat-label>
-                        <input matInput>
-                        <fa-icon [icon]="faUser" matPrefix></fa-icon>                    
-                        <mat-hint>Enter user's name to search in list</mat-hint>
-                    </mat-form-field>                
-                </div>
+            <div fxFlex="280px">
+                <custom-select-list></custom-select-list>    
             </div>
             <div fxFlex class="position-relative">                
                 <div style="width: 500px;" class="centralize text-center" >

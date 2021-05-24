@@ -1,0 +1,18 @@
+<div class="p-2 h-100" style="background-color: var(--combo-black-white); border-radius: 0.25rem; margin-right: 10px;width: 280px;">
+    <div matRipple class="p-2 display-inline-block pointer">
+        <fa-icon [icon]="faPlus"></fa-icon>
+    </div>
+    <div matRipple class="p-2 display-inline-block pointer">                    
+        <fa-icon [icon]="faMinus"></fa-icon>
+    </div>
+    <hr class="m-0" style="background-color: var(--combo-white-black);"/>
+    
+    <div class="mt-1">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Serach</mat-label>
+            <input matInput>
+            <fa-icon [icon]="faUser" matPrefix></fa-icon>                    
+            <mat-hint>Enter user's name to search in list</mat-hint>
+        </mat-form-field>                
+    </div>
+</div>
