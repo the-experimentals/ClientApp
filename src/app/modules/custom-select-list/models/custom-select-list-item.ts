@@ -32,5 +32,14 @@ export class CustomSelectListItem{
         this._INITIALS = v;
     }
     
+    private _SELECTED : boolean = false;
+    public get SELECTED() : boolean {
+        return this._SELECTED;
+    }
+    public set SELECTED(v : boolean) {
+        this._SELECTED = v;
+    }
+    
+    
     
 }
