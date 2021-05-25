@@ -23,4 +23,21 @@ export class CustomSelectListService {
   getCustomList():Observable<CustomSelectList>{
     return this.customSelectListQuery.select(state => state.CUSTOM_LIST);
   }
+
+  selectItem(id:String){
+    this.customSelectListStore.update(state => {
+      let customList = [...state.CUSTOM_LIST.ITEMS]
+
+      let selectedItem = customList.find(x => x.ID === id)
+      if(selectedItem !== undefined){
+        selectedItem.SELECTED = true
+
+        let itemIndex = customList.findIndex(x => x.ID === id)
+        customList[itemIndex] = selectedItem;
+      }
+      
+      state.CUSTOM_LIST.ITEMS = customList
+
+    })
+  }
 }

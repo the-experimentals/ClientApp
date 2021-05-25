@@ -9,11 +9,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatRippleModule } from '@angular/material/core';
+import { SelectItemDirective } from './directives/select-item/select-item.directive';
 
 
 @NgModule({
   declarations: [
-    CustomSelectListComponent
+    CustomSelectListComponent,
+    SelectItemDirective
   ],
   imports: [
     CommonModule,

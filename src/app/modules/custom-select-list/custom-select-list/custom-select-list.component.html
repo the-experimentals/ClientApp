@@ -16,7 +16,7 @@
         </mat-form-field>                
     </div>    
     <ul class="selection-list">
-        <li matRipple class="container-fluid p-0" *ngFor="let customItem of customList.ITEMS">
+        <li matRipple class="container-fluid p-0" *ngFor="let customItem of customList.ITEMS" [selectItem]="customItem.ID">
             <div fxFlex="40px" class="position-relative pl-2 selection-checkbox" [attr.selected]="customItem.SELECTED" *ngIf="isMultiSelect">
                 <mat-checkbox class="centralize" color="primary" [checked]="customItem.SELECTED"></mat-checkbox>
             </div>

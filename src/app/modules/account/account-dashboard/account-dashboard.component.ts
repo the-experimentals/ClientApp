@@ -45,8 +45,8 @@ export class AccountDashboardComponent implements OnInit {
 
           res.forEach((item) =>{
             let customListItem:CustomSelectListItem = new CustomSelectListItem();
-            customListItem.ID = ""
-            customListItem.TITLE = item.NAME,
+            customListItem.ID = item.USERNAME
+            customListItem.TITLE = item.NAME
             customListItem.SUB_TITLE = item.USERNAME
             customListItem.INITIALS = item.INITIALS
 
