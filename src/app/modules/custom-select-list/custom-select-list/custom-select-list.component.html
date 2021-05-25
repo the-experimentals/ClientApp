@@ -14,41 +14,25 @@
             <fa-icon [icon]="faUser" matPrefix></fa-icon>                    
             <mat-hint>Enter user's name to search in list</mat-hint>
         </mat-form-field>                
-    </div>
+    </div>    
     <ul class="selection-list">
-        <li matRipple class="container-fluid p-0">
-            <div fxFlex="40px" class="position-relative pl-2 selection-checkbox">
+        <li matRipple class="container-fluid p-0" *ngFor="let customItem of customList.ITEMS">
+            <div fxFlex="40px" class="position-relative pl-2 selection-checkbox" *ngIf="isMultiSelect">
                 <mat-checkbox class="centralize" color="primary"></mat-checkbox>
             </div>
             <div fxFlex class="container-fluid p-0" style=" border-top-left-radius: 35px;border-bottom-left-radius: 35px">       
                   <div fxFlex class="container-fluid p-0">                      
                     <div fxFlex="40px" class="position-relative ms-2">
-                        <div class="centralize" style="background-color: var(--combo-white-blue-500); height: 40px; width: 40px;border-radius: 50%;box-shadow: 0 1px 3px rgba(0,0,0,0.4) ;">
+                        <div  class="centralize profile-icon">
+                            <span class="initials">{{customItem.INITIALS}}</span>
                         </div>
                     </div>
                     <div fxFlex class="p-1 ps-2">
-                        <span class="mat-h3 m-0 display-block">John Doe</span>
-                        <span class="mat-small m-0 display-block">@itsjohndoe</span>
+                        <span class="mat-h3 m-0 display-block">{{customItem.TITLE}}</span>
+                        <span class="mat-small m-0 display-block">{{customItem.SUB_TITLE}}</span>
                     </div>
                   </div>       
             </div>
-        </li>
-        <li matRipple class="container-fluid p-0">
-            <div fxFlex="40px" class="position-relative pl-2 selection-checkbox">
-                <mat-checkbox class="centralize" color="primary"></mat-checkbox>
-            </div>
-            <div fxFlex class="container-fluid p-0" style=" border-top-left-radius: 35px;border-bottom-left-radius: 35px;">       
-                  <div fxFlex class="container-fluid p-0">                      
-                    <div fxFlex="40px" class="position-relative ms-2">
-                        <div class="centralize" style="background-color: var(--combo-white-blue-500); height: 40px; width: 40px;border-radius: 50%;box-shadow: 0 1px 3px rgba(0,0,0,0.4) ;">
-                        </div>
-                    </div>
-                    <div fxFlex class="p-1 ps-2">
-                        <span class="mat-h3 m-0 display-block">John Doe</span>
-                        <span class="mat-small m-0 display-block">@itsjohndoe</span>
-                    </div>
-                  </div>       
-            </div>
-        </li>
+        </li>        
     </ul>
 </div>
