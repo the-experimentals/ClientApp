@@ -9,8 +9,7 @@
         margin: 0;
         & li{
             list-style-type: none;            
-            border-top-left-radius: 0.25rem;
-            border-bottom-left-radius: 0.25rem;
+            border-radius: 0.25rem;            
             cursor: pointer;            
             & .selection-checkbox:not(.selected){
                visibility: hidden !important
