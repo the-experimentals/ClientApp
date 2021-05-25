@@ -9,14 +9,15 @@ import { AccountProfileViewComponent } from './account-profile-view/account-prof
 const routes: Routes = [{
   path:'',  
   component: AccountDashboardComponent,
-  data: {roles: Roles.ADMIN},
+  children:[{
+    path:'new-profile',  
+    component:AccountNewProfileComponent,
+    data: {roles: Roles.ADMIN},
+  }],
+  data: {roles: Roles.ADMIN},  
 },{
   path:'change-password',
   component:AccountChangePasswordComponent
-},{
-  path:'new-profile',  
-  component:AccountNewProfileComponent,
-  data: {roles: Roles.ADMIN},
 },{
   path:'view',
   component:AccountProfileViewComponent

@@ -1,6 +1,6 @@
 <div class="p-2 h-100 custom-select-list">
     <div matRipple class="p-2 display-inline-block pointer">
-        <fa-icon [icon]="faPlus"></fa-icon>
+        <fa-icon [icon]="faPlus" routerLink="/account/new-profile"></fa-icon>
     </div>
     <div matRipple class="p-2 display-inline-block pointer">                    
         <fa-icon [icon]="faMinus"></fa-icon>
@@ -27,7 +27,7 @@
                             <span class="initials">{{customItem.INITIALS}}</span>
                         </div>
                     </div>
-                    <div fxFlex class="p-1 ps-2">
+                    <div fxFlex class="p-1 ps-2 item-details">
                         <span class="mat-h3 m-0 display-block">{{customItem.TITLE}}</span>
                         <span class="mat-small m-0 display-block">{{customItem.SUB_TITLE}}</span>
                     </div>

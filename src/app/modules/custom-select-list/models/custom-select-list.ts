@@ -1,3 +1,4 @@
+import { CustomSelectListAction } from "./custom-select-list-action";
 import { CustomSelectListItem } from "./custom-select-list-item";
 
 export class CustomSelectList{
@@ -16,6 +17,14 @@ export class CustomSelectList{
     }
     public set ITEMS(v : CustomSelectListItem[]) {
         this._ITEMS = v;
+    }
+    
+    private _ACTIONS : CustomSelectListAction[] = [];
+    public get ACTIONS() : CustomSelectListAction[] {
+        return this._ACTIONS;
+    }
+    public set ACTIONS(v : CustomSelectListAction[]) {
+        this._ACTIONS = v;
     }
     
 }
