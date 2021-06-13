@@ -111,7 +111,7 @@ export class AuthService {
         this.refreshTokenNow();
           
         this.profileQuery.getProfile().subscribe(profile => {
-          this.refreshInterval = interval((profile.TOKEN.TTL - 2) * 60000).pipe(take(1)).subscribe(() =>{                        
+          this.refreshInterval = interval((profile.TOKEN.TTL - 2) * 60000).subscribe(() =>{      
             this.refreshTokenNow();
           })
         }).unsubscribe()
