@@ -15,7 +15,7 @@ export class UserOptionsComponent implements OnInit {
 
   initials: string = ""
   name: string = ""
-  identifier: string = ""
+  username: string = ""
 
   faKey = faKey
   faPowerOff = faPowerOff
@@ -26,7 +26,7 @@ export class UserOptionsComponent implements OnInit {
     ).subscribe(profile => {
       this.initials = profile.NAME[0].toUpperCase()
       this.name = profile.NAME
-      this.identifier = profile.IDENTIFIER      
+      this.username = profile.USERNAME      
     }).unsubscribe()
   }
 

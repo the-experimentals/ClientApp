@@ -38,9 +38,9 @@
                         <mat-form-field appearance="outline" class="w-100 mb-3"> 
                             <mat-label>Username</mat-label>
                             <fa-icon [icon]="faUser" matPrefix></fa-icon>
-                            <input matInput formControlName="IDENTIFIER">     
-                            <mat-error *ngIf="(isCreateProfileAttempt || (IDENTIFIER != null && IDENTIFIER.touched)) && newProfileFormErrors.IDENTIFIER">
-                                {{newProfileFormErrors.IDENTIFIER}}
+                            <input matInput formControlName="USERNAME">     
+                            <mat-error *ngIf="(isCreateProfileAttempt || (USERNAME != null && USERNAME.touched)) && newProfileFormErrors.USERNAME">
+                                {{newProfileFormErrors.USERNAME}}
                             </mat-error>                   
                           </mat-form-field>
                     </div>
@@ -50,9 +50,9 @@
                         <mat-form-field appearance="outline" class="w-100"> 
                             <mat-label>Password</mat-label>
                             <fa-icon [icon]="faKey" matPrefix></fa-icon>
-                            <input matInput formControlName="SECRET" type="{{ (SHOW_PASSWORD !== null && SHOW_PASSWORD.value) ? 'text' : 'password' }}" (change)="checkPwnedPassword()">                        
-                            <mat-error *ngIf="(isCreateProfileAttempt || (SECRET != null && SECRET.touched)) && newProfileFormErrors.SECRET">
-                                {{newProfileFormErrors.SECRET}}
+                            <input matInput formControlName="PASSWORD" type="{{ (SHOW_PASSWORD !== null && SHOW_PASSWORD.value) ? 'text' : 'password' }}" (change)="checkPwnedPassword()">                        
+                            <mat-error *ngIf="(isCreateProfileAttempt || (PASSWORD != null && PASSWORD.touched)) && newProfileFormErrors.PASSWORD">
+                                {{newProfileFormErrors.PASSWORD}}
                             </mat-error> 
                           </mat-form-field>
                     </div>
@@ -60,9 +60,9 @@
                         <mat-form-field appearance="outline" class="w-100"> 
                             <mat-label>Confirm password</mat-label>
                             <fa-icon [icon]="faKey" matPrefix></fa-icon>
-                            <input matInput formControlName="CONFIRM_SECRET" type="{{ (SHOW_PASSWORD !== null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">                        
-                            <mat-error *ngIf="(isCreateProfileAttempt || (CONFIRM_SECRET != null && CONFIRM_SECRET.touched)) && newProfileFormErrors.CONFIRM_SECRET">
-                                {{newProfileFormErrors.CONFIRM_SECRET}}
+                            <input matInput formControlName="CONFIRM_PASSWORD" type="{{ (SHOW_PASSWORD !== null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">                        
+                            <mat-error *ngIf="(isCreateProfileAttempt || (CONFIRM_PASSWORD != null && CONFIRM_PASSWORD.touched)) && newProfileFormErrors.CONFIRM_PASSWORD">
+                                {{newProfileFormErrors.CONFIRM_PASSWORD}}
                             </mat-error> 
                           </mat-form-field>
                     </div>     

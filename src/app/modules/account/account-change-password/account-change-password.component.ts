@@ -124,7 +124,7 @@ export class AccountChangePasswordComponent implements OnInit {
 
   checkPwnedPassword(){
     if(this.NEW_PASSWORD?.valid){    
-      this.httpHelper.get("check-pwned-password", "account", {SECRET: this.NEW_PASSWORD.value}).subscribe(res =>{        
+      this.httpHelper.get("check-pwned-password", "account", {PASSWORD: this.NEW_PASSWORD.value}).subscribe(res =>{        
         if(res){
           this.NEW_PASSWORD?.setErrors({pwnedPassword: res});
           this.changePasswordFormErrors.NEW_PASSWORD += this.validationMessages['NEW_PASSWORD']['pwnedPassword']

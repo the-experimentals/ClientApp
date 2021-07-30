@@ -19,12 +19,12 @@ export class Profile{
         this._IS_VERIFIED = v;
     }
 
-    private _IDENTIFIER! : string;
-    public get IDENTIFIER() : string {
-        return this._IDENTIFIER;
+    private _USERNAME! : string;
+    public get USERNAME() : string {
+        return this._USERNAME;
     }
-    public set IDENTIFIER(v : string) {
-        this._IDENTIFIER = v;
+    public set USERNAME(v : string) {
+        this._USERNAME = v;
     }
     
     private _NAME! : string;

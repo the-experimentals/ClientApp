@@ -28,19 +28,19 @@ export class AuthSignInComponent implements OnInit {
   isSignInAttempt:boolean = false;
 
   validationMessages = {
-    'IDENTIFIER': {
+    'USERNAME': {
       'required': 'You must enter data in username',
       'minlength':'Your username cannot be lesser than 5 characters'
     },    
-    'SECRET':{
+    'PASSWORD':{
       'required': 'You must enter data in password',
       'minlength':'Your password cannot be lesser than 8 characters'
     }
   };
 
   signInFormErrors = {
-    'IDENTIFIER': this.validationMessages['IDENTIFIER']['required'],
-    'SECRET': this.validationMessages['SECRET']['required']
+    'USERNAME': this.validationMessages['USERNAME']['required'],
+    'PASSWORD': this.validationMessages['PASSWORD']['required']
   }
 
   signInForm: FormGroup
@@ -71,21 +71,21 @@ export class AuthSignInComponent implements OnInit {
 
   createSignInForm(): FormGroup{
     return this.formBuilder.group({
-      'IDENTIFIER': new FormControl('',[Validators.required, Validators.minLength(5)]),
-      'SECRET': new FormControl('', [Validators.required, Validators.minLength(8)]),
+      'USERNAME': new FormControl('',[Validators.required, Validators.minLength(5)]),
+      'PASSWORD': new FormControl('', [Validators.required, Validators.minLength(8)]),
       'REMEMBER_ME': new FormControl(false),
       'SHOW_PASSWORD': new FormControl(false)
     });
   }
 
-  get IDENTIFIER()
+  get USERNAME()
   {
-    return this.signInForm.get('IDENTIFIER');
+    return this.signInForm.get('USERNAME');
   }
 
-  get SECRET()
+  get PASSWORD()
   {
-    return this.signInForm.get('SECRET');
+    return this.signInForm.get('PASSWORD');
   }
 
   get SHOW_PASSWORD(){

@@ -30,16 +30,16 @@ export class AccountNewProfileComponent implements OnInit {
   isCreateProfileAttempt: boolean = false
 
   validationMessages = {
-    'IDENTIFIER': {
+    'USERNAME': {
       'required': 'You must enter data in username',
       'minlength':'Your username cannot be lesser than 5 characters'
     },    
-    'SECRET':{
+    'PASSWORD':{
       'required': 'You must enter data in password',
       'minlength':'Your password cannot be lesser than 8 characters',
       'pwnedPassword': "This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
     },
-    'CONFIRM_SECRET':{
+    'CONFIRM_PASSWORD':{
       'required': 'You must enter data in confirm password',
       'minlength':'Your confirm password cannot be lesser than 8 characters',
       'MatchPassword': 'Your new password and confirm password didn\'t matched'
@@ -57,9 +57,9 @@ export class AccountNewProfileComponent implements OnInit {
   }
 
   newProfileFormErrors = {
-    'IDENTIFIER': this.validationMessages['IDENTIFIER']['required'],
-    'SECRET': this.validationMessages['SECRET']['required'],
-    'CONFIRM_SECRET': this.validationMessages['CONFIRM_SECRET']['required'],
+    'USERNAME': this.validationMessages['USERNAME']['required'],
+    'PASSWORD': this.validationMessages['PASSWORD']['required'],
+    'CONFIRM_PASSWORD': this.validationMessages['CONFIRM_PASSWORD']['required'],
     'FIRST_NAME': this.validationMessages['FIRST_NAME']['required'],
     'LAST_NAME': this.validationMessages['LAST_NAME']['required'],
     'EMAIL': this.validationMessages['EMAIL']['required']
@@ -86,26 +86,26 @@ export class AccountNewProfileComponent implements OnInit {
 
   createNewProfileForm(): FormGroup{
     return this.formBuilder.group({
-      "IDENTIFIER": new FormControl("", [Validators.required, Validators.minLength(5)]),
-      "SECRET": new FormControl("", [Validators.required, Validators.minLength(8)]),
-      "CONFIRM_SECRET": new FormControl("", [Validators.required, Validators.minLength(8)]),
+      "USERNAME": new FormControl("", [Validators.required, Validators.minLength(5)]),
+      "PASSWORD": new FormControl("", [Validators.required, Validators.minLength(8)]),
+      "CONFIRM_PASSWORD": new FormControl("", [Validators.required, Validators.minLength(8)]),
       "SHOW_PASSWORD": new FormControl(false),
       "FIRST_NAME": new FormControl('', [Validators.required]),
       "LAST_NAME": new FormControl('', [Validators.required]),
       "EMAIL": new FormControl('', [Validators.required, Validators.email])
-    }, {validator: MatchPassword('SECRET', 'CONFIRM_SECRET')}) 
+    }, {validator: MatchPassword('PASSWORD', 'CONFIRM_PASSWORD')}) 
   }
 
-  get IDENTIFIER(){
-    return this.newProfileForm.get("IDENTIFIER")
+  get USERNAME(){
+    return this.newProfileForm.get("USERNAME")
   }
 
-  get SECRET(){
-    return this.newProfileForm.get("SECRET")
+  get PASSWORD(){
+    return this.newProfileForm.get("PASSWORD")
   }
 
-  get CONFIRM_SECRET(){
-    return this.newProfileForm.get("CONFIRM_SECRET")
+  get CONFIRM_PASSWORD(){
+    return this.newProfileForm.get("CONFIRM_PASSWORD")
   }
 
   get SHOW_PASSWORD(){
@@ -155,14 +155,14 @@ export class AccountNewProfileComponent implements OnInit {
   }
 
   checkPwnedPassword(){
-    if(this.SECRET?.valid){    
-      this.httpHelper.get("check-pwned-password", "account", {SECRET: this.SECRET.value}).subscribe(res =>{        
+    if(this.PASSWORD?.valid){    
+      this.httpHelper.get("check-pwned-password", "account", {PASSWORD: this.PASSWORD.value}).subscribe(res =>{        
         if(res){
-          this.SECRET?.setErrors({pwnedPassword: res});
-          this.newProfileFormErrors.SECRET += this.validationMessages['SECRET']['pwnedPassword']
+          this.PASSWORD?.setErrors({pwnedPassword: res});
+          this.newProfileFormErrors.PASSWORD += this.validationMessages['PASSWORD']['pwnedPassword']
         }
         else{
-          this.SECRET?.setErrors(null);
+          this.PASSWORD?.setErrors(null);
         }
       })
     }
