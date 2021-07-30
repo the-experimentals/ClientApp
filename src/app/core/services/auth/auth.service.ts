@@ -7,11 +7,11 @@ import { SignInResponse } from 'src/app/response-models/secure/sign-in-response'
 import { ProfileStore } from '../../state/store';
 import { ProfileQuery } from '../../state/query';
 import { Profile } from 'src/app/data-models/account';
-import { SECURE } from '../../constants/controllers';
 import { SIGN_IN } from '../../constants/actions/auth';
 import { RefreshTokenResponse } from 'src/app/response-models/secure/refresh-token-response';
 
 import { Router } from '@angular/router';
+import { AUTH } from '../../constants/controllers';
 
 
 @Injectable({
@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   login(user:any):Observable<SignInResponse>{
-    return this.httpHelper.post<SignInResponse>(SIGN_IN, SECURE, user)
+    return this.httpHelper.post<SignInResponse>("log-in", AUTH, user)
       .pipe(
         map(res => {
           if(res.IS_AUTHENTICATED){            
@@ -130,27 +130,27 @@ export class AuthService {
           
           let refreshToken = {REFRESH: currentProfile.TOKEN.REFRESH} 
     
-          this.httpHelper.put<RefreshTokenResponse>("refresh-token","secure", refreshToken)
-            .subscribe(res => {
-              if(res.IS_REFRESHED){
+          // this.httpHelper.put<RefreshTokenResponse>("refresh-token","secure", refreshToken)
+          //   .subscribe(res => {
+          //     if(res.IS_REFRESHED){
     
-                // update profile state
-                this.profileStore.update(state =>{
-                  let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
-                  updatedProfile.TOKEN = res
+          //       // update profile state
+          //       this.profileStore.update(state =>{
+          //         let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
+          //         updatedProfile.TOKEN = res
 
-                  localStorage.removeItem('currentUser');
-                  localStorage.setItem("currentUser", JSON.stringify(updatedProfile));              
+          //         localStorage.removeItem('currentUser');
+          //         localStorage.setItem("currentUser", JSON.stringify(updatedProfile));              
 
-                  return {
-                    profile: updatedProfile
-                  }
-                })
-              }              
-            }, err =>{
-              this.logout()
-              throwError(err)
-            })
+          //         return {
+          //           profile: updatedProfile
+          //         }
+          //       })
+          //     }              
+          //   }, err =>{
+          //     this.logout()
+          //     throwError(err)
+          //   })
         }
       })
 

@@ -3,8 +3,6 @@ import { Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {faKey } from '@fortawesome/free-solid-svg-icons';
-import { CHANGE_PASSWORD } from 'src/app/core/constants/actions/account';
-import { ACCOUNT, SECURE } from 'src/app/core/constants/controllers';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
 import { AlertDialogService } from 'src/app/core/services/alert-dialog/alert-dialog.service';
 import { ValidateOnValueChange } from 'src/app/core/validators';
@@ -102,25 +100,25 @@ export class AccountChangePasswordComponent implements OnInit {
       this.showChangePasswordErrors = false;
       this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent)
 
-      this.httpHelper.put<ChangePasswordResponse>(CHANGE_PASSWORD,ACCOUNT, this.changePasswordForm.value)
-        .subscribe(res =>{
-          this.dyanamicContentLoading.hideComponent(); 
-          if(res.IS_CHANGED){
-            let alertData: AlertData = new AlertData();
-            alertData.MESSAGE = "Your password was successfully changed. Click ok to return to home."
-            const dialogRef = this.alertDialogService.successAlert(alertData)
+      // this.httpHelper.put<ChangePasswordResponse>(CHANGE_PASSWORD,ACCOUNT, this.changePasswordForm.value)
+      //   .subscribe(res =>{
+      //     this.dyanamicContentLoading.hideComponent(); 
+      //     if(res.IS_CHANGED){
+      //       let alertData: AlertData = new AlertData();
+      //       alertData.MESSAGE = "Your password was successfully changed. Click ok to return to home."
+      //       const dialogRef = this.alertDialogService.successAlert(alertData)
 
-            dialogRef.afterClosed().subscribe(res =>{
-              this.router.navigate(['/home'])     
-            })
+      //       dialogRef.afterClosed().subscribe(res =>{
+      //         this.router.navigate(['/home'])     
+      //       })
                    
-          }
-        }, err => {      
-          this.dyanamicContentLoading.hideComponent();  
+      //     }
+      //   }, err => {      
+      //     this.dyanamicContentLoading.hideComponent();  
 
-          this.showChangePasswordErrors = true
-          this.changePasswordErrors = err.error
-        })
+      //     this.showChangePasswordErrors = true
+      //     this.changePasswordErrors = err.error
+      //   })
     }
   }
 

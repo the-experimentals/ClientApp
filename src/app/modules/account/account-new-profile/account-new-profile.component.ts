@@ -130,27 +130,27 @@ export class AccountNewProfileComponent implements OnInit {
     this.createNewProfileErrors = []
     if(this.newProfileForm.valid){
       this.dyanamicContentLoading.showComponent(LoadingIndicatorComponent)
-      this.httpHelper.post<NewProfileResponse>(CREATE_NEW_PROFILE,ACCOUNT, this.newProfileForm.value)
-        .subscribe(
-          res => {
-            this.dyanamicContentLoading.hideComponent();
-            if(res.IS_SAVED){
+      // this.httpHelper.post<NewProfileResponse>(CREATE_NEW_PROFILE,ACCOUNT, this.newProfileForm.value)
+      //   .subscribe(
+      //     res => {
+      //       this.dyanamicContentLoading.hideComponent();
+      //       if(res.IS_SAVED){
 
-              let alertData: AlertData = new AlertData();
-              alertData.MESSAGE = "New profile created successfully. Click ok to return to account dashboard."
-              const dialogRef = this.alertDialog.successAlert(alertData)
+      //         let alertData: AlertData = new AlertData();
+      //         alertData.MESSAGE = "New profile created successfully. Click ok to return to account dashboard."
+      //         const dialogRef = this.alertDialog.successAlert(alertData)
 
-              dialogRef.afterClosed().subscribe(res =>{
-                this.router.navigate(['/account']);
-              })
+      //         dialogRef.afterClosed().subscribe(res =>{
+      //           this.router.navigate(['/account']);
+      //         })
               
-            }            
-          },
-          err =>{
-            this.dyanamicContentLoading.hideComponent()
-            this.createNewProfileErrors.push(err.error)                       
-          }
-        )
+      //       }            
+      //     },
+      //     err =>{
+      //       this.dyanamicContentLoading.hideComponent()
+      //       this.createNewProfileErrors.push(err.error)                       
+      //     }
+      //   )
     }
   }
 
