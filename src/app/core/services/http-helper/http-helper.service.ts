@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ControllerProps } from '../../constants/controllers/controller-props';
 
 @Injectable({
   providedIn: 'root'
@@ -19,23 +18,25 @@ export class HttpHelperService {
     return this.httpClient.get<T>(this.BASE_URL + controller + '/' + action, {params: data});    
   }
 
-  public post<T>(action:string, controller:ControllerProps, data:any): Observable<T>
+  public post<T>(action:string, controller:string, data:any): Observable<T>
   {
-    debugger
-    return this.httpClient.post<T>(this.BASE_URL + controller.NAME + '/' + action, JSON.stringify(data), this.httpHeaderOptions(controller));
+    return this.httpClient.post<T>(this.BASE_URL + controller + '/' + action, JSON.stringify(data), this.httpHeaderOptions());
   }
 
-  public put<T>(action:string, controller:ControllerProps, data:any):Observable<T>
+  public put<T>(action:string, controller:string, data:any):Observable<T>
   {
-    return this.httpClient.put<T>(this.BASE_URL + controller + '/' + action, JSON.stringify(data), this.httpHeaderOptions(controller));
+    return this.httpClient.put<T>(this.BASE_URL + controller + '/' + action, JSON.stringify(data), this.httpHeaderOptions());
   }
-  private httpHeaderOptions(controller:ControllerProps)
+
+  public patch<T>(action:string, controller:string,data:any): Observable<T>{
+    return this.httpClient.patch<T>(this.BASE_URL + controller + '/' + action, JSON.stringify(data),this.httpHeaderOptions())
+  }
+
+  private httpHeaderOptions()
   {
     const httpOptions = {
       headers:new HttpHeaders()
-              .set("Content-Type","application/json")
-              // .set("Host", controller.HOST)
-              // .set("origin", "*")
+              .set("Content-Type","application/json")              
     };
 
     return httpOptions;

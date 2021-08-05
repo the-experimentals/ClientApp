@@ -11,7 +11,7 @@ import { SIGN_IN } from '../../constants/actions/auth';
 import { RefreshTokenResponse } from 'src/app/response-models/secure/refresh-token-response';
 
 import { Router } from '@angular/router';
-import { AUTH } from '../../constants/controllers';
+import { ACCOUNT, AUTH } from '../../constants/controllers';
 
 
 @Injectable({
@@ -130,27 +130,27 @@ export class AuthService {
           
           let refreshToken = {REFRESH: currentProfile.TOKEN.REFRESH} 
     
-          // this.httpHelper.put<RefreshTokenResponse>("refresh-token","secure", refreshToken)
-          //   .subscribe(res => {
-          //     if(res.IS_REFRESHED){
-    
-          //       // update profile state
-          //       this.profileStore.update(state =>{
-          //         let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
-          //         updatedProfile.TOKEN = res
+          this.httpHelper.patch<RefreshTokenResponse>("refresh-token",AUTH, refreshToken)
+            .subscribe(res => {
+              if(res.IS_REFRESHED){
+                console.log("refreshed")
+                // update profile state
+                this.profileStore.update(state =>{
+                  let updatedProfile:Profile = Object.assign(new Profile(), state.profile)
+                  updatedProfile.TOKEN = res
 
-          //         localStorage.removeItem('currentUser');
-          //         localStorage.setItem("currentUser", JSON.stringify(updatedProfile));              
+                  localStorage.removeItem('currentUser');
+                  localStorage.setItem("currentUser", JSON.stringify(updatedProfile));              
 
-          //         return {
-          //           profile: updatedProfile
-          //         }
-          //       })
-          //     }              
-          //   }, err =>{
-          //     this.logout()
-          //     throwError(err)
-          //   })
+                  return {
+                    profile: updatedProfile
+                  }
+                })
+              }              
+            }, err =>{
+              this.logout()
+              throwError(err)
+            })
         }
       })
 
