@@ -1,36 +1,19 @@
-<div class="container-fluid padding2030 position-relative h-100" fxLayout="column">
+<div class="container-fluid padding2030 position-relative h-100" fxLayout="column">    
     <header fxFlex="73px">
         <span class="mat-display-1">Profiles</span>
         <hr>
     </header>  
-    <div fxFlex>
-        <div class="container-fluid p-0 h-100">
-            
-            <div fxFlex="280px">
-                <custom-select-list></custom-select-list>    
-            </div>
-            <div fxFlex class="position-relative"> 
-                <router-outlet></router-outlet>               
-                <!-- <div style="width: 500px;" class="centralize text-center" >
+    <div fxFlex class="padding2030">
+        <div class="container-fluid p-0" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="10px">
+            <div fxFlex="200px" *ngFor="let data of profilesData">
+                <account-profile-card [cardData]="data"></account-profile-card>
+            </div>                        
+            <!-- <div fxFlex class="position-relative" *ngIf="profilesData.length == 0">                 
+                <div style="width: 500px;" class="text-center m-auto" >
                     <img src="assets/illustrations/account-illustration.svg" style="width: 500px;">
                     <span class="display-block mat-display-1">Select profile to view.</span>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
         </div>
     </div>
-
-    <!-- <div class="container-fluid" fxLayout="row wrap" fxLayoutAlign="center" *ngIf="profilesData.length > 0">
-        <div fxFlex="250px" class="padding1015" *ngFor="let cardData of profilesData; index as i" [attr.data-index]="i">
-            <account-profile-card [cardData]="cardData"></account-profile-card>            
-        </div>        
-    </div>
-
-    <div style="width: 500px;" class="centralize text-center" *ngIf="!isLoading && profilesData.length == 0">
-        <img src="assets/illustrations/empty-illustration.svg">
-        <span class="display-block mat-display-1">No profile available.</span>
-    </div>
-
-    <footer class="position-absolute shadow-1 padding1015 text-end" style="bottom: 0; left: 0;right: 0;">
-        <button mat-raised-button color="primary" routerLink="/account/new-profile">New profile</button>
-    </footer> -->
 </div>

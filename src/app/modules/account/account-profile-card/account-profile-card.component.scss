@@ -2,10 +2,11 @@
 
 .profile-card{
     border-radius: 0.25rem;    
-    padding: 20px 30px;
+    padding: 10px 15px;
     background-color: var(--combo-black-white);
     transition: all 0.2s ease-in-out;
     text-align: center;
+    position: relative;
 
     &:hover{
         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;

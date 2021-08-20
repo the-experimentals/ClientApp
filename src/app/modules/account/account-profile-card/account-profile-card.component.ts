@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { ProfileCard } from 'src/app/data-models/account';
 
 @Component({
@@ -8,6 +9,7 @@ import { ProfileCard } from 'src/app/data-models/account';
 })
 export class AccountProfileCardComponent implements OnInit {
 
+  faCog = faCog
   @Input() cardData!: ProfileCard
   constructor() { }
 
