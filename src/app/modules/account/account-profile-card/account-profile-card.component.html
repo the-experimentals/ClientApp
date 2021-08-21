@@ -1,4 +1,4 @@
-<div class="profile-card">
+<!-- <div class="profile-card">
     <div style=" width: fit-content; position: absolute; right: 10px;">
         <fa-icon [icon]="faCog" class="pointer"></fa-icon>
     </div>
@@ -12,4 +12,34 @@
     <div>
         <button mat-raised-button class="w-100" color="primary">View</button>
     </div> 
+</div>
+ -->
+
+ <!-- <div fxFlex="50px" class="position-relative">
+    <div style="height: 50px; width: 50px;border-radius: 50%; border: 1px solid red;" class="vertical-center">
+    </div>
+</div>
+<div fxFlex class="">
+    <span class="mat-h1 display-block m-0">Bibek Saini</span>
+    <span class="mat-small display-block m-0">Bibek Saini</span>
+</div> -->
+
+<div class="profile-card container-fluid" fxLayout="column">
+    <div class="gear-options">
+        <fa-icon [icon]="faCog" class="pointer"></fa-icon>
+    </div>
+    <div fxFlex class="padding2030 container-fluid" fxLayoutGap="5px">
+        <div fxFlex="50px">
+            <div class="profile-icon">
+                <span class="initials">{{cardData.INITIALS}}</span>
+            </div>
+        </div>
+        <div fxFlex class="">
+            <span class="mat-h1 display-block m-0">{{cardData.NAME}}</span>
+            <span class="mat-small display-block m-0">@{{cardData.USERNAME}}</span>
+        </div>
+    </div>
+    <!-- <div fxFlex class="text-end p-2" style="border: 1px solid red;">
+        <button mat-raised-button>View</button>
+    </div> -->
 </div>

@@ -3,10 +3,19 @@
         <span class="mat-display-1">Profiles</span>
         <hr>
     </header>  
-    <div fxFlex class="padding2030">
-        <div class="container-fluid p-0" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="10px">
-            <div fxFlex="200px" *ngFor="let data of profilesData">
+    <div class="text-center" *ngIf="profilesData.length > 20">
+        <mat-form-field appearance="outline" class="w-25">
+            <fa-icon [icon]="faSearch" matPrefix></fa-icon>
+            <mat-label>Search user</mat-label>
+            <input matInput>
+            <mat-hint>Enter name or username of person to search.</mat-hint>        
+          </mat-form-field>
+    </div>
+    <div fxFlex class="">
+        <div class="container-fluid p-0" fxLayout="row wrap" fxLayoutAlign="center">
+            <div fxFlex="250px" *ngFor="let data of profilesData"  class="p-1">
                 <account-profile-card [cardData]="data"></account-profile-card>
+                                
             </div>                        
             <!-- <div fxFlex class="position-relative" *ngIf="profilesData.length == 0">                 
                 <div style="width: 500px;" class="text-center m-auto" >
