@@ -3,26 +3,24 @@
         <span class="mat-display-1">Profiles</span>
         <hr>
     </header>  
-    <div class="text-center" *ngIf="profilesData.length > 20">
-        <mat-form-field appearance="outline" class="w-25">
-            <fa-icon [icon]="faSearch" matPrefix></fa-icon>
-            <mat-label>Search user</mat-label>
-            <input matInput>
-            <mat-hint>Enter name or username of person to search.</mat-hint>        
-          </mat-form-field>
-    </div>
-    <div fxFlex class="">
-        <div class="container-fluid p-0" fxLayout="row wrap" fxLayoutAlign="center">
-            <div fxFlex="250px" *ngFor="let data of profilesData"  class="p-1">
-                <account-profile-card [cardData]="data"></account-profile-card>
-                                
-            </div>                        
-            <!-- <div fxFlex class="position-relative" *ngIf="profilesData.length == 0">                 
-                <div style="width: 500px;" class="text-center m-auto" >
-                    <img src="assets/illustrations/account-illustration.svg" style="width: 500px;">
-                    <span class="display-block mat-display-1">Select profile to view.</span>
+
+    <div class="container-fluid" fxLayoutGap="30px">
+        <div fxFlex>
+            <div class="text-center" *ngIf="profilesData.length > 20">
+                <mat-form-field appearance="outline" class="w-50">
+                    <fa-icon [icon]="faSearch" matPrefix></fa-icon>
+                    <mat-label>Search user</mat-label>
+                    <input matInput>
+                    <mat-hint>Enter name or username of person to search.</mat-hint>        
+                  </mat-form-field>
+            </div>
+            <div class="">
+                <div class="container-fluid p-0" fxLayout="row wrap" fxLayoutAlign="center">
+                    <div fxFlex="260px" *ngFor="let data of profilesData"  class="p-3">
+                        <account-profile-card [cardData]="data"></account-profile-card>
+                    </div>                                    
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>
