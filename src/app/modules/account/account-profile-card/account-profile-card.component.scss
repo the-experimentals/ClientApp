@@ -4,8 +4,6 @@
   border-radius: 0.25rem;
   padding: 1.4rem;
   background-color: var(--combo-black-white);
-  transition: all 0.2s ease-in-out;
-  //   text-align: center;
   position: relative;
   cursor: pointer;
 
@@ -17,13 +15,21 @@
     display: none;
   }
 
+  & .actions {
+    display: none;
+  }
   &:hover {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
     background-color: var(--combo-white-blue-500);
     color: #1b1c1e;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
 
-    & .gear-options{
-        display: block;
+    & .gear-options,
+    .actions {
+      display: block;
     }
   }
 
