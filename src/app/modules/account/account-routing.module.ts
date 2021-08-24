@@ -5,6 +5,7 @@ import { AccountDashboardComponent } from './account-dashboard/account-dashboard
 import { AccountNewProfileComponent } from './account-new-profile/account-new-profile.component';
 import * as Roles from 'src/app/core/constants/roles';
 import { AccountProfileViewComponent } from './account-profile-view/account-profile-view.component';
+import { AccountOnboardingComponent } from './account-onboarding/account-onboarding.component';
 
 const routes: Routes = [{
   path:'',  
@@ -21,6 +22,9 @@ const routes: Routes = [{
 },{
   path:'view',
   component:AccountProfileViewComponent
+},{
+  path:'onboard',
+  component:AccountOnboardingComponent
 }];
 
 @NgModule({

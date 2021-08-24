@@ -19,8 +19,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { CustomSelectListModule } from '../custom-select-list/custom-select-list.module';
+import { AccountOnboardingComponent } from './account-onboarding/account-onboarding.component';
 @NgModule({
-  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent],
+  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent, AccountOnboardingComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,
