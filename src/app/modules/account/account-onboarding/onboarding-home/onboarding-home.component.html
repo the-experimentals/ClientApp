@@ -6,19 +6,17 @@
 
     <div class="text-center">
         <mat-stepper labelPosition="bottom" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
-              <form >
-                <ng-template matStepLabel>Get started</ng-template>
-                <div>
-                    <get-started></get-started>
-                </div>
-              </form>
+            <mat-step>
+              <ng-template matStepLabel>Get started</ng-template>
+              <ng-template matStepContent>
+                <get-started></get-started>
+              </ng-template>              
             </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-              <form >
-                <ng-template matStepLabel>Send code</ng-template>
+            <mat-step>
+              <ng-template matStepLabel>Send code</ng-template>
+              <ng-template matStepContent>
                 <send-code></send-code>
-              </form>
+              </ng-template>                            
             </mat-step>
             <mat-step>
               <ng-template matStepLabel>Verify account</ng-template>
