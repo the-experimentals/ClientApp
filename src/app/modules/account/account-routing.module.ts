@@ -6,6 +6,7 @@ import { AccountNewProfileComponent } from './account-new-profile/account-new-pr
 import * as Roles from 'src/app/core/constants/roles';
 import { AccountProfileViewComponent } from './account-profile-view/account-profile-view.component';
 import { GetStartedComponent } from './account-onboarding/get-started/get-started.component';
+import { OnboardingHomeComponent } from './account-onboarding/onboarding-home/onboarding-home.component';
 
 const routes: Routes = [{
   path:'',  
@@ -24,7 +25,7 @@ const routes: Routes = [{
   component:AccountProfileViewComponent
 },{
   path: 'onboard',
-  loadChildren:() => import('./account-onboarding/account-onboarding.module').then(m => m.AccountOnboardingModule)
+  component: OnboardingHomeComponent
 }];
 
 @NgModule({
