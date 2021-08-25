@@ -24,6 +24,7 @@ import { VerifyAccountComponent } from './account-onboarding/verify-account/veri
 import { FinishOnboardingComponent } from './account-onboarding/finish-onboarding/finish-onboarding.component';
 import { OnboardingHomeComponent } from './account-onboarding/onboarding-home/onboarding-home.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 @NgModule({
   declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent, GetStartedComponent,
     SendCodeComponent,
@@ -46,6 +47,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatRippleModule,    
     CustomSelectListModule,
     MatStepperModule
-  ]
+  ],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+  }]
 })
 export class AccountModule { }
