@@ -24,7 +24,7 @@ const routes: Routes = [{
   component:AccountProfileViewComponent
 },{
   path: 'onboard',
-  component: GetStartedComponent
+  loadChildren:() => import('./account-onboarding/account-onboarding.module').then(m => m.AccountOnboardingModule)
 }];
 
 @NgModule({

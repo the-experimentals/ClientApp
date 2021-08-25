@@ -20,7 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { CustomSelectListModule } from '../custom-select-list/custom-select-list.module';
 import { GetStartedComponent } from './account-onboarding/get-started/get-started.component';@NgModule({
-  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent, GetStartedComponent],
+  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,
