@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FinishOnboardingComponent } from './finish-onboarding/finish-onboarding.component';
 import { GetStartedComponent } from './get-started/get-started.component';
+import { OnboardingHomeComponent } from './onboarding-home/onboarding-home.component';
 import { SendCodeComponent } from './send-code/send-code.component';
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 
 const routes: Routes = [{
   path: '',
-  component: GetStartedComponent
+  component: OnboardingHomeComponent
 },{
   path:'send-code',
   component: SendCodeComponent

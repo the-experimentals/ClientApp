@@ -1,22 +1,15 @@
-<div class="container-fluid padding2030 position-relative h-100" fxLayout="column">
-    <header fxFlex="73px">
-        <span class="mat-display-1">Onboarding</span>
-        <hr>
-    </header>  
-
-    <div class="text-center">
-        <div>
-            <span class="mat-display-2">Welcome {{name}}</span>
-        </div> 
-        <div style="width: 500px;" class="m-auto">
-            <img src="assets/illustrations/onboard.svg">
-        </div> 
-        <div>
-            <span class="mat-h2 display-block m-0">We are so excited to have you onboard</span>
-            <span class="mat-small display-block m-0">Let's get started</span>
-        </div> 
-        <div>
-            <button mat-raised-button color="primary" routerLink="/account/onboard/send-code">Next</button>
-        </div>
+<div class="text-center padding2030">
+    <div>
+        <span class="mat-display-2">Welcome {{name}}</span>
+    </div> 
+    <div style="width: 400px;" class="m-auto">
+        <img src="assets/illustrations/onboard.svg">
+    </div> 
+    <div>
+        <span class="mat-h2 display-block m-0">We are so excited to have you onboard</span>
+        <span class="mat-small display-block m-0">Let's get started</span>
+    </div> 
+    <div>
+        <button mat-raised-button color="primary" type="button" matStepperNext>Next</button>
     </div>
 </div>

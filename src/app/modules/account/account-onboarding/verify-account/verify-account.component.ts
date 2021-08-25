@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-verify-account',
+  selector: 'verify-account',
   templateUrl: './verify-account.component.html',
   styleUrls: ['./verify-account.component.scss']
 })

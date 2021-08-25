@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'finish-onboarding',
-  templateUrl: './finish-onboarding.component.html',
-  styleUrls: ['./finish-onboarding.component.scss']
+  selector: 'app-onboarding-home',
+  templateUrl: './onboarding-home.component.html',
+  styleUrls: ['./onboarding-home.component.scss']
 })
-export class FinishOnboardingComponent implements OnInit {
+export class OnboardingHomeComponent implements OnInit {
 
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
@@ -20,7 +20,5 @@ export class FinishOnboardingComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-
   }
-
 }

@@ -3,7 +3,7 @@ import { filter, take } from 'rxjs/operators';
 import { ProfileQuery } from 'src/app/core/state/query';
 
 @Component({
-  selector: 'app-get-started',
+  selector: 'get-started',
   templateUrl: './get-started.component.html',
   styleUrls: ['./get-started.component.scss']
 })
