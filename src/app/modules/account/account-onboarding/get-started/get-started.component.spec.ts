@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccountOnboardingComponent } from './account-onboarding.component';
+import { GetStartedComponent } from './get-started.component';
 
-describe('AccountOnboardingComponent', () => {
-  let component: AccountOnboardingComponent;
-  let fixture: ComponentFixture<AccountOnboardingComponent>;
+describe('GetStartedComponent', () => {
+  let component: GetStartedComponent;
+  let fixture: ComponentFixture<GetStartedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccountOnboardingComponent ]
+      declarations: [ GetStartedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccountOnboardingComponent);
+    fixture = TestBed.createComponent(GetStartedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
