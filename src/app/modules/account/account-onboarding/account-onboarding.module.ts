@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { SendCodeComponent } from './send-code/send-code.component';
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 import { FinishOnboardingComponent } from './finish-onboarding/finish-onboarding.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { FinishOnboardingComponent } from './finish-onboarding/finish-onboarding
   imports: [
     CommonModule,
     AccountOnboardingRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class AccountOnboardingModule { }
