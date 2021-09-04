@@ -10,6 +10,7 @@ import { OnboardingGetStartedComponent } from './onboarding-get-started/onboardi
 import { OnboardingSendCodeComponent } from './onboarding-send-code/onboarding-send-code.component';
 import { OnboardingVerifyAccountComponent } from './onboarding-verify-account/onboarding-verify-account.component';
 import { OnboardingFinishComponent } from './onboarding-finish/onboarding-finish.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { OnboardingFinishComponent } from './onboarding-finish/onboarding-finish
     OnboardingRoutingModule,
     MatStepperModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class OnboardingModule { }
