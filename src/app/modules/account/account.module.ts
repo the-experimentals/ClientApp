@@ -19,19 +19,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { CustomSelectListModule } from '../custom-select-list/custom-select-list.module';
-import { GetStartedComponent } from './account-onboarding/get-started/get-started.component';import { SendCodeComponent } from './account-onboarding/send-code/send-code.component';
-import { VerifyAccountComponent } from './account-onboarding/verify-account/verify-account.component';
-import { FinishOnboardingComponent } from './account-onboarding/finish-onboarding/finish-onboarding.component';
-import { OnboardingHomeComponent } from './account-onboarding/onboarding-home/onboarding-home.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
-  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent, GetStartedComponent,
-    SendCodeComponent,
-    VerifyAccountComponent,
-    FinishOnboardingComponent,
-    OnboardingHomeComponent],
+  declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent],
   imports: [
     CommonModule,
     AccountRoutingModule,

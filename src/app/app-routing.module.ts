@@ -5,7 +5,6 @@ import { ErrorComponent } from './shared/error/error.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import * as Roles from 'src/app/core/constants/roles';
 import { AuthGuard } from './core/guards';
-import { OnboardingHomeComponent } from './modules/account/account-onboarding/onboarding-home/onboarding-home.component';
 
 const routes: Routes = [{
   path:'',

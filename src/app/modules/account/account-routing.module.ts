@@ -5,8 +5,6 @@ import { AccountDashboardComponent } from './account-dashboard/account-dashboard
 import { AccountNewProfileComponent } from './account-new-profile/account-new-profile.component';
 import * as Roles from 'src/app/core/constants/roles';
 import { AccountProfileViewComponent } from './account-profile-view/account-profile-view.component';
-import { GetStartedComponent } from './account-onboarding/get-started/get-started.component';
-import { OnboardingHomeComponent } from './account-onboarding/onboarding-home/onboarding-home.component';
 
 const routes: Routes = [{
   path:'',  
@@ -22,9 +20,6 @@ const routes: Routes = [{
 },{
   path:'view',
   component:AccountProfileViewComponent
-},{
-  path: 'onboard',
-  component: OnboardingHomeComponent
 }];
 
 @NgModule({
