@@ -11,6 +11,8 @@ import { OnboardingSendCodeComponent } from './onboarding-send-code/onboarding-s
 import { OnboardingVerifyAccountComponent } from './onboarding-verify-account/onboarding-verify-account.component';
 import { OnboardingFinishComponent } from './onboarding-finish/onboarding-finish.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatStepperModule,
     MatTooltipModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class OnboardingModule { }
