@@ -63,8 +63,7 @@ export class AuthService {
     return this.httpHelper.post<SignInResponse>("log-in", AUTH, user)
       .pipe(
         map(res => {
-          if(res.IS_AUTHENTICATED){     
-            debugger       
+          if(res.IS_AUTHENTICATED){                        
             this.profileStore.setLoading(true)
             const jwtHelper = new JwtHelperService();
             let profile:Profile = new Profile();

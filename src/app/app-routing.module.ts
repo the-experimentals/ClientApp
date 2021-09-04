@@ -11,8 +11,12 @@ const routes: Routes = [{
   loadChildren:() => import('./modules').then(m => m.AuthModule)
 },{
   path: 'onboard',
+  component: MainLayoutComponent,
   canActivate: [AuthGuard],
-  loadChildren:() => import('./modules').then(m => m.OnboardingModule)
+  children:[{
+    path: '',
+    loadChildren:() => import('./modules').then(m => m.OnboardingModule)
+  }]
 },{
   path:'home',
   component: MainLayoutComponent,

@@ -25,7 +25,8 @@ export class AuthGuard implements CanActivate {
           switchMap(() => {
             return this.authService.getCurrentProfile()
           })
-        ).subscribe(profile => {          
+        ).subscribe(profile => {                
+          state.url
           isAllowed = true    
           isVerified = profile.IS_VERIFIED      
           if(route.data.roles && route.data.roles.indexOf(profile.ROLE) === -1){
@@ -37,6 +38,9 @@ export class AuthGuard implements CanActivate {
         if(!isAllowed){      
           this.router.navigate(['']);
         }
+
+        if(!isVerified && state.url !== '/onboard')
+          this.router.navigate(['/onboard']);
       
       return isAllowed;
   }

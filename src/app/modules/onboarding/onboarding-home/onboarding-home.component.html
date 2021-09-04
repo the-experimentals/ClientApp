@@ -1,36 +1,33 @@
+<div class="container-fluid padding2030 position-relative h-100" fxLayout="column">
+  <header fxFlex="73px">
+      <span class="mat-display-1">Onboarding</span>
+      <hr>
+  </header>  
 
-<div style="max-width: 1440px;"  class="p-3 m-auto h-100">
-    <mat-card class="container-fluid padding2030 position-relative h-100" fxLayout="column">
-        <header fxFlex="73px">
-            <span class="mat-display-1">Onboarding</span>
-            <hr>
-        </header>  
-    
-        <div class="text-center">
-            <mat-stepper labelPosition="bottom" #stepper>
-                <mat-step>
-                  <ng-template matStepLabel>Get started</ng-template>
-                  <ng-template matStepContent>
-                    <onboarding-get-started></onboarding-get-started>
-                  </ng-template>              
-                </mat-step>
-                <mat-step>
-                  <ng-template matStepLabel>Send code</ng-template>
-                  <ng-template matStepContent>
-                    <onboarding-send-code></onboarding-send-code>
-                  </ng-template>                            
-                </mat-step>
-                <mat-step>
-                  <ng-template matStepLabel>Verify account</ng-template>
-                  <onboarding-verify-account></onboarding-verify-account>
-                </mat-step>
-                <mat-step>
-                  <div>
-                    <ng-template matStepLabel>Onboarding complete</ng-template>
-                    <onboarding-finish></onboarding-finish>
-                  </div>
-                </mat-step>
-              </mat-stepper>
-        </div>
-    </mat-card>
+  <div class="text-center">
+      <mat-stepper labelPosition="bottom" #stepper>
+          <mat-step>
+            <ng-template matStepLabel>Get started</ng-template>
+            <ng-template matStepContent>
+              <onboarding-get-started></onboarding-get-started>
+            </ng-template>              
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Send code</ng-template>
+            <ng-template matStepContent>
+              <onboarding-send-code></onboarding-send-code>
+            </ng-template>                            
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Verify account</ng-template>
+            <onboarding-verify-account></onboarding-verify-account>
+          </mat-step>
+          <mat-step>
+            <div>
+              <ng-template matStepLabel>Onboarding complete</ng-template>
+              <onboarding-finish></onboarding-finish>
+            </div>
+          </mat-step>
+        </mat-stepper>
+  </div>
 </div>
