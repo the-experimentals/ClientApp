@@ -10,13 +10,12 @@ import { OnboardingHomeComponent } from './account-onboarding/onboarding-home/on
 
 const routes: Routes = [{
   path:'',  
-  component: AccountDashboardComponent,
-  children:[{
-    path:'new-profile',  
-    component:AccountNewProfileComponent,
-    data: {roles: Roles.ADMIN},
-  }],
+  component: AccountDashboardComponent,  
   data: {roles: Roles.ADMIN},  
+},{
+  path:'new-profile',  
+  component:AccountNewProfileComponent,
+  data: {roles: Roles.ADMIN},
 },{
   path:'change-password',
   component:AccountChangePasswordComponent

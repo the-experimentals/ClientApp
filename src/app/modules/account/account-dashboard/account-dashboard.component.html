@@ -3,7 +3,11 @@
         <span class="mat-display-1">Profiles</span>
         <hr>
     </header>  
-
+    <div style="position: absolute; bottom: 20px; right: 20px;">
+        <button mat-fab color="primary" matTooltip="Add new profile" matTooltipPosition="above" routerLink="/account/new-profile">            
+            <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+    </div>
     <div class="container-fluid" fxLayoutGap="30px">
         <div fxFlex>
             <div class="text-center" *ngIf="profilesData.length > 20">

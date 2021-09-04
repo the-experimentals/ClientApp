@@ -25,6 +25,7 @@ import { FinishOnboardingComponent } from './account-onboarding/finish-onboardin
 import { OnboardingHomeComponent } from './account-onboarding/onboarding-home/onboarding-home.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [AccountChangePasswordComponent, AccountDashboardComponent, AccountNewProfileComponent, AccountProfileCardComponent, AccountProfileViewComponent, GetStartedComponent,
     SendCodeComponent,
@@ -46,7 +47,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     MatSelectModule,
     MatRippleModule,    
     CustomSelectListModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTooltipModule
   ],
   providers: [{
     provide: STEPPER_GLOBAL_OPTIONS,
