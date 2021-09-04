@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       let isAllowed = false;
+      let isVerified = false;
 
       this.authService.isAuthenticated()
         .pipe(
@@ -24,15 +25,16 @@ export class AuthGuard implements CanActivate {
           switchMap(() => {
             return this.authService.getCurrentProfile()
           })
-        ).subscribe(profile => {
-          isAllowed = true          
+        ).subscribe(profile => {          
+          isAllowed = true    
+          isVerified = profile.IS_VERIFIED      
           if(route.data.roles && route.data.roles.indexOf(profile.ROLE) === -1){
             // role not authorised, redirect to no access to resource page      
             isAllowed = false;
           }
         }).unsubscribe()
     
-        if(!isAllowed){
+        if(!isAllowed){      
           this.router.navigate(['']);
         }
       

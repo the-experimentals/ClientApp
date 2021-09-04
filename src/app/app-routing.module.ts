@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AuthModule, AppHomeModule, AccountModule, SettingsModule, PermissionCentreModule} from './modules'
+import {AuthModule, AppHomeModule, AccountModule, SettingsModule, PermissionCentreModule, OnboardingModule} from './modules'
 import { ErrorComponent } from './shared/error/error.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import * as Roles from 'src/app/core/constants/roles';
 import { AuthGuard } from './core/guards';
+import { OnboardingHomeComponent } from './modules/account/account-onboarding/onboarding-home/onboarding-home.component';
 
 const routes: Routes = [{
   path:'',
   loadChildren:() => import('./modules').then(m => m.AuthModule)
+},{
+  path: 'onboard',
+  canActivate: [AuthGuard],
+  loadChildren:() => import('./modules').then(m => m.OnboardingModule)
 },{
   path:'home',
   component: MainLayoutComponent,

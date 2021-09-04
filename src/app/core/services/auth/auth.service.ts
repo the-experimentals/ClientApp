@@ -63,7 +63,8 @@ export class AuthService {
     return this.httpHelper.post<SignInResponse>("log-in", AUTH, user)
       .pipe(
         map(res => {
-          if(res.IS_AUTHENTICATED){            
+          if(res.IS_AUTHENTICATED){     
+            debugger       
             this.profileStore.setLoading(true)
             const jwtHelper = new JwtHelperService();
             let profile:Profile = new Profile();
@@ -73,6 +74,7 @@ export class AuthService {
             profile.ROLE = decodedToken.role
             profile.PERMISSIONS.push(decodedToken.Permission)
             profile.TOKEN = res.TOKEN;
+            profile.IS_VERIFIED = res.IS_VERIFIED
 
             localStorage.setItem("currentUser", JSON.stringify(profile));
 
