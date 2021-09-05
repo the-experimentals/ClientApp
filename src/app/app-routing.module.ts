@@ -13,10 +13,11 @@ const routes: Routes = [{
   path: 'onboard',
   component: MainLayoutComponent,
   canActivate: [AuthGuard],
-  children:[{
+  children: [{
     path: '',
     loadChildren:() => import('./modules').then(m => m.OnboardingModule)
   }]
+  
 },{
   path:'home',
   component: MainLayoutComponent,

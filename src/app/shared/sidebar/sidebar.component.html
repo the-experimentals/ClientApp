@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <mat-nav-list class="text-center">
+    <mat-nav-list class="text-center" *ngIf="isVerified">
         <mat-list-item routerLink="/home">
             <fa-icon [icon]="faHome" matTooltip="Home" matTooltipPosition="right" class="animate__animated animate__zoomIn animate__faster"></fa-icon>
         </mat-list-item>
@@ -12,10 +12,10 @@
     </mat-nav-list>
 
     <mat-nav-list class="bottom-list">
-        <mat-list-item *ngIf="isAdmin">
+        <mat-list-item *ngIf="isAdmin && isVerified">
             <fa-icon routerLink="/permission-center" [icon]="faShieldAlt" matTooltip="Permission center" matTooltipPosition="right" class="animate__animated animate__zoomIn animate__faster"></fa-icon>
         </mat-list-item>
-        <mat-list-item *ngIf="isAdmin">
+        <mat-list-item *ngIf="isAdmin && isVerified">
             <fa-icon routerLink="/settings" [icon]="faCog" matTooltip="Settings" matTooltipPosition="right" class="animate__animated animate__zoomIn animate__faster"></fa-icon>
         </mat-list-item>
         <mat-list-item>

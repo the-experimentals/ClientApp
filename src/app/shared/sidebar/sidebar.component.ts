@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   faShieldAlt = faShieldAlt
   initials:string = "";
   isAdmin:boolean = false;
-
+  isVerified: boolean = false;
   constructor(private profileQuery:ProfileQuery) {
     this.profileQuery.getProfile().pipe(
       take(1),
@@ -28,6 +28,7 @@ export class SidebarComponent implements OnInit {
     ).subscribe(profile => {    
       this.initials = profile.NAME[0].toUpperCase()    
       this.isAdmin = profile.ROLE == Roles.ADMIN   
+      this.isVerified = profile.IS_VERIFIED
     }).unsubscribe()
   }
 
