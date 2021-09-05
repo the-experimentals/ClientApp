@@ -15,7 +15,7 @@
           <mat-step>
             <ng-template matStepLabel>Send code</ng-template>
             <ng-template matStepContent>
-              <onboarding-send-code></onboarding-send-code>
+              <onboarding-send-code (changeStep)="stepper.next()"></onboarding-send-code>
             </ng-template>                            
           </mat-step>
           <mat-step>
