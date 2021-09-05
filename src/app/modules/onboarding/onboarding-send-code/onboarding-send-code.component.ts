@@ -35,8 +35,7 @@ export class OnboardingSendCodeComponent implements OnInit {
         alertData.MESSAGE = "OTP(Verification code) has been sent successfully to registered email."
 
         const dialogRef = this.alertDialogService.successAlert(alertData)
-        dialogRef.afterClosed().subscribe(res =>{
-          // this.router.navigate(['/home'])
+        dialogRef.afterClosed().subscribe(res =>{    
           this.changeStep.emit()     
         })
       }

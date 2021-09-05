@@ -20,7 +20,7 @@
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Verify account</ng-template>
-            <onboarding-verify-account></onboarding-verify-account>
+            <onboarding-verify-account (changeStep)="stepper.next()"></onboarding-verify-account>
           </mat-step>
           <mat-step>
             <div>

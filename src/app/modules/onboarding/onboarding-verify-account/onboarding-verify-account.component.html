@@ -6,45 +6,27 @@
     <div style="width: 400px;" class="m-auto">
         <img src="assets/illustrations/tfa.svg">
     </div> 
+    <form [formGroup]="verificationCodeForm">
+        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
+            <input matInput formControlName="CH1" maxlength="1" autofocus>            
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">            
+            <input matInput formControlName="CH2"  maxlength="1">            
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">            
+            <input matInput formControlName="CH3" maxlength="1">            
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">            
+            <input matInput formControlName="CH4" maxlength="1">            
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">            
+            <input matInput formControlName="CH5" maxlength="1">            
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">            
+            <input matInput formControlName="CH6" maxlength="1">            
+        </mat-form-field>
+    </form>
     <div>
-        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
-            <!-- <mat-label>Outline form field</mat-label> -->
-            <input matInput maxlength="1" autofocus>
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
-            <!-- <mat-label>Outline form field</mat-label> -->
-            <input matInput maxlength="1">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
-            <!-- <mat-label>Outline form field</mat-label> -->
-            <input matInput maxlength="1">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
-            <!-- <mat-label>Outline form field</mat-label> -->
-            <input matInput maxlength="1">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
-            <!-- <mat-label>Outline form field</mat-label> -->
-            <input matInput maxlength="1">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="width: 35px;" class="me-2">
-            <!-- <mat-label>Outline form field</mat-label> -->
-            <input matInput maxlength="1">
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Hint</mat-hint> -->
-        </mat-form-field>
-    </div>
-    <div>
-        <button mat-raised-button color="primary" matStepperNext>Verify</button>
+        <button mat-raised-button color="primary" (click)="verifyProfile()">Verify</button>
     </div>
 </div>
