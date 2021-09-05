@@ -9,7 +9,7 @@
         </button>
     </div>
     <div class="container-fluid" fxLayoutGap="30px">
-        <div fxFlex>
+        <div fxFlex *ngIf="profilesData.length > 0">
             <div class="text-center" *ngIf="profilesData.length > 20">
                 <mat-form-field appearance="outline" class="w-50">
                     <fa-icon [icon]="faSearch" matPrefix></fa-icon>
@@ -24,6 +24,13 @@
                         <account-profile-card [cardData]="data"></account-profile-card>
                     </div>                                    
                 </div>
+            </div>
+        </div>
+
+        <div fxFlex *ngIf="profilesData.length == 0">
+            <div style="width: 500px;" class="centralize text-center">
+                <img src="assets/illustrations/empty-illustration.svg">
+                <span class="mat-display-1 display-block m-0">No profile to view.</span>
             </div>
         </div>
     </div>
