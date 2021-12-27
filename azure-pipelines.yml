@@ -1,7 +1,7 @@
 name: ClientApp
 
 trigger:
-- main
+- master
 
 resources:
   repositories:
