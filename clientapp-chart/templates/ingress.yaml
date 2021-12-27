@@ -38,7 +38,7 @@ spec:
           #     servicePort: {{ $svcPort }}
           # {{- end }}
 
-          - path: /
+          - path: /app
             pathType: Prefix
             backend:
               service:
