@@ -14,8 +14,9 @@
         </div>
     </div>
     <div class="text-end ps-2 pe-2 mt-3 actions container-fluid">
+        <!-- <span class="mat-small"></span> -->
         <div fxFlex class="action-delete">
-            <button mat-stroked-button color="warn" class="w-100">Delete</button>
+            <button mat-stroked-button color="warn" class="w-100" (click)="deleteProfile(cardData.PROFILE_ID)">Delete</button>
         </div>
         <div fxFlex>
             <button mat-raised-button color="primary" class="w-100" (click)="viewProfile()">View</button>

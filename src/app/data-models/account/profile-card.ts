@@ -1,4 +1,13 @@
 export class ProfileCard{
+    
+    private _PROFILE_ID! : string;
+    public get PROFILE_ID() : string {
+        return this._PROFILE_ID;
+    }
+    public set PROFILE_ID(v : string) {
+        this._PROFILE_ID = v;
+    }
+    
     private _USERNAME! : string;
     public get USERNAME() : string {
         return this._USERNAME;
