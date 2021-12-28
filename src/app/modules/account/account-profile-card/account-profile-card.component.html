@@ -1,29 +1,3 @@
-<!-- <div class="profile-card">
-    <div style=" width: fit-content; position: absolute; right: 10px;">
-        <fa-icon [icon]="faCog" class="pointer"></fa-icon>
-    </div>
-    <div class="profile-icon">
-        <span class="initials">{{cardData.INITIALS}}</span>
-    </div>   
-    <div class="padding1015">
-        <span class="mat-h1 display-block m-0">{{cardData.NAME}}</span>
-        <span class="mat-body display-block m-0">@{{cardData.USERNAME}}</span>
-    </div>            
-    <div>
-        <button mat-raised-button class="w-100" color="primary">View</button>
-    </div> 
-</div>
- -->
-
- <!-- <div fxFlex="50px" class="position-relative">
-    <div style="height: 50px; width: 50px;border-radius: 50%; border: 1px solid red;" class="vertical-center">
-    </div>
-</div>
-<div fxFlex class="">
-    <span class="mat-h1 display-block m-0">Bibek Saini</span>
-    <span class="mat-small display-block m-0">Bibek Saini</span>
-</div> -->
-
 <div class="profile-card" fxLayout="column">
     <div class="gear-options">
         <fa-icon [icon]="faCog" class="pointer"></fa-icon>
@@ -39,7 +13,12 @@
             <span class="mat-small display-block m-0">@{{cardData.USERNAME}}</span>
         </div>
     </div>
-    <div class="text-end ps-2 pe-2 mt-3 actions">
-        <button mat-raised-button color="secondary" class="w-100" (click)="viewProfile()">View</button>
+    <div class="text-end ps-2 pe-2 mt-3 actions container-fluid">
+        <div fxFlex class="action-delete">
+            <button mat-stroked-button color="warn" class="w-100">Delete</button>
+        </div>
+        <div fxFlex>
+            <button mat-raised-button color="primary" class="w-100" (click)="viewProfile()">View</button>
+        </div>
     </div>
 </div>

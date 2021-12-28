@@ -6,6 +6,7 @@
   background-color: var(--combo-black-white);
   position: relative;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   & .gear-options {
     width: fit-content;
@@ -17,10 +18,14 @@
 
   & .actions {
     display: none;
+
+    & .action-delete {
+      display: none;
+    }
   }
   &:hover {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
-    background-color: var(--combo-white-blue-500);
+    // background-color: var(--combo-white-blue-500);
     color: #1b1c1e;
     position: absolute;
     z-index: 1;
@@ -30,6 +35,11 @@
     & .gear-options,
     .actions {
       display: block;
+
+      & .action-delete {
+        display: block;
+        margin-right: 0.5rem;
+      }
     }
   }
 
