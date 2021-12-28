@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { ProfileCard } from 'src/app/data-models/account';
 
@@ -11,9 +12,13 @@ export class AccountProfileCardComponent implements OnInit {
 
   faCog = faCog
   @Input() cardData!: ProfileCard
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  viewProfile() {
+    this.router.navigate(['/account/view'])  
   }
 
 }
