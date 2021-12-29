@@ -1,0 +1,23 @@
+<div>
+    <header class="text-center position-relative shadow-1">
+        <fa-icon [icon]="faTimes" class="position-absolute pointer" mat-dialog-close style="top: 6px;left: 10px;"></fa-icon>
+        <span mat-dialog-title class="m-0">Confirm</span>
+        <hr class="m-0"/>
+    </header>
+    <div class="padding2030 text-center">                
+        <span class="mat-body display-block mt-1">
+            {{data.MESSAGE}}            
+        </span>
+        <hr>
+        
+        <div class="container-fluid" fxLayoutGap="5px" fxLayouAlign="center">
+            <div fxFlex>
+                <button mat-stroked-button class=" w-100" color="secondary" mat-dialog-close>Cancel</button>
+            </div>
+            <div fxFlex>
+                <button mat-raised-button class=" w-100" color="warn" mat-dialog-close (click)="confirm()">Yes</button>
+            </div>
+        </div>
+    </div>
+    
+</div>
