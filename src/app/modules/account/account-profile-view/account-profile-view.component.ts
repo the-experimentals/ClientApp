@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faIdBadge } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-account-profile-view',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountProfileViewComponent implements OnInit {
 
+  faIdBadge = faIdBadge
   constructor() { }
 
   ngOnInit(): void {
