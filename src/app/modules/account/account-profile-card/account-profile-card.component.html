@@ -8,9 +8,9 @@
                 <span class="initials">{{cardData.INITIALS}}</span>
             </div>
         </div>
-        <div fxFlex class="">
-            <span class="mat-h1 display-block m-0">{{cardData.NAME}}</span>
-            <span class="mat-small display-block m-0">@{{cardData.USERNAME}}</span>
+        <div fxFlex class="" style="overflow: hidden;">
+            <span class="mat-h1 display-block m-0 truncate" >{{cardData.NAME}}</span>
+            <span class="mat-small display-block m-0 truncate">@{{cardData.USERNAME}}</span>
         </div>
     </div>
     <div class="text-end ps-2 pe-2 mt-3 actions container-fluid">
