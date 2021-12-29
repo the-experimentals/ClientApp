@@ -1,7 +1,6 @@
 name: ClientApp
 
-# trigger:
-# - master
+trigger: none
 
 resources:
   repositories:
