@@ -7,16 +7,19 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
 @NgModule({
-  declarations: [SuccessDialogComponent, WarningDialogComponent, InfoDialogComponent, ErrorDialogComponent],
+  declarations: [SuccessDialogComponent, WarningDialogComponent, InfoDialogComponent, ErrorDialogComponent, ConfirmationDialogComponent],
   imports: [
     CommonModule,
     FontAwesomeModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ]
 })
 export class AlertDialogModule { }

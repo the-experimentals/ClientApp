@@ -26,14 +26,21 @@ export class AccountProfileCardComponent implements OnInit {
   }
 
   deleteProfile(profileID:string){
-    this.httpHelper.patch(DELETE_PROFILE,ACCOUNT,{"PROFILE_ID" : profileID}).subscribe(res=>{
-      let alertData: AlertData = new AlertData();
-      alertData.MESSAGE = "Profile deleted successfully";
-      const dialogRef = this.alertDialog.successAlert(alertData)
 
-      // dialogRef.afterClosed().subscribe(res =>{
-      //   this.router.navigate(['/account']);
-      // })
+    let confirmationBox: AlertData = new AlertData();
+    confirmationBox.MESSAGE = "Are you sure you want to delete this profile?";
+    this.alertDialog.conformationAlert(confirmationBox).afterClosed().subscribe(result => {
+      if(result.event == "CONFIRM"){
+        this.httpHelper.patch(DELETE_PROFILE,ACCOUNT,{"PROFILE_ID" : profileID}).subscribe(res=>{
+          let alertData: AlertData = new AlertData();
+          alertData.MESSAGE = "Profile deleted successfully";
+          const dialogRef = this.alertDialog.successAlert(alertData)
+
+          // dialogRef.afterClosed().subscribe(res =>{
+          //   this.router.navigate(['/account']);
+          // })
+        })
+      }
     })
   }
 
