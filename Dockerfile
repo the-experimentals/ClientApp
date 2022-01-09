@@ -1,6 +1,6 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:lts-alpine3.12 as build-stage
-EXPOSE 80
+EXPOSE 5000
 WORKDIR /app
 COPY package*.json /app/
 RUN npm install
