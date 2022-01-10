@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faQuestion, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faExclamationTriangle, faQuestion, faTimes, faUserTimes } from '@fortawesome/free-solid-svg-icons';
 import { AlertData } from '../data-models/alert-data';
 
 @Component({
@@ -12,6 +12,7 @@ import { AlertData } from '../data-models/alert-data';
 export class ConfirmationDialogComponent implements OnInit {
 
   faTimes = faTimes
+  faExclamationTriangle = faUserTimes
 
   constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: AlertData) { }
