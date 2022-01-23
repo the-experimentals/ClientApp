@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { faKey, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { of } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
-import { AuthService } from 'src/app/core/services';
+import { AlertDialogService, AuthService } from 'src/app/core/services';
 import { ProfileQuery } from 'src/app/core/state/query';
+import { AlertData } from 'src/app/modules/alert-dialog/data-models/alert-data';
 
 @Component({
   selector: 'user-options',
@@ -19,7 +20,10 @@ export class UserOptionsComponent implements OnInit {
 
   faKey = faKey
   faPowerOff = faPowerOff
-  constructor(private profileQuery:ProfileQuery, private authService: AuthService, private router:Router) {
+  constructor(private profileQuery:ProfileQuery, 
+              private authService: AuthService, 
+              private router:Router,
+              private alertDialog:AlertDialogService) {
     profileQuery.getProfile().pipe(
       take(1),
       filter(profile => profile !== undefined)
@@ -34,7 +38,16 @@ export class UserOptionsComponent implements OnInit {
   }
 
   signOut(){    
-    this.authService.logout();
-    this.router.navigate(['']);
+    let confirmationBox: AlertData = new AlertData();
+    confirmationBox.MESSAGE = "Are you sure you want to sign out from application?";
+    confirmationBox.ICON = faPowerOff
+
+    this.alertDialog.conformationAlert(confirmationBox).afterClosed().subscribe(result => {
+      if(result.event == "CONFIRM"){
+          this.authService.logout();
+          this.router.navigate(['']);
+      }
+    })
   }
+  
 }

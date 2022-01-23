@@ -8,4 +8,13 @@ export class AlertData{
         this._MESSAGE = v;
     }
     
+    private _ICON! : any;
+    public get ICON() : any {
+        return this._ICON;
+    }
+    public set ICON(v : any) {
+        this._ICON = v;
+    }
+    
+    
 }

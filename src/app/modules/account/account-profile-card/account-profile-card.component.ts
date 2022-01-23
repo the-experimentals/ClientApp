@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { DELETE_PROFILE } from 'src/app/core/constants/actions/account';
 import { ACCOUNT } from 'src/app/core/constants/controllers';
 import { AlertDialogService, HttpHelperService } from 'src/app/core/services';
@@ -29,6 +29,7 @@ export class AccountProfileCardComponent implements OnInit {
 
     let confirmationBox: AlertData = new AlertData();
     confirmationBox.MESSAGE = "Are you sure you want to delete this profile?";
+    confirmationBox.ICON = faExclamationTriangle
     this.alertDialog.conformationAlert(confirmationBox).afterClosed().subscribe(result => {
       if(result.event == "CONFIRM"){
         this.httpHelper.patch(DELETE_PROFILE,ACCOUNT,{"PROFILE_ID" : profileID}).subscribe(res=>{
