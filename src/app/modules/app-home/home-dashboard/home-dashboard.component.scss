@@ -1,0 +1,11 @@
+.home-wrapper {
+  height: 100%;
+  position: relative;
+  & .home-illustration {
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
