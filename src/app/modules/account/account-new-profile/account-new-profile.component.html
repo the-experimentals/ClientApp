@@ -1,4 +1,4 @@
-<form [formGroup]="newProfileForm" class="container-fluid p-0 h-100" fxLayout="column">
+<!-- <form [formGroup]="newProfileForm" class="container-fluid p-0 h-100" fxLayout="column">
     <div fxFlex class="padding2030 scrollable">
         <header>
             <div>
@@ -123,4 +123,35 @@
         <button mat-raised-button color="primary" routerLink="/account/new-profile" (click)="createProfile()">Save</button>    
        </div>
     </div>
-</form>
+</form> -->
+
+<div class="h-100" style="overflow: hidden; overflow-y: auto;">
+    <header class="container-fluid p-0">
+        <div fxFlex="40px" class="text-center" style="position: relative;">
+            <fa-icon [icon]="faTimes" class="pointer centralize" style="font-size: 1.2rem;" routerLink="/account"></fa-icon>
+        </div>
+        <div fxFlex class="text-center padding1015">
+            <span class="mat-h1">New profile</span>
+        </div>
+    </header>
+    <hr class="m-0">
+
+    <div class="h-100">
+        <header class="text-center padding1015">
+            <span class="mat-h4 m-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </span>
+            <hr class="mb-0"/>
+        </header>
+
+        <div class="padding1015" *ngIf="createNewProfileErrors.length > 0">
+            <div class="alert alert-danger mb-0 margin-auto" style="width: 320px;">
+                <ul class="m-0 p-0" style="list-style-type: none;">
+                    <li *ngFor = "let error of createNewProfileErrors">
+                        {{error}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

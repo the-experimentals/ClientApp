@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import { CREATE_NEW_PROFILE } from 'src/app/core/constants/actions/account';
 import { ACCOUNT } from 'src/app/core/constants/controllers';
 import { AlertDialogService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
@@ -12,13 +12,14 @@ import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/load
 import { AlertData } from '../../alert-dialog/data-models/alert-data';
 
 @Component({
-  selector: 'app-account-new-profile',
+  selector: 'account-new-profile',
   templateUrl: './account-new-profile.component.html',
   styleUrls: ['./account-new-profile.component.scss'],
 })
 export class AccountNewProfileComponent implements OnInit {
 
   faLongArrowAltLeft = faLongArrowAltLeft
+  faTimes = faTimes
   faIdBadge = faIdBadge
   faUser = faUser
   faKey = faKey
