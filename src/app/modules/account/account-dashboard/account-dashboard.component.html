@@ -4,15 +4,11 @@
         <hr>
     </header>  
     <div class="new-profile-button">
-        <button mat-fab color="primary" matTooltip="Add new profile" matTooltipPosition="above" (click)="showNewProfilePanel()">            
+        <button mat-fab color="primary" matTooltip="Add new profile" matTooltipPosition="above" (click)="toggleNewProfilePanel()">            
             <fa-icon [icon]="faPlus" class="icon-21"></fa-icon>
         </button>
     </div>
-    <!-- <mat-card fxFlex class="new-profile-panel p-0 animate__animated animate__slideInRight animate__faster" *ngIf="createNewProfile">
-        <account-new-profile></account-new-profile>
-    </mat-card> -->
-
-    <account-new-profile *ngIf="createNewProfile"></account-new-profile>
+    <account-new-profile *ngIf="createNewProfile" (toggleNewProfilePanel)="toggleNewProfilePanel($event)"></account-new-profile>
     <div class="container-fluid position-relative h-100" fxLayoutGap="30px">
         <div fxFlex *ngIf="profilesData.length > 0">
             <div class="text-center" *ngIf="profilesData.length > 20">

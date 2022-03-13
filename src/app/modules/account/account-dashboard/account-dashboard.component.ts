@@ -70,8 +70,14 @@ export class AccountDashboardComponent implements OnInit {
       )
   }
 
-  showNewProfilePanel(){
-    this.createNewProfile = true
+  toggleNewProfilePanel(state?: boolean){
+
+
+    if(state == undefined)
+      this.createNewProfile = true
+    else
+      this.createNewProfile = state
   }
+  
 
 }

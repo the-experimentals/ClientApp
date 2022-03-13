@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,8 @@ import { AlertData } from '../../alert-dialog/data-models/alert-data';
   styleUrls: ['./account-new-profile.component.scss'],
 })
 export class AccountNewProfileComponent implements OnInit {
+
+  @Output() toggleNewProfilePanel;
 
   faLongArrowAltLeft = faLongArrowAltLeft
   faTimes = faTimes
@@ -73,6 +75,8 @@ export class AccountNewProfileComponent implements OnInit {
               @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
               private alertDialog:AlertDialogService) { 
 
+    
+    this.toggleNewProfilePanel = new EventEmitter<boolean>();
     this.dyanamicContentLoading.setRootViewContainerRef(ViewContainerRef);  
 
     this.newProfileForm = this.createNewProfileForm()
@@ -167,5 +171,9 @@ export class AccountNewProfileComponent implements OnInit {
         }
       })
     }
+  }
+
+  hidePanel(){
+    this.toggleNewProfilePanel.emit(false)
   }
 }
