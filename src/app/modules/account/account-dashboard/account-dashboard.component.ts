@@ -20,9 +20,10 @@ export class AccountDashboardComponent implements OnInit {
   faUser = faUser
   faSearch = faSearch
 
-  profilesData:ProfileCard[];
-  profileCount:number = 0;
-  isLoading:boolean = false;
+  createNewProfile = false
+  profilesData:ProfileCard[]
+  profileCount:number = 0
+  isLoading:boolean = false
 
   constructor(private httpHelper:HttpHelperService, 
               private customSelectListService:CustomSelectListService,
@@ -67,6 +68,10 @@ export class AccountDashboardComponent implements OnInit {
           this.isLoading = false 
         }
       )
+  }
+
+  showNewProfilePanel(){
+    this.createNewProfile = true
   }
 
 }
