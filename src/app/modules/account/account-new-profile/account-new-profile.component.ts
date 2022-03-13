@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, OnInit, Output, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faTimes, faUser, faUserTimes } from '@fortawesome/free-solid-svg-icons';
 import { CREATE_NEW_PROFILE } from 'src/app/core/constants/actions/account';
 import { ACCOUNT } from 'src/app/core/constants/controllers';
 import { AlertDialogService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
@@ -174,6 +174,17 @@ export class AccountNewProfileComponent implements OnInit {
   }
 
   hidePanel(){
-    this.toggleNewProfilePanel.emit(false)
+
+    let confirmationBox: AlertData = new AlertData();
+    confirmationBox.MESSAGE = "Are you sure you want to cancel creating new profile?";
+    confirmationBox.ICON = faUserTimes
+
+    this.alertDialog.conformationAlert(confirmationBox).afterClosed().subscribe(result => {
+      if(result.event == "CONFIRM"){
+        this.toggleNewProfilePanel.emit(false)      
+      }
+    })
+
+    
   }
 }
