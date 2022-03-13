@@ -11,10 +11,6 @@ const routes: Routes = [{
   component: AccountDashboardComponent,  
   data: {roles: Roles.ADMIN},  
 },{
-  path:'new-profile',  
-  component:AccountNewProfileComponent,
-  data: {roles: Roles.ADMIN},
-},{
   path:'change-password',
   component:AccountChangePasswordComponent
 },{

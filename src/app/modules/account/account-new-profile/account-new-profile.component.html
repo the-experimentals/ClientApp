@@ -1,151 +1,30 @@
-<!-- <form [formGroup]="newProfileForm" class="container-fluid p-0 h-100" fxLayout="column">
-    <div fxFlex class="padding2030 scrollable">
-        <header>
-            <div>
-                <fa-icon [icon]="faLongArrowAltLeft" class="pointer" style="font-size: 2rem;" routerLink="/account"></fa-icon>
-            </div>
-            <span class="mat-display-1">New profile</span>
-            <hr/>
-        </header>
 
-        <div style="width: 800px;" class="margin-auto">
-            <header class="text-center">
+<div class="new-profile-overlay animate__animated animate__slideInRight animate__faster">
+</div>
+
+<mat-card class="new-profile-panel p-0 animate__animated animate__slideInRight animate__faster">
+    <form [formGroup]="newProfileForm" class="container-fluid h-100 p-0" style="width: 480px !important;" fxLayout="column" fxFlexFill>
+        <div>
+            <header class="p-0 shadow-1 position-relative">
+                <div class="text-center vertical-center" style="left: 5px;">
+                    <button mat-icon-button (click)="hidePanel()">
+                        <fa-icon [icon]="faTimes" class="pointer" style="font-size: 1.2rem;" routerLink="/account"></fa-icon>
+                    </button>
+                </div>
+                <div class="text-center padding1015">
+                    <span class="mat-h1">New profile</span>
+                </div>
+            </header>
+        </div>
+        <div>
+            <header class="text-center padding1015">
                 <span class="mat-h4 m-0">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </span>
-                <hr class="m-0"/>
+                <hr class="mb-0"/>
             </header>
-            <div class="padding1015" *ngIf="createNewProfileErrors.length > 0">
-                <div class="alert alert-danger mb-0 margin-auto" style="width: 320px;">
-                    <ul class="m-0 p-0" style="list-style-type: none;">
-                        <li *ngFor = "let error of createNewProfileErrors">
-                            {{error}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <mat-tab-group mat-align-tabs="center">
-                <mat-tab>
-                <ng-template mat-tab-label>
-                    <fa-icon [icon]="faIdBadge" style="font-size: 21px;" class="me-1"></fa-icon>                 
-                    Account information
-                </ng-template>                
-                </mat-tab>
-            </mat-tab-group>
-            <div class="padding2030 container-fluid">
-                <div class="row">
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100 mb-3"> 
-                            <mat-label>Username</mat-label>
-                            <fa-icon [icon]="faUser" matPrefix></fa-icon>
-                            <input matInput formControlName="USERNAME">     
-                            <mat-error *ngIf="(isCreateProfileAttempt || (USERNAME != null && USERNAME.touched)) && newProfileFormErrors.USERNAME">
-                                {{newProfileFormErrors.USERNAME}}
-                            </mat-error>                   
-                          </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100"> 
-                            <mat-label>Password</mat-label>
-                            <fa-icon [icon]="faKey" matPrefix></fa-icon>
-                            <input matInput formControlName="PASSWORD" type="{{ (SHOW_PASSWORD !== null && SHOW_PASSWORD.value) ? 'text' : 'password' }}" (change)="checkPwnedPassword()">                        
-                            <mat-error *ngIf="(isCreateProfileAttempt || (PASSWORD != null && PASSWORD.touched)) && newProfileFormErrors.PASSWORD">
-                                {{newProfileFormErrors.PASSWORD}}
-                            </mat-error> 
-                          </mat-form-field>
-                    </div>
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100"> 
-                            <mat-label>Confirm password</mat-label>
-                            <fa-icon [icon]="faKey" matPrefix></fa-icon>
-                            <input matInput formControlName="CONFIRM_PASSWORD" type="{{ (SHOW_PASSWORD !== null && SHOW_PASSWORD.value) ? 'text' : 'password' }}">                        
-                            <mat-error *ngIf="(isCreateProfileAttempt || (CONFIRM_PASSWORD != null && CONFIRM_PASSWORD.touched)) && newProfileFormErrors.CONFIRM_PASSWORD">
-                                {{newProfileFormErrors.CONFIRM_PASSWORD}}
-                            </mat-error> 
-                          </mat-form-field>
-                    </div>     
-                    <div class="col-12 mb-3">
-                        <mat-checkbox color="primary" formControlName="SHOW_PASSWORD" >Show password</mat-checkbox>
-                    </div>               
-                </div>                
-                <div class="row">
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100 mb-3"> 
-                            <mat-label>First name</mat-label>
-                            <fa-icon [icon]="faUser" matPrefix></fa-icon>
-                            <input matInput formControlName="FIRST_NAME"> 
-                            <mat-error *ngIf="(isCreateProfileAttempt || (FIRST_NAME != null && FIRST_NAME.touched)) && newProfileFormErrors.FIRST_NAME">
-                                {{newProfileFormErrors.FIRST_NAME}}
-                            </mat-error>                        
-                          </mat-form-field>
-                    </div>
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100 mb-3"> 
-                            <mat-label>Last name</mat-label>
-                            <fa-icon [icon]="faUser" matPrefix></fa-icon>
-                            <input matInput formControlName="LAST_NAME">   
-                            <mat-error *ngIf="(isCreateProfileAttempt || (LAST_NAME != null && LAST_NAME.touched)) && newProfileFormErrors.LAST_NAME">
-                                {{newProfileFormErrors.LAST_NAME}}
-                            </mat-error>                      
-                          </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100 mb-3">
-                            <mat-label>Language</mat-label>
-                            <fa-icon [icon]="faLanguage" matPrefix></fa-icon>
-                            <mat-select>                        
-                              <mat-option value="us-EN" selected>
-                                English
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </div>
-                    <div class="col-6">
-                        <mat-form-field appearance="outline" class="w-100 mb-3"> 
-                            <mat-label>Email</mat-label>
-                            <fa-icon [icon]="faEnvelope" matPrefix></fa-icon>
-                            <input matInput formControlName="EMAIL">  
-                            <mat-error *ngIf="(isCreateProfileAttempt || (EMAIL != null && EMAIL.touched)) && newProfileFormErrors.EMAIL">
-                                {{newProfileFormErrors.EMAIL}}
-                            </mat-error>                       
-                          </mat-form-field>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-    <div fxFlex="60px" >
-       <div class="text-end padding1015 shadow-1">
-        <button mat-raised-button color="primary" routerLink="/account/new-profile" (click)="createProfile()">Save</button>    
-       </div>
-    </div>
-</form> -->
-
-<div [formGroup]="newProfileForm" class="h-100" style="overflow: hidden; overflow-y: auto;">
-    <header class="p-0" style="position: relative;">
-        <div class="text-center vertical-center" style="left: 5px;">
-            <button mat-icon-button>
-                <fa-icon [icon]="faTimes" class="pointer" style="font-size: 1.2rem;" routerLink="/account"></fa-icon>
-            </button>
-        </div>
-        <div class="text-center padding1015">
-            <span class="mat-h1">New profile</span>
-        </div>
-    </header>
-    <hr class="m-0">
-
-    <div>
-        <header class="text-center padding1015">
-            <span class="mat-h4 m-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </span>
-            <hr class="mb-0"/>
-        </header>
-
+    
         <div class="padding1015" *ngIf="createNewProfileErrors.length > 0">
             <div class="alert alert-danger mb-0 margin-auto" style="width: 320px;">
                 <ul class="m-0 p-0" style="list-style-type: none;">
@@ -155,16 +34,7 @@
                 </ul>
             </div>
         </div>
-        <mat-tab-group mat-align-tabs="center">
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <fa-icon [icon]="faIdBadge" style="font-size: 21px;" class="me-1"></fa-icon>                 
-                    Account information
-                </ng-template>                
-            </mat-tab>
-        </mat-tab-group>
-
-        <div class="padding2030 container-fluid mb-3">
+        <div class="padding2030 container-fluid" style="margin-bottom: 4rem;overflow: hidden;overflow-y: scroll;" fxFlex>
             <div class="row">
                 <div class="col-6">
                     <mat-form-field appearance="outline" class="w-100 mb-3"> 
@@ -226,7 +96,7 @@
             </div>   
             <div class="row">
                 <div class="col-6">
-                    <mat-form-field appearance="outline" class="w-100 mb-3">
+                    <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Language</mat-label>
                         <fa-icon [icon]="faLanguage" matPrefix></fa-icon>
                         <mat-select>                        
@@ -237,7 +107,7 @@
                       </mat-form-field>
                 </div>
                 <div class="col-6">
-                    <mat-form-field appearance="outline" class="w-100 mb-3"> 
+                    <mat-form-field appearance="outline" class="w-100"> 
                         <mat-label>Email</mat-label>
                         <fa-icon [icon]="faEnvelope" matPrefix></fa-icon>
                         <input matInput formControlName="EMAIL">  
@@ -248,11 +118,10 @@
                 </div>
             </div>               
         </div>
-    </div>
-    <footer  style="position: absolute;width: 100%;bottom: 0;z-index: 1;background-color: #fff;">
-        <div class="text-end padding1015 shadow-1">
-        <button mat-raised-button color="primary" routerLink="/account/new-profile" (click)="createProfile()">Save</button>    
-        </div>
-    </footer>
     
-</div>
+        <mat-card  style="position: absolute;width: 100%;bottom: 0" class="text-end padding1015">
+            <button mat-raised-button color="primary" (click)="createProfile()">Save</button>    
+        </mat-card>
+    </form>
+</mat-card>    
+

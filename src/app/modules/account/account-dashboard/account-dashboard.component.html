@@ -1,17 +1,15 @@
 <div class="container-fluid padding2030 position-relative h-100" fxLayout="column">    
-    <div style="position: absolute;width:500px;top:0;right:0;bottom: 0;z-index: 1;background-color: #fff; box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;border-radius: 0.25rem;" class="animate__animated animate__slideInRight animate__faster">
-        <account-new-profile></account-new-profile>
-    </div>
     <header fxFlex="73px">
         <span class="mat-display-1">Profiles</span>
         <hr>
     </header>  
-    <div style="position: absolute; bottom: 20px; right: 20px;">
-        <button mat-fab color="primary" matTooltip="Add new profile" matTooltipPosition="above" routerLink="/account/new-profile">            
+    <div class="new-profile-button">
+        <button mat-fab color="primary" matTooltip="Add new profile" matTooltipPosition="above" (click)="toggleNewProfilePanel()">            
             <fa-icon [icon]="faPlus" class="icon-21"></fa-icon>
         </button>
     </div>
-    <div class="container-fluid" fxLayoutGap="30px">
+    <account-new-profile *ngIf="createNewProfile" (toggleNewProfilePanel)="toggleNewProfilePanel($event)"></account-new-profile>
+    <div class="container-fluid position-relative h-100" fxLayoutGap="30px">
         <div fxFlex *ngIf="profilesData.length > 0">
             <div class="text-center" *ngIf="profilesData.length > 20">
                 <mat-form-field appearance="outline" class="w-50">
