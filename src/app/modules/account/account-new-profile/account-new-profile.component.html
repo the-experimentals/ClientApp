@@ -3,7 +3,7 @@
 </div>
 
 <mat-card class="new-profile-panel p-0 animate__animated animate__slideInRight animate__faster">
-    <div [formGroup]="newProfileForm" class="container-fluid h-100 p-0" style="width: 480px !important;" fxLayout="column" fxFlexFill>
+    <form [formGroup]="newProfileForm" class="container-fluid h-100 p-0" style="width: 480px !important;" fxLayout="column" fxFlexFill>
         <div>
             <header class="p-0 shadow-1 position-relative">
                 <div class="text-center vertical-center" style="left: 5px;">
@@ -15,7 +15,6 @@
                     <span class="mat-h1">New profile</span>
                 </div>
             </header>
-            <!-- <hr class="m-0"> -->
         </div>
         <div>
             <header class="text-center padding1015">
@@ -121,8 +120,8 @@
         </div>
     
         <mat-card  style="position: absolute;width: 100%;bottom: 0" class="text-end padding1015">
-            <button mat-raised-button color="primary" routerLink="/account/new-profile" (click)="createProfile()">Save</button>    
+            <button mat-raised-button color="primary" (click)="createProfile()">Save</button>    
         </mat-card>
-    </div>
+    </form>
 </mat-card>    
 
