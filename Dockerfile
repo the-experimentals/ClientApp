@@ -1,5 +1,5 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM node:lts-alpine3.12 as build-stage
+FROM node:lts-alpine3.16 as build-stage
 EXPOSE 5000
 WORKDIR /app
 COPY package*.json /app/
