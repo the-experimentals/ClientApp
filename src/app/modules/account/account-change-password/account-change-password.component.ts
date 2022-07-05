@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,9 +6,7 @@ import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/s
 import { AlertDialogService } from 'src/app/core/services/alert-dialog/alert-dialog.service';
 import { ValidateOnValueChange } from 'src/app/core/validators';
 import { MatchPassword } from 'src/app/core/validators/match-password';
-import { ChangePasswordResponse } from 'src/app/response-models/account/change-password-response';
 import { LoadingIndicatorComponent } from 'src/app/shared/loading-indicator/loading-indicator.component';
-import { AlertData } from '../../alert-dialog/data-models/alert-data';
 
 @Component({
   selector: 'app-account-change-password',
