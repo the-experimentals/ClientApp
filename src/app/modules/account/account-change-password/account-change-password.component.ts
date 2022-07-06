@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {faKey } from '@fortawesome/free-solid-svg-icons';
 import { DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
@@ -19,7 +19,7 @@ export class AccountChangePasswordComponent implements OnInit {
   
   faKey = faKey
 
-  changePasswordForm:FormGroup
+  changePasswordForm:UntypedFormGroup
   isChangePasswordAttempt:boolean = false
   changePasswordErrors!:string[]
   showChangePasswordErrors:boolean = false
@@ -47,7 +47,7 @@ export class AccountChangePasswordComponent implements OnInit {
     'CONFIRM_PASSWORD': this.validationMessages['CONFIRM_PASSWORD']['required'],
   }
   
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: UntypedFormBuilder, 
     private httpHelper:HttpHelperService, 
     private dyanamicContentLoading: DyanamicContentLoadingService,
     @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
@@ -65,12 +65,12 @@ export class AccountChangePasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createChangePasswordForm(): FormGroup{
+  createChangePasswordForm(): UntypedFormGroup{
     return this.changePasswordForm = this.formBuilder.group({
-      'OLD_PASSWORD': new FormControl('', [Validators.required, Validators.minLength(8)]),
-      'NEW_PASSWORD': new FormControl('', [Validators.required, Validators.minLength(8)]),
-      'CONFIRM_PASSWORD': new FormControl('', [Validators.required, Validators.minLength(8)]),
-      'SHOW_PASSWORD': new FormControl(false)
+      'OLD_PASSWORD': new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+      'NEW_PASSWORD': new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+      'CONFIRM_PASSWORD': new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+      'SHOW_PASSWORD': new UntypedFormControl(false)
     }, {validator: MatchPassword('NEW_PASSWORD', 'CONFIRM_PASSWORD')});  
   }
 

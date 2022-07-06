@@ -46,7 +46,7 @@ $warn: mat.define-palette(mat.$red-palette);
   }
 
   $light-primary: mat.define-palette(mat.$blue-palette);
-  $light-accent: mat.define-palette(mat.$blue-palette, A500);
+  $light-accent: mat.define-palette(mat.$blue-palette, 500);
 
   $light-theme: mat.define-light-theme((
     color: (
@@ -68,7 +68,7 @@ $warn: mat.define-palette(mat.$red-palette);
 
   background-color: #1B1C1E;
   $dark-primary: mat.define-palette(mat.$gray-palette, A100);
-  $dark-accent: mat.define-palette(mat.$gray-palette, A50);
+  $dark-accent: mat.define-palette(mat.$gray-palette, 50);
 
   $dark-theme: mat.define-dark-theme((
     color:(

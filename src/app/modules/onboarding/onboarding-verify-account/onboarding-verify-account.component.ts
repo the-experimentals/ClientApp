@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, OnInit, Output, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { VERIFY_PROFILE } from 'src/app/core/constants/actions/account';
 import { ACCOUNT } from 'src/app/core/constants/controllers';
 import { AlertDialogService, DyanamicContentLoadingService, HttpHelperService } from 'src/app/core/services';
@@ -17,8 +17,8 @@ import { AlertData } from '../../alert-dialog/data-models/alert-data';
 export class OnboardingVerifyAccountComponent implements OnInit {
 
   @Output("changeStep") changeStep: EventEmitter<any> = new EventEmitter()
-  verificationCodeForm: FormGroup;
-  constructor(private formBuilder:FormBuilder, 
+  verificationCodeForm: UntypedFormGroup;
+  constructor(private formBuilder:UntypedFormBuilder, 
               private httpHelper:HttpHelperService, 
               private dyanamicContentLoading: DyanamicContentLoadingService,
               @Inject(ViewContainerRef) ViewContainerRef:ViewContainerRef,
@@ -32,14 +32,14 @@ export class OnboardingVerifyAccountComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createVerificationFrom():FormGroup  {
+  createVerificationFrom():UntypedFormGroup  {
     return this.formBuilder.group({
-      'CH1': new FormControl('', [Validators.required]),
-      'CH2': new FormControl('', [Validators.required]),
-      'CH3': new FormControl('', [Validators.required]),
-      'CH4': new FormControl('', [Validators.required]),
-      'CH5': new FormControl('', [Validators.required]),
-      'CH6': new FormControl('', [Validators.required]),
+      'CH1': new UntypedFormControl('', [Validators.required]),
+      'CH2': new UntypedFormControl('', [Validators.required]),
+      'CH3': new UntypedFormControl('', [Validators.required]),
+      'CH4': new UntypedFormControl('', [Validators.required]),
+      'CH5': new UntypedFormControl('', [Validators.required]),
+      'CH6': new UntypedFormControl('', [Validators.required]),
     });
   }
 
