@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, OnInit, Output, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEnvelope, faIdBadge, faKey, faLanguage, faLongArrowAltLeft, faTimes, faUser, faUserTimes } from '@fortawesome/free-solid-svg-icons';
 import { CREATE_NEW_PROFILE } from 'src/app/core/constants/actions/account';
@@ -29,7 +29,7 @@ export class AccountNewProfileComponent implements OnInit {
   faLanguage = faLanguage
 
   createNewProfileErrors:string[] = [];
-  newProfileForm!: FormGroup
+  newProfileForm!: UntypedFormGroup
   isCreateProfileAttempt: boolean = false
 
   validationMessages = {
@@ -68,7 +68,7 @@ export class AccountNewProfileComponent implements OnInit {
     'EMAIL': this.validationMessages['EMAIL']['required']
   }
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: UntypedFormBuilder, 
               private dyanamicContentLoading: DyanamicContentLoadingService,
               private httpHelper: HttpHelperService,
               private router:Router,
@@ -89,15 +89,15 @@ export class AccountNewProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createNewProfileForm(): FormGroup{
+  createNewProfileForm(): UntypedFormGroup{
     return this.formBuilder.group({
-      "USERNAME": new FormControl("", [Validators.required, Validators.minLength(5)]),
-      "PASSWORD": new FormControl("", [Validators.required, Validators.minLength(8)]),
-      "CONFIRM_PASSWORD": new FormControl("", [Validators.required, Validators.minLength(8)]),
-      "SHOW_PASSWORD": new FormControl(false),
-      "FIRST_NAME": new FormControl('', [Validators.required]),
-      "LAST_NAME": new FormControl('', [Validators.required]),
-      "EMAIL": new FormControl('', [Validators.required, Validators.email])
+      "USERNAME": new UntypedFormControl("", [Validators.required, Validators.minLength(5)]),
+      "PASSWORD": new UntypedFormControl("", [Validators.required, Validators.minLength(8)]),
+      "CONFIRM_PASSWORD": new UntypedFormControl("", [Validators.required, Validators.minLength(8)]),
+      "SHOW_PASSWORD": new UntypedFormControl(false),
+      "FIRST_NAME": new UntypedFormControl('', [Validators.required]),
+      "LAST_NAME": new UntypedFormControl('', [Validators.required]),
+      "EMAIL": new UntypedFormControl('', [Validators.required, Validators.email])
     }, {validator: MatchPassword('PASSWORD', 'CONFIRM_PASSWORD')}) 
   }
 

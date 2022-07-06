@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 import { ThemeSwitcherService } from 'src/app/core/services';
@@ -12,10 +12,10 @@ import { ThemeSwitcherService } from 'src/app/core/services';
 export class SettingsThemesComponent implements OnInit {
 
   faLongArrowAltLeft = faLongArrowAltLeft
-  themeSwitcherForm!:FormGroup;
+  themeSwitcherForm!:UntypedFormGroup;
   
   constructor(private themeSwitcher: ThemeSwitcherService, 
-              private formBuilder:FormBuilder) {
+              private formBuilder:UntypedFormBuilder) {
 
     let currentTheme = themeSwitcher.getThemeCurrentValue();
     let themeSwitchState:boolean = false; // false for light theme
@@ -24,7 +24,7 @@ export class SettingsThemesComponent implements OnInit {
       themeSwitchState = true; // true for dark theme
 
     this.themeSwitcherForm = this.formBuilder.group({
-      "THEME_SWITCH": new FormControl(themeSwitchState)
+      "THEME_SWITCH": new UntypedFormControl(themeSwitchState)
     });
   }
   
