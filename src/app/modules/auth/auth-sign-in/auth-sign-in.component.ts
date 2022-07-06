@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faHackerNews } from '@fortawesome/free-brands-svg-icons';
 import { faEye, faEyeSlash, faLock, faTrash, faTrashAlt, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -43,8 +43,8 @@ export class AuthSignInComponent implements OnInit {
     'PASSWORD': this.validationMessages['PASSWORD']['required']
   }
 
-  signInForm: FormGroup
-  constructor(private formBuilder:FormBuilder, 
+  signInForm: UntypedFormGroup
+  constructor(private formBuilder:UntypedFormBuilder, 
               private authService: AuthService, 
               private router:Router,
               private dyanamicContentLoading: DyanamicContentLoadingService,
@@ -69,12 +69,12 @@ export class AuthSignInComponent implements OnInit {
     })
   }
 
-  createSignInForm(): FormGroup{
+  createSignInForm(): UntypedFormGroup{
     return this.formBuilder.group({
-      'USERNAME': new FormControl('',[Validators.required, Validators.minLength(5)]),
-      'PASSWORD': new FormControl('', [Validators.required, Validators.minLength(8)]),
-      'REMEMBER_ME': new FormControl(false),
-      'SHOW_PASSWORD': new FormControl(false)
+      'USERNAME': new UntypedFormControl('',[Validators.required, Validators.minLength(5)]),
+      'PASSWORD': new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+      'REMEMBER_ME': new UntypedFormControl(false),
+      'SHOW_PASSWORD': new UntypedFormControl(false)
     });
   }
 

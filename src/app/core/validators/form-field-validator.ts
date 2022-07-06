@@ -1,6 +1,6 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
-export function ValidateOnValueChange(form: FormGroup, formErrors: any, validationMessages: any, data?: any){
+export function ValidateOnValueChange(form: UntypedFormGroup, formErrors: any, validationMessages: any, data?: any){
     if (!form) { return; }
     // const form = this.signInForm;
     for (const field in formErrors) {

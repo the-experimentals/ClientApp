@@ -1,9 +1,9 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 // custom validator to check that password and confirm password match.
 export function MatchPassword(newPasswordControl:string, confirmPasswordControl:string)
 {
-    return (formGroup: FormGroup) => {
+    return (formGroup: UntypedFormGroup) => {
         let password = formGroup.get(newPasswordControl);
         let confirmPassword = formGroup.get(confirmPasswordControl);
 
