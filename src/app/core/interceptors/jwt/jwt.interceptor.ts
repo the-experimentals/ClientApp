@@ -29,7 +29,8 @@ export class JwtInterceptor implements HttpInterceptor {
         if(profile !== undefined){
           request = request.clone({
             setHeaders: {
-                Authorization: `Bearer ${profile.TOKEN.ACCESS}`
+                Authorization: `Bearer ${profile.TOKEN.ACCESS}`,
+                'Access-Control-Allow-Origin': '*'
             }
           });
         }
