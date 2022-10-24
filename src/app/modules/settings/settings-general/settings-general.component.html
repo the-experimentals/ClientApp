@@ -1,4 +1,4 @@
-<div class="padding2030">
+<div class="padding2030 h-100 position-relative">
     <div>
         <fa-icon [icon]="faLongArrowAltLeft" class="pointer" style="font-size: 2rem;" routerLink="/settings"></fa-icon>
     </div>
@@ -20,6 +20,22 @@
                     </form>
                 </div>
             </li>
+            <li>
+                <div matRipple class="container-fluid padding1015">
+                    <div fxFlex>
+                        <span class="display-block mat-h2 m-0">Email configuration</span>
+                        <!-- <span class="display-block mat-body m-0">Each time you sign in to your account, you'll need your password and a verification code.</span>
+                        <span class="display-block mat-small m-0" >Verification code will be sent to verified e-mail linked to your account</span> -->
+                    </div>
+                    <!-- <form  fxFlex="60px" class="text-center position-relative">
+                        <mat-slide-toggle color="primary"></mat-slide-toggle>                        
+                    </form> -->
+                </div>
+            </li>
         </ul>
     </div>
+
+    <email-panel></email-panel>
+
+    
 </div>

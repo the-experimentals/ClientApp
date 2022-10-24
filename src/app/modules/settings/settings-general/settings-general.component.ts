@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowAltLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-settings-general',
@@ -9,6 +9,7 @@ import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 export class SettingsGeneralComponent implements OnInit {
 
   faLongArrowAltLeft = faLongArrowAltLeft
+  faTimes = faTimes;
   constructor() { }
 
   ngOnInit(): void {

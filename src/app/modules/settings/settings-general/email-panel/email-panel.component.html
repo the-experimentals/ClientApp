@@ -1,0 +1,113 @@
+<mat-card style="position: absolute;width: 420px;top: 0;bottom: 0;right: 0;z-index: 1;" class="container-fluid" fxLayout="column">
+    <header style="text-align:center;" class="w-100">
+        <div class="position-relative">
+            <div class="text-center vertical-center" style="left: 0px;">
+                <button mat-icon-button>
+                    <fa-icon [icon]="faTimes" class="pointer" style="font-size: 1.2rem;"></fa-icon>
+                </button>
+            </div>
+            <span class="display-block mat-h2 m-0">Email settings</span>
+        </div>
+        
+        <hr>
+    </header>
+
+    <div style="text-align:center;" class="padding1015">
+        <span class="display-block mat-body m-0">Configure you email service account and sender.</span>
+    </div>
+    <form [formGroup]="emailConfigForm" class="padding1015 mb-5" style="overflow: hidden; overflow-y: auto;">
+        <span class="display-block mat-h1">Email service config</span>
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Host</mat-label>
+            <input matInput formControlName="HOST">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Api key</mat-label>
+            <input matInput formControlName="API_KEY" type="password">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Api secret</mat-label>
+            <input matInput formControlName="API_SECRET" type="password">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+            <mat-hint>
+                <span>Once saved, we wont be displaying secret here.</span>
+            </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Port</mat-label>
+            <input matInput formControlName="PORT">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+        </mat-form-field>
+        <div class="mb-4">
+            <mat-slide-toggle class="me-3">
+                SSL
+            </mat-slide-toggle>
+            <mat-slide-toggle>
+                TLS
+            </mat-slide-toggle>
+        </div>
+
+        <span class="display-block mat-h1">Sender details</span>
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Sender name</mat-label>
+            <input matInput formControlName="SENDER_NAME">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Sender email</mat-label>
+            <input matInput placeholder="format: xyz@abc.com" formControlName="SENDER_EMAIL">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+        </mat-form-field>            
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+            <mat-label>Test email</mat-label>
+            <input matInput placeholder="format: xyz@abc.com" formControlName="TEST_EMAIL">
+            <!-- <fa-icon [icon]="faKey" matPrefix></fa-icon> -->
+            <!-- <mat-error *ngIf="(isChangePasswordAttempt || (OLD_PASSWORD != null && OLD_PASSWORD.touched)) && changePasswordFormErrors.OLD_PASSWORD">
+                {{changePasswordFormErrors.OLD_PASSWORD}}
+            </mat-error> -->
+            <mat-hint>
+                <span>Your test email account. An attempt would be made to send email.</span>
+            </mat-hint>
+        </mat-form-field>
+        <!-- <div style="text-align:right ;">
+            <button mat-raised-button color="primary">Test settings</button>
+        </div> -->
+        <!-- <div class="padding1015">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="alert alert-success mt-3 animate__animated animate__bounceInDown animate__faster">
+            <span>
+                Success! New email settings are working fine.
+            </span>
+        </div> -->
+    </form>
+    <mat-card class="position-absolute w-100 padding1015 container-fluid" style="bottom: 0; left: 0; right: 0;">
+        <div fxFlex>
+            <button mat-raised-button color="primary">Test settings</button>
+        </div>
+        <div fxFlex class="text-end">
+            <button mat-raised-button color="primary">Save</button>
+        </div>
+        
+    </mat-card>
+</mat-card>

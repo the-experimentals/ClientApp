@@ -10,10 +10,16 @@ import { MatRippleModule } from '@angular/material/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { EmailPanelComponent } from './settings-general/email-panel/email-panel.component';
 
 
 @NgModule({
-  declarations: [SettingsHomeComponent, SettingsThemesComponent, SettingsGeneralComponent],
+  declarations: [SettingsHomeComponent, SettingsThemesComponent, SettingsGeneralComponent, EmailPanelComponent],
   imports: [
     CommonModule,
     SettingsRoutingModule,
@@ -21,7 +27,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatRippleModule,
     FontAwesomeModule,
     MatSlideToggleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FontAwesomeModule,
+    MatProgressBarModule
   ]
 })
 export class SettingsModule { }
