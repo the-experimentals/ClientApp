@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faAt, faEnvelopeSquare, faKey, faTimes, faUserSecret } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'email-panel',
@@ -10,6 +10,11 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class EmailPanelComponent implements OnInit {
 
   faTimes = faTimes
+  faKey = faKey
+  faUserSecret = faUserSecret
+  faAt = faAt
+  faEnvelopeSquare = faEnvelopeSquare
+
   emailConfigForm: UntypedFormGroup
   constructor(private formBuilder:UntypedFormBuilder) {
     this.emailConfigForm = this.createEmailConfigForm()
