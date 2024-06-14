@@ -25,7 +25,7 @@
     "@angular/platform-browser-dynamic": "14.1.0",
     "@angular/router": "14.1.0",
     "@auth0/angular-jwt": "5.0.2",
-    "@datorama/akita": "7.1.1",
+    "@datorama/akita": "8.0.0",
     "@fortawesome/angular-fontawesome": "0.10.1",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
