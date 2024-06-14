@@ -9,4 +9,4 @@ on:
 jobs:
 
   build:
-    uses: itsbibeksaini/github-workflows/.github/workflows/npm-build.yml@main
+    uses: the-experimentals/github-workflows/.github/workflows/npm-build.yml@main
